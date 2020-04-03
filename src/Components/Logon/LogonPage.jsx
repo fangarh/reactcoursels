@@ -9,7 +9,7 @@ class LogonPage extends React.Component{
     render(){
         return <div className="LogonPage">
             {this.state.userAction === 0 ? <LogonForm /> : <RegisterForm /> }
-        </div>;
+        </div>; 
     }
 }
 
