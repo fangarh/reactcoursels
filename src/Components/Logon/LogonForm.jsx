@@ -1,21 +1,46 @@
 import React from 'react'
 import './Logon.css'
 
+const labelBlockStyle = {
+    marginBottom:"10px"
+};
+
 class LogonForm extends React.Component{
+    constructor(props){
+        super(props);
+
+        this.goToRegister = this.goToRegister.bind(this);
+    }
+
     render(){
-        return (<div className="LogonForm">
+        return (
+        <form>
+        <div className="LogonForm">
             <div className="LogonInputBlock">
-                <label>Login</label>
-                <input id="name" type="text" className="simpleLogonInput"/>
+                <h1>Вход</h1>
             </div>
-            <div className="LogonInputBlock">
-                <label>Password</label>
-                <input id="name" type="text" className="simpleLogonInput"/>
+            <div className="LogonInputBlock" style={labelBlockStyle}>
+                <label>Новый пользователь?</label><label className="RegButton" onClick={this.goToRegister}>Зарегистрируйтесь!</label>
             </div>
-            <div className="LogonInputBlock">
-                <p>For register press <a href="~">here</a></p>
-            </div>            
-        </div>);
+            <div className="LogonInputBlock LogonInput-underline">
+                
+                <input id="name" type="text" className="simpleLogonInput LogonInput " placeholder="Имя пользователя"/>
+            </div>
+            <div className="LogonInputBlock  LogonInput-underline">
+                <input id="Password" type="text" className="simpleLogonInput LogonInput " placeholder="Пароль"/>
+            </div>   
+            <div>
+                <button type="submit"  className="SubmitDiv">Войти</button>
+            </div>     
+        </div>
+        </form>);
+    }
+
+    goToRegister(e){
+        console.log("00");
+        
+        console.log("01");
+        this.props.parentState(1);
     }
 }
 
