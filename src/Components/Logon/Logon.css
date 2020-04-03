@@ -1,0 +1,30 @@
+.LogonPage{
+    background:  url('../../images/Lofttaxi.png') no-repeat center center fixed; 
+    min-height: 100vh;
+    display: flex;
+  /*  flex-direction: column;*/
+    
+    justify-content: center;
+
+}
+
+.LogonForm {
+    background-color: azure;
+    border-radius: 3px;
+    margin-left: 40%;
+    margin-top: 10%;
+    padding-top: 30px;
+    padding-left: 10px;
+    width: 300px;
+    height: 200px;
+}
+
+.RegisterForm{
+    background-color: azure;
+    width: 200px;
+    height: 400px;
+}
+
+.simpleLogonInput{
+    margin-left: 20px;
+}

@@ -1,20 +1,13 @@
 import React from 'react';
 
-import LogonForm from './Components/LogonForm'
+import LogonForm from './Components/Logon/LogonPage'
 
 
 import Background from "./images/Lofttaxi.png";
 
-var sectionStyle = {
-  backgroundSize: "cover",
-
-  backgroundPosition: "center center", 
-  backgroundImage: `url(${Background})`
-};
-
 function App() {
   return (
-    <div style={sectionStyle}>
+    <div >
       <LogonForm />
     </div>
   );
