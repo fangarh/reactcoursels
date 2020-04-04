@@ -18,6 +18,7 @@ class LogonForm extends React.Component{
 
         // TODO: check if data correct
         // TODO: redirect
+        window.location.href = '../../../public/mainPage.html';
     }
 
     inputChangedEventHendler = event =>{
