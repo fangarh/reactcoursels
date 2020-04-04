@@ -17,7 +17,6 @@ class MapForm extends React.Component{
     }
 
     profileFilled = () => {
-        console.log(2);
         this.setState({isProfileFilled: 1});
     }
 }

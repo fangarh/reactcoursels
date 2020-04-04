@@ -9,7 +9,6 @@ class RouteFillProfileSubForm extends React.Component{
     }
 
     goToFillForm = e => {
-        console.log(1);
         this.props.fillProfile();
     }
 }
