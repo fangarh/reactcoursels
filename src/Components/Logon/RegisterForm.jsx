@@ -56,7 +56,7 @@ class RegisterForm extends React.Component{
                 </div>
             </div>
             <div className="LogonInputBlock  LogonInput-underline">
-                <input id="Password" name="password" value={password} onChange={this.inputChangedEventHendler} type="text" className="simpleLogonInput LogonInput " placeholder="Пароль"/>
+                <input id="Password" name="password" value={password} onChange={this.inputChangedEventHendler} type="password"  pattern="\w{8}"  className="simpleLogonInput LogonInput " placeholder="Пароль"/>
             </div>   
             <div>
                 <button type="submit"  className="SubmitDiv">Регистрация</button>

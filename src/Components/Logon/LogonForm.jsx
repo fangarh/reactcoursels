@@ -18,7 +18,7 @@ class LogonForm extends React.Component{
 
         // TODO: check if data correct
         // TODO: redirect
-        
+
         window.location.href = '../../../public/mainPage.html';
     }
 
@@ -42,7 +42,7 @@ class LogonForm extends React.Component{
                 <input id="name" name="email" value={email} type="text" onChange={this.inputChangedEventHendler} className="simpleLogonInput LogonInput " placeholder="e-mail"/>
             </div>
             <div className="LogonInputBlock  LogonInput-underline">
-                <input id="Password" name="password" value={password} onChange={this.inputChangedEventHendler} type="text" className="simpleLogonInput LogonInput " placeholder="Пароль"/>
+                <input id="Password" name="password" value={password} onChange={this.inputChangedEventHendler} type="password" pattern="\w{8}"  className="simpleLogonInput LogonInput " placeholder="Пароль"/>
             </div>   
             <div>
                 <button type="submit"  className="SubmitDiv">Войти</button>

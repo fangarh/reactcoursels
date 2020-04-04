@@ -53,11 +53,16 @@
 
 .simpleLogonInput{
     margin-left: 20px;
+    width: 100%;
 }
 
 .RegButton{
     color: blue;
     margin-left: 10px;;
+}
+
+.RegButton:hover{
+    text-decoration: underline;
 }
 
 .LogonInput{
