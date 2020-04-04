@@ -4,12 +4,6 @@ import NavigationMenu from './Navigation'
 import MapForm from './MapForm'
 
 class MainPage extends React.Component{
-    constructor (prop){
-        super(prop);
-
-        this.navigatorActions = this.navigatorActions.bind(this);
-    }
-
     render(){        
         return (<>
                 <NavigationMenu controllActions={this.navigatorActions}/>
@@ -18,8 +12,8 @@ class MainPage extends React.Component{
             </>);
     }
 
-    navigatorActions(actions){
-
+    navigatorActions = actions => {
+        // TODO: send navigate message to parent form
     }
 }
 

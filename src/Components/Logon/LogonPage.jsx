@@ -6,14 +6,13 @@ import LogonActions from './LogonActions'
 import './Logon.css'
 
 class LogonPage extends React.Component{
-    constructor(props){
-        super(props);
-
-        this.setNewState = this.setNewState.bind(this);
-    }
     state = {userAction : LogonActions["LogonForm"]};
 
     render(){        
+        return <>{this.buildContentDOM()}</>
+    }
+
+    buildContentDOM(){
         switch (this.state.userAction){
             case LogonActions["LogonForm"]:
                 return <div className="LogonPage"><LogonForm parentState={this.setNewState} /></div>;
@@ -23,7 +22,7 @@ class LogonPage extends React.Component{
         }
     }
 
-    setNewState(newState){
+    setNewState = newState => {
         if(newState === 2)
         {
             this.props.updateAppState(AppPages["Taxi"]);

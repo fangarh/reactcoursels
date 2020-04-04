@@ -7,13 +7,7 @@ const divInline = {
 }
 
 class RegisterForm extends React.Component{
-    constructor(props){
-        super(props);
-        
-        this.state = {user: '', password: '', firstname: '', lastname: ''};
-
-        this.goToLogon = this.goToLogon.bind(this);
-    }    
+    state = {user: '', password: '', firstname: '', lastname: ''};
 
     submitEventHendler = event => {
         event.preventDefault();
@@ -67,7 +61,7 @@ class RegisterForm extends React.Component{
         </form>);
     }
 
-    goToLogon(e){
+    goToLogon = e => {
         this.props.parentState(LogonActions["LogonForm"]);
     }
 }

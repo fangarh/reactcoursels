@@ -6,14 +6,13 @@ import MainPage from './Components/Main/MainPage'
 import ProfilePage from './Components/UserProfile/ProfilePage'
 
 class App extends React.Component{
-  constructor(){
-      super();
-
-      this.state = { curPage: AppPages["Logon"]}
-      this.updateStateData = this.updateStateData.bind(this);
-  }
+  state = { curPage: AppPages["Logon"]}
   
   render(){
+    return <>{this.buildFormDOM()}</>;
+  }
+
+  buildFormDOM(){
     switch(this.state.curPage){
       case AppPages["Logon"]:
         return <LogonForm updateAppState={this.updateStateData}/>;
@@ -26,7 +25,7 @@ class App extends React.Component{
     }
   }
 
-  updateStateData(page){
+  updateStateData = page => {
     this.setState({curPage: page});
   }
 }

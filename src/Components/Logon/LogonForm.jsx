@@ -3,13 +3,7 @@ import LogonActions from './LogonActions'
 import './Logon.css'
 
 class LogonForm extends React.Component{
-    constructor(props){
-        super(props);
-        
-        this.state = {email: '', password: ''};
-
-        this.goToRegister = this.goToRegister.bind(this);
-    }
+    state = {email: '', password: ''};
 
     submitEventHendler = event => {
         event.preventDefault();
@@ -52,7 +46,7 @@ class LogonForm extends React.Component{
         </form>);
     }
 
-    goToRegister(e){
+    goToRegister = e => {
         this.props.parentState(LogonActions["RegisterForm"]);
     }
 }
