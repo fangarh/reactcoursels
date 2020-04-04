@@ -25,8 +25,7 @@ class RegisterForm extends React.Component{
         console.log(this.state.lastname);
 
         // TODO: check if data correct
-        // TODO: redirect
-
+        
         this.props.parentState(LogonActions["LogonForm"]);
     }
 

@@ -1,0 +1,16 @@
+.MainPage{
+    background:  rgb(100, 150, 100); 
+    min-height: 100vh;
+    display: flex;
+  /*  flex-direction: column;*/
+}
+
+.RouteForm{
+    left: 50px;
+    top: 50px;
+    border-radius: 6px;
+    width: 350px;
+    height: 150px;
+    position: relative;
+    background:  azure; 
+}
