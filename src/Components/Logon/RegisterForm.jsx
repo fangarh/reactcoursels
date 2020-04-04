@@ -1,4 +1,5 @@
 import React from 'react'
+import LogonActions from './LogonActions'
 import './Logon.css'
 
 const divInline = {
@@ -25,6 +26,8 @@ class RegisterForm extends React.Component{
 
         // TODO: check if data correct
         // TODO: redirect
+
+        this.props.parentState(LogonActions["LogonForm"]);
     }
 
     inputChangedEventHendler = event =>{
@@ -66,7 +69,7 @@ class RegisterForm extends React.Component{
     }
 
     goToLogon(e){
-        this.props.parentState(0);
+        this.props.parentState(LogonActions["LogonForm"]);
     }
 }
 

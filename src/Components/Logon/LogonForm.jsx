@@ -1,4 +1,5 @@
 import React from 'react'
+import LogonActions from './LogonActions'
 import './Logon.css'
 
 class LogonForm extends React.Component{
@@ -19,7 +20,7 @@ class LogonForm extends React.Component{
         // TODO: check if data correct
         // TODO: redirect
 
-        window.location.href = '../../../public/mainPage.html';
+        this.props.parentState(LogonActions["LoggedOn"]);
     }
 
     inputChangedEventHendler = event =>{
@@ -52,7 +53,7 @@ class LogonForm extends React.Component{
     }
 
     goToRegister(e){
-        this.props.parentState(1);
+        this.props.parentState(LogonActions["RegisterForm"]);
     }
 }
 
