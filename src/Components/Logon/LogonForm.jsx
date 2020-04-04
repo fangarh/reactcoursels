@@ -1,5 +1,5 @@
 import React from 'react'
-import LogonActions from './LogonActions'
+import NavigationActions from '../NavigationActions'
 import './Logon.css'
 
 class LogonForm extends React.Component{
@@ -14,7 +14,7 @@ class LogonForm extends React.Component{
         // TODO: check if data correct
         // TODO: redirect
 
-        this.props.parentState(LogonActions["LoggedOn"]);
+        this.props.parentState(NavigationActions["LoggedOn"]);
     }
 
     inputChangedEventHendler = event =>{
@@ -47,7 +47,7 @@ class LogonForm extends React.Component{
     }
 
     goToRegister = e => {
-        this.props.parentState(LogonActions["RegisterForm"]);
+        this.props.parentState(NavigationActions["RegisterForm"]);
     }
 }
 

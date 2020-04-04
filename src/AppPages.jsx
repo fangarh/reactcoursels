@@ -1,7 +1,6 @@
 const AppPages = {
     Logon : 0,
-    Taxi : 1,
-    Properties : 2
+    Taxi : 1
 }
 
 export default AppPages;
