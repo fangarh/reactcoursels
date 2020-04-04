@@ -1,33 +1,46 @@
 import React from 'react'
 import './Logon.css'
 
-const labelBlockStyle = {
-    marginBottom:"10px"
-};
-
 class LogonForm extends React.Component{
     constructor(props){
         super(props);
+        
+        this.state = {email: '', password: ''};
 
         this.goToRegister = this.goToRegister.bind(this);
     }
 
+    submitEventHendler = event => {
+        event.preventDefault();
+
+        console.log(this.state.email);
+        console.log(this.state.password);
+
+        // TODO: check if data correct
+        // TODO: redirect
+    }
+
+    inputChangedEventHendler = event =>{
+        this.setState({[event.target.name]:event.target.value})
+    }
+
     render(){
+        const { email , password } = this.state;
         return (
-        <form>
+        <form onSubmit={this.submitEventHendler}>
         <div className="LogonForm">
             <div className="LogonInputBlock">
                 <h1>Вход</h1>
             </div>
-            <div className="LogonInputBlock" style={labelBlockStyle}>
+            <div className="LogonInputBlock labelBlockStyle">
                 <label>Новый пользователь?</label><label className="RegButton" onClick={this.goToRegister}>Зарегистрируйтесь!</label>
             </div>
             <div className="LogonInputBlock LogonInput-underline">
                 
-                <input id="name" type="text" className="simpleLogonInput LogonInput " placeholder="Имя пользователя"/>
+                <input id="name" name="email" value={email} type="text" onChange={this.inputChangedEventHendler} className="simpleLogonInput LogonInput " placeholder="e-mail"/>
             </div>
             <div className="LogonInputBlock  LogonInput-underline">
-                <input id="Password" type="text" className="simpleLogonInput LogonInput " placeholder="Пароль"/>
+                <input id="Password" name="password" value={password} onChange={this.inputChangedEventHendler} type="text" className="simpleLogonInput LogonInput " placeholder="Пароль"/>
             </div>   
             <div>
                 <button type="submit"  className="SubmitDiv">Войти</button>
@@ -37,9 +50,6 @@ class LogonForm extends React.Component{
     }
 
     goToRegister(e){
-        console.log("00");
-        
-        console.log("01");
         this.props.parentState(1);
     }
 }

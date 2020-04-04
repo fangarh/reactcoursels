@@ -8,42 +8,47 @@
 
 }
 
+.labelBlockStyle  {
+    margin-bottom:"10px"
+}
+
 .LogonForm {
     background-color: azure;
     border-radius: 3px;
-    margin-left: 30%;
+    margin-left: 20%;
     margin-top: 40%;
     padding-top: 15px;
-    width: 400px;
+    width: 500px;
     height: 330px;
 }
 
+
+.RegisterForm{
+    background-color: azure;
+    border-radius: 3px;
+    margin-left: 20%;
+    margin-top: 40%;
+    padding-top: 15px;
+    width: 500px;
+    height: 430px;
+}
+
 .SubmitDiv{
-    width: 70px;
+    width: 130px;
     height: 30px;
     text-align: center;
     border-radius: 3;
-    background-color: rgb(167, 143, 36);
+    background-color: rgb(238, 140, 75);
     display: inherit;
     align-items: inherit;
     justify-content: inherit;
     margin-top: 20px;
-    margin-left: 80%;
+    margin-left: 70%;
 }
 
 .LogonInputBlock{
     padding-top: 15px;
     padding-left: 10px;
-}
-
-.RegisterForm{
-    background-color: azure;
-    border-radius: 3px;
-    margin-left: 40%;
-    margin-top: 10%;
-    padding-top: 15px;
-    width: 300px;
-    height: 300px;
 }
 
 .simpleLogonInput{
@@ -58,7 +63,7 @@
 .LogonInput{
     font: inherit;
     color: currentColor;
-    width: 100%;
+    /*width: 100%;*/
     border: 0;
     height: 1.1875em;
     margin: 0;
