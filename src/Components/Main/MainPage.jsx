@@ -1,32 +1,40 @@
-import React from 'react'
-import NavigationMenu from './Navigation'
-import NavigationActions from '../NavigationActions'
-import ProfilePage from './ProfilePage'
-import MapForm from './MapForm'
-import AppPages from '../../AppPages'
+import React from "react";
+import NavigationMenu from "./Navigation";
+import NavigationActions from "../NavigationActions";
+import ProfilePage from "./ProfilePage";
+import MapForm from "./MapForm";
+import AppPages from "../../AppPages";
 
-class MainPage extends React.Component{
-    state = {activePage: NavigationActions["TaxiForm"]}
+class MainPage extends React.Component {
+  state = { activePage: NavigationActions["TaxiForm"] };
 
-    buildFormDOM(){        
-        return (<>
-            <NavigationMenu controllActions={this.navigatorActions}/>
-            
-            {this.state.activePage === NavigationActions["ProfileForm"] ? <ProfilePage controllActions={this.navigatorActions}/> : <MapForm />}
-        </>);
-    }
+  buildFormDOM() {
+    return (
+      <>
+        <NavigationMenu controllActions={this.navigatorActions} />
 
-    navigatorActions = navigateActions => {
-        // TODO: send navigate message to parent form
-        if(navigateActions !== NavigationActions["TaxiForm"] && navigateActions !== NavigationActions["ProfileForm"])
-            this.props.updateAppState(AppPages["Logon"]);
-        else
-            this.setState({activePage: navigateActions})
-    }
+        {this.state.activePage === NavigationActions["ProfileForm"] ? (
+          <ProfilePage controllActions={this.navigatorActions} />
+        ) : (
+          <MapForm />
+        )}
+      </>
+    );
+  }
 
-    render(){        
-        return <>{this.buildFormDOM()}</>;
-    }
+  navigatorActions = (navigateActions) => {
+    // TODO: send navigate message to parent form
+    if (
+      navigateActions !== NavigationActions["TaxiForm"] &&
+      navigateActions !== NavigationActions["ProfileForm"]
+    )
+      this.props.updateAppState(AppPages["Logon"]);
+    else this.setState({ activePage: navigateActions });
+  };
+
+  render() {
+    return <>{this.buildFormDOM()}</>;
+  }
 }
 
 export default MainPage;
