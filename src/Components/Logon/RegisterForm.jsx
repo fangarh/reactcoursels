@@ -26,6 +26,10 @@ class RegisterForm extends React.Component{
     inputChangedEventHendler = event =>{
         this.setState({[event.target.name]:event.target.value})
     }
+    
+    goToLogon = e => {
+        this.props.parentState(NavigationActions["LogonForm"]);
+    }
 
     render(){
         const {user, password, firstname, lastname} = this.state;
@@ -59,10 +63,6 @@ class RegisterForm extends React.Component{
             </div>     
         </div>
         </form>);
-    }
-
-    goToLogon = e => {
-        this.props.parentState(NavigationActions["LogonForm"]);
     }
 }
 

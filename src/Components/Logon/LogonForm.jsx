@@ -21,6 +21,10 @@ class LogonForm extends React.Component{
         this.setState({[event.target.name]:event.target.value})
     }
 
+    goToRegister = e => {
+        this.props.parentState(NavigationActions["RegisterForm"]);
+    }
+
     render(){
         const { email , password } = this.state;
         return (
@@ -44,10 +48,6 @@ class LogonForm extends React.Component{
             </div>     
         </div>
         </form>);
-    }
-
-    goToRegister = e => {
-        this.props.parentState(NavigationActions["RegisterForm"]);
     }
 }
 

@@ -7,9 +7,6 @@ import AppPages from '../../AppPages'
 
 class MainPage extends React.Component{
     state = {activePage: NavigationActions["TaxiForm"]}
-    render(){        
-        return <>{this.buildFormDOM()}</>;
-    }
 
     buildFormDOM(){        
         return (<>
@@ -25,6 +22,10 @@ class MainPage extends React.Component{
             this.props.updateAppState(AppPages["Logon"]);
         else
             this.setState({activePage: navigateActions})
+    }
+
+    render(){        
+        return <>{this.buildFormDOM()}</>;
     }
 }
 

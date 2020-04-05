@@ -5,12 +5,6 @@ import './Main.css'
 class MapForm extends React.Component{
     state = {isProfileFilled: 0};
 
-    render(){
-        return <div className="MainPage">
-            <RouteForm fillProfile = {this.profileFilled} profileFilled = {this.state.isProfileFilled}/>
-        Map</div>;
-    }
-
     componentDidMount(){
         // Hear we will check if profile exists. In test we will think it not exist
         this.setState({isProfileFilled: 0});
@@ -18,6 +12,12 @@ class MapForm extends React.Component{
 
     profileFilled = () => {
         this.setState({isProfileFilled: 1});
+    }
+
+    render(){
+        return <div className="MainPage">
+            <RouteForm fillProfile = {this.profileFilled} profileFilled = {this.state.isProfileFilled}/>
+        Map</div>;
     }
 }
 

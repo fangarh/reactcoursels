@@ -8,10 +8,6 @@ import './Logon.css'
 class LogonPage extends React.Component{
     state = {userAction : NavigationActions["LogonForm"]};
 
-    render(){        
-        return <>{this.buildContentDOM()}</>
-    }
-
     buildContentDOM(){
         switch (this.state.userAction){
             case NavigationActions["LogonForm"]:
@@ -28,6 +24,10 @@ class LogonPage extends React.Component{
             this.props.updateAppState(AppPages["Taxi"]);
         }else
             this.setState({userAction : newState})
+    }
+
+    render(){        
+        return <>{this.buildContentDOM()}</>
     }
 }
 

@@ -3,16 +3,6 @@ import './Navigation.css'
 import NavigationActions from '../NavigationActions'
 
 class NavigationMenu extends React.Component{
-    render(){
-        return <nav>
-            <ul  className="topmenu">
-                <li><label id='map' onClick={this.menuItemClick}>Карта</label></li>
-                <li><label id='profile' onClick={this.menuItemClick}>Профиль</label></li>
-                <li><label id='exit' onClick={this.menuItemClick}>Выйти</label></li>
-            </ul>
-        </nav>
-    }
-
     menuItemClick = e =>{
         switch(e.target.id){
             case 'map':
@@ -27,6 +17,16 @@ class NavigationMenu extends React.Component{
             default:
                 return;
         }
+    }
+
+    render(){
+        return <nav>
+            <ul  className="topmenu">
+                <li><label id='map' onClick={this.menuItemClick}>Карта</label></li>
+                <li><label id='profile' onClick={this.menuItemClick}>Профиль</label></li>
+                <li><label id='exit' onClick={this.menuItemClick}>Выйти</label></li>
+            </ul>
+        </nav>
     }
 }
 

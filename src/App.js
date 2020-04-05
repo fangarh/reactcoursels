@@ -6,10 +6,6 @@ import MainPage from './Components/Main/MainPage'
 
 class App extends React.Component{
   state = { curPage: AppPages["Logon"]}
-  
-  render(){
-    return <>{this.buildFormDOM()}</>;
-  }
 
   buildFormDOM(){
     switch(this.state.curPage){
@@ -25,6 +21,11 @@ class App extends React.Component{
   updateStateData = page => {
     this.setState({curPage: page});
   }
+    
+  render(){
+    return <>{this.buildFormDOM()}</>;
+  }
+
 }
 
 export default App;
