@@ -4,9 +4,11 @@ import ProfileData from "../BuisnessObjects/ProfileData";
 export const AuthContext = React.createContext({});
 
 export class AuthProvider extends React.Component {
-  state = { authorized: false };
+  state = { authorized: false, profileData: new ProfileData() };
 
   login = (email, password) => {
+    console.log(1);
+
     if (!email || !password) return;
 
     // TODO: Do authorize
@@ -24,7 +26,7 @@ export class AuthProvider extends React.Component {
       <AuthContext.Provider
         value={{
           authorized: this.state.authorized,
-          profile: this.state.profile,
+          profeleData: this.state.profileData,
           login: this.login,
           logout: this.logout,
         }}

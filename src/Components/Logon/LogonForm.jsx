@@ -1,80 +1,76 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import NavigationActions from "../NavigationActions";
 import "./Logon.css";
 import { AuthContext } from "../Services/AuthProvider";
 
-class LogonForm extends React.Component {
-  state = { email: "", password: "" };
+//class LogonForm extends React.Component {
+function LogonForm(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  submitEventHendler = (event, authContext) => {
-    event.preventDefault();
-    authContext.login(this.state.email, this.state.password);
+  const cont = useContext(AuthContext);
+
+  const goToRegister = (e) => {
+    props.parentState(NavigationActions["RegisterForm"]);
   };
 
-  inputChangedEventHendler = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  goToRegister = (e) => {
-    this.props.parentState(NavigationActions["RegisterForm"]);
-  };
-
-  render() {
-    const { email, password } = this.state;
-
-    return (
-      <AuthContext.Consumer>
-        {(values) => {
-          return (
-            <>
-              (
-              <form onSubmit={(e) => this.submitEventHendler(e, values)}>
-                <div className="LogonForm">
-                  <div className="LogonInputBlock">
-                    <h1>Вход</h1>
-                  </div>
-                  <div className="LogonInputBlock labelBlockStyle">
-                    <label>Новый пользователь?</label>
-                    <label className="RegButton" onClick={this.goToRegister}>
-                      Зарегистрируйтесь!
-                    </label>
-                  </div>
-                  <div className="LogonInputBlock LogonInput-underline">
-                    <input
-                      id="name"
-                      name="email"
-                      value={email}
-                      type="text"
-                      onChange={this.inputChangedEventHendler}
-                      className="simpleLogonInput LogonInput "
-                      placeholder="e-mail"
-                    />
-                  </div>
-                  <div className="LogonInputBlock  LogonInput-underline">
-                    <input
-                      id="Password"
-                      name="password"
-                      value={password}
-                      onChange={this.inputChangedEventHendler}
-                      type="password"
-                      className="simpleLogonInput LogonInput "
-                      placeholder="Пароль"
-                    />
-                  </div>
-                  <div>
-                    <button type="submit" className="SubmitDiv">
-                      Войти
-                    </button>
-                  </div>
+  return (
+    <AuthContext.Consumer>
+      {(values) => {
+        return (
+          <>
+            (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                console.log(cont);
+                cont.profileData.Verified = true;
+                cont.login(email, password);
+              }}
+            >
+              <div className="LogonForm">
+                <div className="LogonInputBlock">
+                  <h1>Вход</h1>
                 </div>
-              </form>
-              )
-            </>
-          );
-        }}
-      </AuthContext.Consumer>
-    );
-  }
+                <div className="LogonInputBlock labelBlockStyle">
+                  <label>Новый пользователь?</label>
+                  <label className="RegButton" onClick={goToRegister}>
+                    Зарегистрируйтесь!
+                  </label>
+                </div>
+                <div className="LogonInputBlock LogonInput-underline">
+                  <input
+                    name="email"
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="simpleLogonInput LogonInput "
+                    placeholder="e-mail"
+                  />
+                </div>
+                <div className="LogonInputBlock  LogonInput-underline">
+                  <input
+                    id="Password"
+                    name="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                    className="simpleLogonInput LogonInput "
+                    placeholder="Пароль"
+                  />
+                </div>
+                <div>
+                  <button type="submit" className="SubmitDiv">
+                    Войти
+                  </button>
+                </div>
+              </div>
+            </form>
+            )
+          </>
+        );
+      }}
+    </AuthContext.Consumer>
+  );
 }
 
 export default LogonForm;

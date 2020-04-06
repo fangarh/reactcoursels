@@ -4,8 +4,16 @@ class ProfileData {
     this.Month = 0;
     this.Year = 0;
     this.HolderName = "";
-    this.Verified = false;
+    this.verified = false;
   }
+  /*
+  get Verified() {
+    return this.verified;
+  }
+
+  set Verified(verified) {
+    this.verified = verified;
+  }*/
 }
 
 export default ProfileData;
