@@ -10,10 +10,6 @@ function ProfilePage(props) {
   const [Year, setYear] = React.useState("");
   const [Month, setMonth] = React.useState("");
 
-  const profile = cont.profileData;
-
-  console.log(profile);
-
   return (
     <AuthContext.Consumer>
       {(params) => {

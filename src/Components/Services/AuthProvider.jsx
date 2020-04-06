@@ -21,6 +21,8 @@ export class AuthProvider extends React.Component {
 
   updateProfile = (profData) => {
     this.setState({ profileData: profData });
+    console.log(profData);
+    console.log(this.state.profileData);
   };
 
   render() {
