@@ -23,8 +23,7 @@ function LogonForm(props) {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                console.log(cont);
-                cont.profileData.Verified = true;
+
                 cont.login(email, password);
               }}
             >

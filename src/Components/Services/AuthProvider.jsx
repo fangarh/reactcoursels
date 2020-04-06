@@ -7,8 +7,6 @@ export class AuthProvider extends React.Component {
   state = { authorized: false, profileData: new ProfileData() };
 
   login = (email, password) => {
-    console.log(1);
-
     if (!email || !password) return;
 
     // TODO: Do authorize
@@ -21,12 +19,17 @@ export class AuthProvider extends React.Component {
     this.setState({ authorized: true });
   };
 
+  updateProfile = (profData) => {
+    this.setState({ profileData: profData });
+  };
+
   render() {
     return (
       <AuthContext.Provider
         value={{
           authorized: this.state.authorized,
-          profeleData: this.state.profileData,
+          profileData: this.state.profileData,
+          updateProfile: this.updateProfile,
           login: this.login,
           logout: this.logout,
         }}

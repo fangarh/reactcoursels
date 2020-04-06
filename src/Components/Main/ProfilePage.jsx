@@ -1,9 +1,67 @@
 import React from "react";
+import { AuthContext } from "../Services/AuthProvider";
+import ProfileData from "../BuisnessObjects/ProfileData";
 
-class ProfilePage extends React.Component {
-  render() {
-    return <div>Page for ask taxi </div>;
-  }
+function ProfilePage(props) {
+  const cont = React.useContext(AuthContext);
+
+  const [CardId, setCardId] = React.useState("");
+  const [HolderName, setHolderName] = React.useState("");
+  const [Year, setYear] = React.useState("");
+  const [Month, setMonth] = React.useState("");
+
+  const profile = cont.profileData;
+
+  console.log(profile);
+
+  return (
+    <AuthContext.Consumer>
+      {(params) => {
+        return (
+          <>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                let profile = new ProfileData(CardId, Month, Year, HolderName);
+
+                cont.updateProfile(profile);
+              }}
+            >
+              <input
+                value={CardId}
+                placeholder="номер карты"
+                onChange={(e) => {
+                  setCardId(e.target.value);
+                }}
+              />
+              <input
+                value={Month}
+                placeholder="месяц"
+                onChange={(e) => {
+                  setMonth(e.target.value);
+                }}
+              />
+              <input
+                value={Year}
+                placeholder="год"
+                onChange={(e) => {
+                  setYear(e.target.value);
+                }}
+              />
+              <input
+                value={HolderName}
+                placeholder="имя на карты"
+                onChange={(e) => {
+                  setHolderName(e.target.value);
+                }}
+              />
+              <button type="submit">Применть</button>
+            </form>
+          </>
+        );
+      }}
+    </AuthContext.Consumer>
+  );
 }
 
 export default ProfilePage;

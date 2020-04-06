@@ -1,10 +1,11 @@
 class ProfileData {
-  constructor() {
-    this.CardId = "";
-    this.Month = 0;
-    this.Year = 0;
-    this.HolderName = "";
-    this.verified = false;
+  constructor(CardId, Month, Year, HolderName) {
+    this.CardId = CardId;
+    this.Month = Month;
+    this.Year = Year;
+    this.HolderName = HolderName;
+
+    this.verified = CardId ? true : false;
   }
   /*
   get Verified() {
