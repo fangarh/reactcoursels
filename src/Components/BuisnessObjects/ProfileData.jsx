@@ -7,14 +7,6 @@ class ProfileData {
 
     this.verified = CardId ? true : false;
   }
-  /*
-  get Verified() {
-    return this.verified;
-  }
-
-  set Verified(verified) {
-    this.verified = verified;
-  }*/
 }
 
 export default ProfileData;

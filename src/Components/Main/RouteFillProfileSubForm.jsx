@@ -1,6 +1,6 @@
 import React from "react";
 import "./Main.css";
-
+import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 
 function RouteFillProfileSubForm(props) {
@@ -33,5 +33,9 @@ function RouteFillProfileSubForm(props) {
     </>
   );
 }
+
+RouteFillProfileSubForm.propTypes = {
+  fillProfile: PropTypes.func.isRequired,
+};
 
 export default RouteFillProfileSubForm;

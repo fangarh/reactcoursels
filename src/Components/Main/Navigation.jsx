@@ -1,8 +1,13 @@
 import React from "react";
 import "./Navigation.css";
 import NavigationActions from "../NavigationActions";
+import PropTypes from "prop-types";
 
 class NavigationMenu extends React.Component {
+  static propTypes = {
+    controllActions: PropTypes.func,
+  };
+
   menuItemClick = (e) => {
     switch (e.target.id) {
       case "map":

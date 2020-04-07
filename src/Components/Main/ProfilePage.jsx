@@ -1,6 +1,8 @@
 import React from "react";
 import { AuthContext } from "../Services/AuthProvider";
 import ProfileData from "../BuisnessObjects/ProfileData";
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
 
 function ProfilePage(props) {
   const cont = React.useContext(AuthContext);
@@ -23,35 +25,37 @@ function ProfilePage(props) {
                 cont.updateProfile(profile);
               }}
             >
-              <input
+              <Input
                 value={CardId}
                 placeholder="номер карты"
                 onChange={(e) => {
                   setCardId(e.target.value);
                 }}
-              />
-              <input
+              ></Input>
+              <Input
                 value={Month}
                 placeholder="месяц"
                 onChange={(e) => {
                   setMonth(e.target.value);
                 }}
               />
-              <input
+              <Input
                 value={Year}
                 placeholder="год"
                 onChange={(e) => {
                   setYear(e.target.value);
                 }}
               />
-              <input
+              <Input
                 value={HolderName}
                 placeholder="имя на карты"
                 onChange={(e) => {
                   setHolderName(e.target.value);
                 }}
               />
-              <button type="submit">Применть</button>
+              <Button type="submit" variant="contained" color="secondary">
+                Применть
+              </Button>
             </form>
           </>
         );

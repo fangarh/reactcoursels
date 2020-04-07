@@ -1,95 +1,92 @@
-.LogonPage{
-    background:  url('../../images/Lofttaxi.png') no-repeat center center fixed; 
-    min-height: 100vh;
-    display: flex;
+.LogonPage {
+  background: url("../../images/Lofttaxi.png") no-repeat center center fixed;
+  min-height: 100vh;
+  display: flex;
   /*  flex-direction: column;*/
-    
-    justify-content: center;
 
+  justify-content: center;
 }
 
-.labelBlockStyle  {
-    margin-bottom:"10px"
+.labelBlockStyle {
+  margin-bottom: "10px";
 }
 
 .LogonForm {
-    background-color: azure;
-    border-radius: 3px;
-    margin-left: 20%;
-    margin-top: 40%;
-    padding-top: 15px;
-    width: 500px;
-    height: 330px;
+  background-color: azure;
+  border-radius: 3px;
+  margin-left: 20%;
+  margin-top: 40%;
+  padding-top: 15px;
+  width: 500px;
+  height: 330px;
 }
 
-
-.RegisterForm{
-    background-color: azure;
-    border-radius: 3px;
-    margin-left: 20%;
-    margin-top: 40%;
-    padding-top: 15px;
-    width: 500px;
-    height: 430px;
+.RegisterForm {
+  background-color: azure;
+  border-radius: 3px;
+  margin-left: 20%;
+  margin-top: 40%;
+  padding-top: 15px;
+  width: 500px;
+  height: 430px;
 }
 
-.SubmitDiv{
-    width: 130px;
-    height: 30px;
-    text-align: center;
-    border-radius: 3;
-    background-color: rgb(238, 140, 75);
-    display: inherit;
-    align-items: inherit;
-    justify-content: inherit;
-    margin-top: 20px;
-    margin-left: 70%;
+.SubmitDiv {
+  width: 130px;
+  height: 30px;
+  text-align: center;
+
+  display: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  margin-top: 20px;
+  margin-left: 70%;
 }
 
-.LogonInputBlock{
-    padding-top: 15px;
-    padding-left: 10px;
+.LogonInputBlock {
+  padding-top: 15px;
+  padding-left: 10px;
 }
 
-.simpleLogonInput{
-    margin-left: 20px;
-    width: 100%;
+.simpleLogonInput {
+  margin-left: 20px;
+  width: 80%;
 }
 
-.RegButton{
-    color: blue;
-    margin-left: 10px;;
+.RegButton {
+  color: blue;
+  margin-left: 10px;
 }
 
-.RegButton:hover{
-    text-decoration: underline;
+.RegButton:hover {
+  text-decoration: underline;
 }
 
-.LogonInput{
-    font: inherit;
-    color: currentColor;
-    /*width: 100%;*/
-    border: 0;
-    height: 1.1875em;
-    margin: 0;
-    display: block;
-    padding: 6px 0 7px;
-    min-width: 0;
-    background: none;
-    box-sizing: content-box;
-    padding-bottom: 10px;
-    -webkit-tap-highlight-color: transparent;
+.LogonInput {
+  font: inherit;
+  color: currentColor;
+  /*width: 100%;*/
+  border: 0;
+  height: 1.1875em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  padding-bottom: 10px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .LogonInput-underline {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    content: "";
-    transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
-    border-bottom: 2px solid rgb(178, 138, 16);
-        border-bottom-color: rgb(178, 138, 16);
-        margin-left: 10px;
-        margin-right: 10px;
-    border-bottom-color: #1473e6;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  border-bottom: 2px solid rgb(178, 138, 16);
+  border-bottom-color: rgb(178, 138, 16);
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom-color: #1473e6;
 }

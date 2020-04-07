@@ -1,12 +1,17 @@
 import React from "react";
 import NavigationActions from "../NavigationActions";
 import "./Logon.css";
+import PropTypes from "prop-types";
 
 const divInline = {
   display: "inline-block",
 };
 
 class RegisterForm extends React.Component {
+  static propTypes = {
+    parentState: PropTypes.func.isRequired,
+  };
+
   state = { user: "", password: "", firstname: "", lastname: "" };
 
   submitEventHendler = (event) => {

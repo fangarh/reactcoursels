@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import NavigationActions from "../NavigationActions";
 import "./Logon.css";
 import { AuthContext } from "../Services/AuthProvider";
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
+import PropTypes from "prop-types";
 
 //class LogonForm extends React.Component {
 function LogonForm(props) {
@@ -37,30 +40,30 @@ function LogonForm(props) {
                     Зарегистрируйтесь!
                   </label>
                 </div>
-                <div className="LogonInputBlock LogonInput-underline">
-                  <input
+                <div className="LogonInputBlock ">
+                  <Input
                     name="email"
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="simpleLogonInput LogonInput "
+                    className="simpleLogonInput"
                     placeholder="e-mail"
                   />
                 </div>
-                <div className="LogonInputBlock  LogonInput-underline">
-                  <input
+                <div className="LogonInputBlock">
+                  <Input
                     id="Password"
                     name="password"
                     onChange={(e) => setPassword(e.target.value)}
                     type="password"
-                    className="simpleLogonInput LogonInput "
+                    className="simpleLogonInput"
                     placeholder="Пароль"
                   />
                 </div>
-                <div>
-                  <button type="submit" className="SubmitDiv">
+                <div className="SubmitDiv">
+                  <Button type="submit" variant="contained" color="primary">
                     Войти
-                  </button>
+                  </Button>
                 </div>
               </div>
             </form>
@@ -71,5 +74,9 @@ function LogonForm(props) {
     </AuthContext.Consumer>
   );
 }
+
+LogonForm.propTypes = {
+  parentState: PropTypes.func.isRequired,
+};
 
 export default LogonForm;

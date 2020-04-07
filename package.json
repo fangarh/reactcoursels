@@ -9,6 +9,7 @@
     "loft-taxi-mui-theme": "^1.2.0",
     "mapbox": "^1.0.0-beta10",
     "mapbox-gl": "^1.9.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-mapbox-gl": "^4.8.3",

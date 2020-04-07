@@ -3,8 +3,13 @@ import RouteForm from "./RouteForm";
 import mapboxgl from "mapbox-gl";
 import NavigationActions from "../NavigationActions";
 import "./Main.css";
+import PropTypes from "prop-types";
 
 class MapForm extends React.Component {
+  static propTypes = {
+    controllActions: PropTypes.func,
+  };
+
   componentDidMount() {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiZmFuZ2FyaDY2NiIsImEiOiJjazhwc21mM3YwMWc1M2xwajYwZjFhejlnIn0.-t2babwIvcVtwALeMcKvtw";
