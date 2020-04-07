@@ -13,54 +13,48 @@ function ProfilePage(props) {
   const [Month, setMonth] = React.useState("");
 
   return (
-    <AuthContext.Consumer>
-      {(params) => {
-        return (
-          <>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                let profile = new ProfileData(CardId, Month, Year, HolderName);
+    <>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          let profile = new ProfileData(CardId, Month, Year, HolderName);
 
-                cont.updateProfile(profile);
-              }}
-            >
-              <Input
-                value={CardId}
-                placeholder="номер карты"
-                onChange={(e) => {
-                  setCardId(e.target.value);
-                }}
-              ></Input>
-              <Input
-                value={Month}
-                placeholder="месяц"
-                onChange={(e) => {
-                  setMonth(e.target.value);
-                }}
-              />
-              <Input
-                value={Year}
-                placeholder="год"
-                onChange={(e) => {
-                  setYear(e.target.value);
-                }}
-              />
-              <Input
-                value={HolderName}
-                placeholder="имя на карты"
-                onChange={(e) => {
-                  setHolderName(e.target.value);
-                }}
-              />
-              <Button type="submit" variant="contained" color="secondary">
-                Применть
-              </Button>
-            </form>
-          </>
-        );
-      }}
-    </AuthContext.Consumer>
+          cont.updateProfile(profile);
+        }}
+      >
+        <Input
+          value={CardId}
+          placeholder="номер карты"
+          onChange={(e) => {
+            setCardId(e.target.value);
+          }}
+        ></Input>
+        <Input
+          value={Month}
+          placeholder="месяц"
+          onChange={(e) => {
+            setMonth(e.target.value);
+          }}
+        />
+        <Input
+          value={Year}
+          placeholder="год"
+          onChange={(e) => {
+            setYear(e.target.value);
+          }}
+        />
+        <Input
+          value={HolderName}
+          placeholder="имя на карты"
+          onChange={(e) => {
+            setHolderName(e.target.value);
+          }}
+        />
+        <Button type="submit" variant="contained" color="secondary">
+          Применть
+        </Button>
+      </form>
+    </>
   );
 }
 

@@ -19,61 +19,55 @@ function LogonForm(props) {
   };
 
   return (
-    <AuthContext.Consumer>
-      {(values) => {
-        return (
-          <>
-            (
-            <Logo animated />
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
+    <>
+      (
+      <Logo animated />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
 
-                cont.login(email, password);
-              }}
-            >
-              <div className="LogonForm">
-                <div className="LogonInputBlock">
-                  <h1>Вход</h1>
-                </div>
-                <div className="LogonInputBlock labelBlockStyle">
-                  <label>Новый пользователь?</label>
-                  <label className="RegButton" onClick={goToRegister}>
-                    Зарегистрируйтесь!
-                  </label>
-                </div>
-                <div className="LogonInputBlock ">
-                  <Input
-                    name="email"
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="simpleLogonInput"
-                    placeholder="e-mail"
-                  />
-                </div>
-                <div className="LogonInputBlock">
-                  <Input
-                    id="Password"
-                    name="password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    type="password"
-                    className="simpleLogonInput"
-                    placeholder="Пароль"
-                  />
-                </div>
-                <div className="SubmitDiv">
-                  <Button type="submit" variant="contained" color="primary">
-                    Войти
-                  </Button>
-                </div>
-              </div>
-            </form>
-            )
-          </>
-        );
-      }}
-    </AuthContext.Consumer>
+          cont.login(email, password);
+        }}
+      >
+        <div className="LogonForm">
+          <div className="LogonInputBlock">
+            <h1>Вход</h1>
+          </div>
+          <div className="LogonInputBlock labelBlockStyle">
+            <label>Новый пользователь?</label>
+            <label className="RegButton" onClick={goToRegister}>
+              Зарегистрируйтесь!
+            </label>
+          </div>
+          <div className="LogonInputBlock ">
+            <Input
+              name="email"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="simpleLogonInput"
+              placeholder="e-mail"
+            />
+          </div>
+          <div className="LogonInputBlock">
+            <Input
+              id="Password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              className="simpleLogonInput"
+              placeholder="Пароль"
+            />
+          </div>
+          <div className="SubmitDiv">
+            <Button type="submit" variant="contained" color="primary">
+              Войти
+            </Button>
+          </div>
+        </div>
+      </form>
+      )
+    </>
   );
 }
 
