@@ -1,19 +1,37 @@
 import React from "react";
 import "./Main.css";
 
-class RouteFillProfileSubForm extends React.Component {
-  goToFillForm = (e) => {
-    this.props.fillProfile();
+import Button from "@material-ui/core/Button";
+
+function RouteFillProfileSubForm(props) {
+  const goToFillForm = (e) => {
+    props.fillProfile();
   };
 
-  render() {
-    return (
+  const buttonDiv = {
+    alignItems: "center",
+    marginTop: "30px",
+  };
+
+  return (
+    <>
       <div className="RouteForm">
-        need fill profile
-        <input type="button" onClick={this.goToFillForm}></input>
+        <div className="RoutFormForRedirect">
+          <p>Необходимо заполнить все данные профиля</p>
+          <div style={buttonDiv}>
+            <Button
+              type="button"
+              variant="contained"
+              color="secondary"
+              onClick={goToFillForm}
+            >
+              Редактировать профиль
+            </Button>
+          </div>
+        </div>
       </div>
-    );
-  }
+    </>
+  );
 }
 
 export default RouteFillProfileSubForm;

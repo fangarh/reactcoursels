@@ -1,6 +1,10 @@
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-nav { background: white; }
+nav {
+  background: white;
+}
 nav ul {
   list-style: none;
   margin: 0;
@@ -10,7 +14,7 @@ nav label {
   text-decoration: none;
   outline: none;
   display: block;
-  transition: .4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 .topmenu {
   text-align: right;
@@ -41,9 +45,16 @@ nav label {
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
-  font-family: 'Exo 2', sans-serif;
+  font-family: "Exo 2", sans-serif;
 }
-.topmenu li label:hover { color: #c0a97a; }
+.menuNav {
+  z-index: 1155;
+  overflow: inherit;
+  display: block;
+}
+.topmenu li label:hover {
+  color: #c0a97a;
+}
 .submenu {
   position: absolute;
   left: 50%;
@@ -55,8 +66,8 @@ nav label {
   z-index: 5;
   visibility: hidden;
   opacity: 0;
-  transform: scale(.8);
-  transition: .4s ease-in-out;
+  transform: scale(0.8);
+  transition: 0.4s ease-in-out;
 }
 .submenu li label {
   padding: 10px 0;
@@ -64,7 +75,7 @@ nav label {
   border-bottom: 1px solid #efefef;
   font-size: 12px;
   color: #484848;
-  font-family: 'Kurale', serif;
+  font-family: "Kurale", serif;
 }
 .topmenu > li:hover .submenu {
   visibility: visible;

@@ -2,25 +2,20 @@ import React from "react";
 import RouteFillProfileSubForm from "./RouteFillProfileSubForm";
 import RouteSelectedRoutSubForm from "./RouteSelectRoutSubForm";
 import "./Main.css";
-class RouteForm extends React.Component {
-  state = { isProfileDataExists: this.props.profileFilled };
+import { AuthContext } from "../Services/AuthProvider";
 
-  buildFormDOM() {
-    return this.state.isProfileDataExists === 0 ? (
-      <RouteFillProfileSubForm fillProfile={this.profileChanged} />
-    ) : (
-      <RouteSelectedRoutSubForm />
-    );
-  }
+function RouteForm(props) {
+  const cont = React.useContext(AuthContext);
 
-  profileChanged = () => {
-    this.props.fillProfile();
-    this.setState({ isProfileDataExists: 1 });
+  const profileChanged = () => {
+    props.fillProfile();
   };
 
-  render() {
-    return <>{this.buildFormDOM()}</>;
-  }
+  return cont.profileData.verified ? (
+    <RouteSelectedRoutSubForm />
+  ) : (
+    <RouteFillProfileSubForm fillProfile={profileChanged} />
+  );
 }
 
 export default RouteForm;

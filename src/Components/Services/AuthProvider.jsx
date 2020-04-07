@@ -16,13 +16,11 @@ export class AuthProvider extends React.Component {
 
   logout = () => {
     // TODO: Do authorize
-    this.setState({ authorized: true });
+    this.setState({ authorized: false, profileData: new ProfileData() });
   };
 
   updateProfile = (profData) => {
     this.setState({ profileData: profData });
-    console.log(profData);
-    console.log(this.state.profileData);
   };
 
   render() {

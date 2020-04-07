@@ -1,28 +1,41 @@
 import React from "react";
 import RouteForm from "./RouteForm";
+import mapboxgl from "mapbox-gl";
+import NavigationActions from "../NavigationActions";
 import "./Main.css";
 
 class MapForm extends React.Component {
-  state = { isProfileFilled: 0 };
-
   componentDidMount() {
-    // Hear we will check if profile exists. In test we will think it not exist
-    this.setState({ isProfileFilled: 0 });
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoiZmFuZ2FyaDY2NiIsImEiOiJjazhwc21mM3YwMWc1M2xwajYwZjFhejlnIn0.-t2babwIvcVtwALeMcKvtw";
+    this.map = new mapboxgl.Map({
+      container: this.mapContainer,
+      style: "mapbox://styles/mapbox/streets-v9",
+    });
   }
 
-  profileFilled = () => {
-    this.setState({ isProfileFilled: 1 });
-  };
+  componentWillUnmount() {
+    // this.map.remove();
+  }
 
   render() {
+    const style = {
+      position: "auto",
+      top: 0,
+      bottom: 0,
+      width: "100%",
+      height: "85vh",
+    };
+
     return (
-      <div className="MainPage">
+      <>
         <RouteForm
-          fillProfile={this.profileFilled}
-          profileFilled={this.state.isProfileFilled}
+          fillProfile={() => {
+            this.props.controllActions(NavigationActions["ProfileForm"]);
+          }}
         />
-        Map
-      </div>
+        <div style={style} ref={(el) => (this.mapContainer = el)} />
+      </>
     );
   }
 }

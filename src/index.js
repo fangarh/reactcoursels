@@ -4,12 +4,16 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { AuthProvider } from "./Components/Services/AuthProvider";
+import { theme } from "loft-taxi-mui-theme"; // Импортируем саму тему
+import { MuiThemeProvider } from "@material-ui/core/styles";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <MuiThemeProvider theme={theme}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,16 +1,26 @@
-.MainPage{
-    background:  rgb(100, 150, 100); 
-    min-height: 100vh;
-    display: flex;
+.MainPage {
+  background: rgb(100, 150, 100);
+  min-height: 100vh;
+  display: flex;
   /*  flex-direction: column;*/
 }
 
-.RouteForm{
-    left: 50px;
-    top: 50px;
-    border-radius: 6px;
-    width: 350px;
-    height: 150px;
-    position: relative;
-    background:  azure; 
+.RouteForm {
+  left: 50px;
+  top: 100px;
+  border-radius: 6px;
+  width: 450px;
+  height: 250px;
+  position: absolute;
+  display: block;
+  background: azure;
+}
+
+.RoutFormForRedirect {
+  text-align: center;
+
+  display: block;
+  position: relative;
+
+  margin-top: 80px;
 }

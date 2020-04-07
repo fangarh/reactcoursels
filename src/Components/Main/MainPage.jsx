@@ -3,38 +3,42 @@ import NavigationMenu from "./Navigation";
 import NavigationActions from "../NavigationActions";
 import ProfilePage from "./ProfilePage";
 import MapForm from "./MapForm";
-import AppPages from "../../AppPages";
 
-class MainPage extends React.Component {
-  state = { activePage: NavigationActions["TaxiForm"] };
+import { AuthContext } from "../Services/AuthProvider";
 
-  buildFormDOM() {
+function MainPage(props) {
+  const [activePage, setActivePage] = React.useState(
+    NavigationActions["TaxiForm"]
+  );
+
+  const cont = React.useContext(AuthContext);
+
+  const buildFormDOM = () => {
     return (
       <>
-        <NavigationMenu controllActions={this.navigatorActions} />
-
-        {this.state.activePage === NavigationActions["ProfileForm"] ? (
-          <ProfilePage controllActions={this.navigatorActions} />
-        ) : (
-          <MapForm />
-        )}
+        <NavigationMenu controllActions={navigatorActions} />
+        <div>
+          {activePage === NavigationActions["ProfileForm"] ? (
+            <ProfilePage controllActions={navigatorActions} />
+          ) : (
+            <MapForm controllActions={navigatorActions} />
+          )}
+        </div>
       </>
     );
-  }
+  };
 
-  navigatorActions = (navigateActions) => {
+  const navigatorActions = (navigateActions) => {
     // TODO: send navigate message to parent form
     if (
       navigateActions !== NavigationActions["TaxiForm"] &&
       navigateActions !== NavigationActions["ProfileForm"]
     )
-      this.props.updateAppState(AppPages["Logon"]);
-    else this.setState({ activePage: navigateActions });
+      cont.logout();
+    else setActivePage(navigateActions);
   };
 
-  render() {
-    return <>{this.buildFormDOM()}</>;
-  }
+  return <>{buildFormDOM()}</>;
 }
 
 export default MainPage;

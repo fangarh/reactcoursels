@@ -21,7 +21,7 @@ class NavigationMenu extends React.Component {
 
   render() {
     return (
-      <nav>
+      <nav className="menuNav">
         <ul className="topmenu">
           <li>
             <label id="map" onClick={this.menuItemClick}>
