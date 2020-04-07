@@ -5,6 +5,7 @@ import { AuthContext } from "../Services/AuthProvider";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
+import { Logo } from "loft-taxi-mui-theme";
 
 //class LogonForm extends React.Component {
 function LogonForm(props) {
@@ -23,6 +24,7 @@ function LogonForm(props) {
         return (
           <>
             (
+            <Logo animated />
             <form
               onSubmit={(e) => {
                 e.preventDefault();

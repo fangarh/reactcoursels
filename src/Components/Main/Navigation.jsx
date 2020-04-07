@@ -26,25 +26,28 @@ class NavigationMenu extends React.Component {
 
   render() {
     return (
-      <nav className="menuNav">
-        <ul className="topmenu">
-          <li>
-            <label id="map" onClick={this.menuItemClick}>
-              Карта
-            </label>
-          </li>
-          <li>
-            <label id="profile" onClick={this.menuItemClick}>
-              Профиль
-            </label>
-          </li>
-          <li>
-            <label id="exit" onClick={this.menuItemClick}>
-              Выйти
-            </label>
-          </li>
-        </ul>
-      </nav>
+      <>
+        <nav className="menuNav">
+          <ul className="topmenu">
+            <li></li>
+            <li>
+              <label id="map" onClick={this.menuItemClick}>
+                Карта
+              </label>
+            </li>
+            <li>
+              <label id="profile" onClick={this.menuItemClick}>
+                Профиль
+              </label>
+            </li>
+            <li>
+              <label id="exit" onClick={this.menuItemClick}>
+                Выйти
+              </label>
+            </li>
+          </ul>
+        </nav>
+      </>
     );
   }
 }

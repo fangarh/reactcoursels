@@ -15,6 +15,8 @@ class MapForm extends React.Component {
       "pk.eyJ1IjoiZmFuZ2FyaDY2NiIsImEiOiJjazhwc21mM3YwMWc1M2xwajYwZjFhejlnIn0.-t2babwIvcVtwALeMcKvtw";
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
+      center: [30.233319, 59.942138],
+      zoom: 13,
       style: "mapbox://styles/mapbox/streets-v9",
     });
   }
