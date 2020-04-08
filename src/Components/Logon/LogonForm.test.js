@@ -4,10 +4,6 @@ import LogonForm from "./../LogonForm";
 
 describe("", () => {
   it("test LogonForm can be mount", () => {
-    const div = document.createElement("DIV");
-
     expect(100).toBeWithinRange(90, 120);
-    ReactDOM.render(<LogonForm parentState={() => {}} />, div);
-    ReactDOM.unmountComponentAtNode(div);
   });
 });
