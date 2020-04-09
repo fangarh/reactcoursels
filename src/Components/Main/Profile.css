@@ -1,0 +1,58 @@
+.ProfileForm {
+  position: absolute;
+  display: block;
+  background-color: lightblue;
+  left: 30vw;
+  top: 35vh;
+  width: 40vw;
+  min-width: 400px;
+  height: 30vh;
+  min-height: 300px;
+  border-radius: 10px;
+  padding-left: 2%;
+}
+
+.ProfileWnd {
+  background: url("../../images/Lofttaxi.png") no-repeat center center fixed;
+  width: 100wv;
+  height: 100vh;
+}
+
+.CardNumBlock {
+  padding-top: 20px;
+  left: 5px;
+}
+
+.CardNumInput {
+  padding-top: 20px;
+  width: 90%;
+  left: 5px;
+}
+
+.AdditionalDataBlock {
+  padding-top: 5%;
+  width: 90%;
+  left: 5px;
+  align-items: center;
+}
+
+.MonthBlock {
+  width: 35%;
+  left: 5px;
+  padding-right: 10%;
+}
+
+.YearBlock {
+  width: 35%;
+  margin-left: 30%;
+}
+
+.FioBlock {
+  left: 5px;
+}
+
+.SubmitBlock {
+  padding-top: 40px;
+  padding-left: 35%;
+  align-items: center;
+}

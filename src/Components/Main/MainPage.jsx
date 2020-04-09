@@ -3,7 +3,7 @@ import NavigationMenu from "./Navigation";
 import NavigationActions from "../NavigationActions";
 import ProfilePage from "./ProfilePage";
 import MapForm from "./MapForm";
-
+import "./Profile.css";
 import { AuthContext } from "../Services/AuthProvider";
 
 function MainPage(props) {
@@ -16,13 +16,15 @@ function MainPage(props) {
   const buildFormDOM = () => {
     return (
       <>
-        <NavigationMenu controllActions={navigatorActions} />
         <div>
-          {activePage === NavigationActions["ProfileForm"] ? (
-            <ProfilePage controllActions={navigatorActions} />
-          ) : (
-            <MapForm controllActions={navigatorActions} />
-          )}
+          <NavigationMenu controllActions={navigatorActions} />
+          <div>
+            {activePage === NavigationActions["ProfileForm"] ? (
+              <ProfilePage controllActions={navigatorActions} />
+            ) : (
+              <MapForm controllActions={navigatorActions} />
+            )}
+          </div>
         </div>
       </>
     );

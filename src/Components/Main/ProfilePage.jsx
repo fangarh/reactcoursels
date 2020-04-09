@@ -3,7 +3,7 @@ import { AuthContext } from "../Services/AuthProvider";
 import ProfileData from "../BuisnessObjects/ProfileData";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-
+import "./Profile.css";
 function ProfilePage(props) {
   const cont = React.useContext(AuthContext);
 
@@ -14,46 +14,62 @@ function ProfilePage(props) {
 
   return (
     <>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          let profile = new ProfileData(CardId, Month, Year, HolderName);
+      <div className="ProfileWnd">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            let profile = new ProfileData(CardId, Month, Year, HolderName);
 
-          cont.updateProfile(profile);
-        }}
-      >
-        <Input
-          value={CardId}
-          placeholder="номер карты"
-          onChange={(e) => {
-            setCardId(e.target.value);
+            cont.updateProfile(profile);
           }}
-        ></Input>
-        <Input
-          value={Month}
-          placeholder="месяц"
-          onChange={(e) => {
-            setMonth(e.target.value);
-          }}
-        />
-        <Input
-          value={Year}
-          placeholder="год"
-          onChange={(e) => {
-            setYear(e.target.value);
-          }}
-        />
-        <Input
-          value={HolderName}
-          placeholder="имя на карты"
-          onChange={(e) => {
-            setHolderName(e.target.value);
-          }}
-        />
-        <Button type="submit" variant="contained" color="secondary">
-          Применть
-        </Button>
-      </form>
+        >
+          <div className="ProfileForm">
+            <div className="CardNumBlock">
+              <Input
+                value={CardId}
+                placeholder="номер карты"
+                className="CardNumInput"
+                onChange={(e) => {
+                  setCardId(e.target.value);
+                }}
+              ></Input>
+            </div>
+            <div className="AdditionalDataBlock">
+              <Input
+                value={Month}
+                placeholder="месяц"
+                className="MonthBlock"
+                onChange={(e) => {
+                  setMonth(e.target.value);
+                }}
+              />
+              <Input
+                value={Year}
+                className="YearBlock"
+                placeholder="год"
+                onChange={(e) => {
+                  setYear(e.target.value);
+                }}
+              />
+            </div>
+            <div className="FioBlock">
+              <Input
+                value={HolderName}
+                placeholder="имя на карты"
+                className="CardNumInput"
+                onChange={(e) => {
+                  setHolderName(e.target.value);
+                }}
+              />
+            </div>
+            <div className="SubmitBlock">
+              <Button type="submit" variant="contained" color="secondary">
+                Применть
+              </Button>
+            </div>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

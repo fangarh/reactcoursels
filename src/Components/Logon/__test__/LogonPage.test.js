@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import Enzyme, { mount, shallow } from "enzyme";
 import LogonPage from "./../LogonPage";
 import LogonForm from "./../LogonForm";
@@ -52,10 +52,13 @@ describe("Page have forms", () => {
       login: logonFoo,
     };
 
+    /*    const context1 = useContext(AuthContext);
+    context1.login = logonFoo;
+*/
     wrapper = mount(<LogonForm parentState={() => {}} />, context);
     wrapper.mount();
-
-    //jest.doMock("./../../Services/AuthContext", () => {});
+    //debug();
+    //jest.mock("./../../Services/AuthContext", () => {});
 
     expect(wrapper.find(Button)).to.length(1);
     wrapper.find(Button).simulate("click");
