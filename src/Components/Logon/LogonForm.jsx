@@ -60,7 +60,12 @@ function LogonForm(props) {
             />
           </div>
           <div className="SubmitDiv">
-            <Button type="submit" variant="contained" color="primary">
+            <Button
+              name="tryLogonBtn"
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
               Войти
             </Button>
           </div>
