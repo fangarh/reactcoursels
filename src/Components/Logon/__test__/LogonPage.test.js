@@ -5,6 +5,7 @@ import LogonForm from "./../LogonForm";
 import Button from "@material-ui/core/Button";
 import { expect } from "chai";
 import ProfileData from "../../BuisnessObjects/ProfileData";
+import AuthContext from "./../../Services/AuthProvider";
 
 describe("Page have forms", () => {
   let wrapper = mount(<LogonPage />);
@@ -54,7 +55,7 @@ describe("Page have forms", () => {
     wrapper = mount(<LogonForm parentState={() => {}} />, context);
     wrapper.mount();
 
-    //jest.doMock("./AuthContext", () => {});
+    //jest.doMock("./../../Services/AuthContext", () => {});
 
     expect(wrapper.find(Button)).to.length(1);
     wrapper.find(Button).simulate("click");
