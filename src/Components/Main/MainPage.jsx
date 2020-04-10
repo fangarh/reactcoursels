@@ -1,9 +1,9 @@
 import React from "react";
-import NavigationMenu from "./Navigation";
+import NavigationMenu from "../Navigation/Navigation";
 import NavigationActions from "../NavigationActions";
-import ProfilePage from "./ProfilePage";
-import MapForm from "./MapForm";
-import "./Profile.css";
+import ProfilePage from "../Profile/ProfilePage";
+import MapForm from "../Map/MapForm";
+import "./../../css/Profile.css";
 import { AuthContext } from "../Services/AuthProvider";
 
 function MainPage(props) {

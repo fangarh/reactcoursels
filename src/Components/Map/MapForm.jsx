@@ -2,7 +2,7 @@ import React from "react";
 import RouteForm from "./RouteForm";
 import mapboxgl from "mapbox-gl";
 import NavigationActions from "../NavigationActions";
-import "./Main.css";
+import "./../../css/Main.css";
 import PropTypes from "prop-types";
 
 class MapForm extends React.Component {

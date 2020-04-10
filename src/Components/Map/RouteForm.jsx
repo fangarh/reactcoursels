@@ -1,7 +1,7 @@
 import React from "react";
 import RouteFillProfileSubForm from "./RouteFillProfileSubForm";
 import RouteSelectedRoutSubForm from "./RouteSelectRoutSubForm";
-import "./Main.css";
+import "./../../css/Main.css";
 import { AuthContext } from "../Services/AuthProvider";
 
 function RouteForm(props) {

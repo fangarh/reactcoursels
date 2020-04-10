@@ -1,5 +1,5 @@
 import React from "react";
-import "./Main.css";
+import "./../../css/Main.css";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 

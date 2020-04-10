@@ -19,21 +19,22 @@ export class AuthProvider extends React.Component {
     this.setState({ authorized: false, profileData: new ProfileData() });
   };
 
-  updateProfile = (profData) => {
-    this.setState({ profileData: profData });
+  updateProfile = (profileData) => this.setState({ profileData });
+
+  buildProviderParams = () => {
+    const { authorized, profileData } = this.state;
+    return {
+      authorized,
+      profileData,
+      updateProfile: this.updateProfile,
+      login: this.login,
+      logout: this.logout,
+    };
   };
 
   render() {
     return (
-      <AuthContext.Provider
-        value={{
-          authorized: this.state.authorized,
-          profileData: this.state.profileData,
-          updateProfile: this.updateProfile,
-          login: this.login,
-          logout: this.logout,
-        }}
-      >
+      <AuthContext.Provider value={this.buildProviderParams()}>
         {this.props.children}
       </AuthContext.Provider>
     );

@@ -1,6 +1,6 @@
 import React from "react";
 import NavigationActions from "../NavigationActions";
-import "./Logon.css";
+import "./../../css/Logon.css";
 import PropTypes from "prop-types";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";

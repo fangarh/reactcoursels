@@ -3,7 +3,7 @@ import { AuthContext } from "../Services/AuthProvider";
 import ProfileData from "../BuisnessObjects/ProfileData";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-import "./Profile.css";
+import "./../../css/Profile.css";
 function ProfilePage(props) {
   const cont = React.useContext(AuthContext);
 

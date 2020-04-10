@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import NavigationActions from "../NavigationActions";
-import "./Logon.css";
+import "./../../css/Logon.css";
 import { AuthContext } from "../Services/AuthProvider";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";

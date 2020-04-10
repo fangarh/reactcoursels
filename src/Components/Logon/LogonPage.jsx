@@ -3,7 +3,7 @@ import AppPages from "./../../AppPages";
 import LogonForm from "./LogonForm";
 import RegisterForm from "./RegisterForm";
 import NavigationActions from "../NavigationActions";
-import "./Logon.css";
+import "./../../css/Logon.css";
 
 class LogonPage extends React.Component {
   state = { userAction: NavigationActions["LogonForm"] };

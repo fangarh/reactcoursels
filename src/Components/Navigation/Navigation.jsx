@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navigation.css";
+import "./../../css/Navigation.css";
 import NavigationActions from "../NavigationActions";
 import PropTypes from "prop-types";
 
