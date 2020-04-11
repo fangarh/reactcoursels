@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { expect } from "chai";
 import { mount } from "enzyme";
-import { LogonForm, ValidableInput } from "./../LogonForm";
+import { LogonForm } from "./../LogonForm";
+import { ValidableInput } from "./../InputHOC";
 
 import Button from "@material-ui/core/Button";
 
