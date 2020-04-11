@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
 import { InputHOC } from "./InputHOC";
 
-let debug = true;
+let debug = !true;
 
 export const NewInput = InputHOC(Input);
 
