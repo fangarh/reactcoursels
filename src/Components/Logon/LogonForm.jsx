@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
 
+let debug = true;
+
 function testHOC(Component) {
   return class ValidatedInput extends React.Component {
     render() {
@@ -67,7 +69,9 @@ function LogonForm(props) {
           e.preventDefault();
           let result = validate();
 
-          if (result) cont.login(email, password);
+          if (result)
+            if (debug) console.log("validated");
+            else cont.login(email, password);
           else formStyle = { height: "360px" };
         }}
       >
