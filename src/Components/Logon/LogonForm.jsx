@@ -20,15 +20,7 @@ export function LogonForm(props) {
   const cont = useContext(AuthContext);
 
   const validate = () => {
-    let allValid = true;
-
-    if (email.includes("@") === false) {
-      allValid = false;
-    }
-
-    if (password.length < 1) {
-      allValid = false;
-    }
+    let allValid = validatePass() && validateEmail();
 
     setValidated(allValid.toString());
 
@@ -36,10 +28,9 @@ export function LogonForm(props) {
   };
 
   const validateEmail = () =>
-    (email.indexOf("@") > 0 && email.indexOf("@") < email.length - 1) ||
-    validated === "true";
+    email.indexOf("@") > 0 && email.indexOf("@") < email.length - 1;
 
-  const validatePass = () => password.length > 0 || validated === "true";
+  const validatePass = () => password.length > 0;
 
   const goToRegister = (e) => {
     props.parentState(NavigationActions["RegisterForm"]);
@@ -73,7 +64,7 @@ export function LogonForm(props) {
           <div className="LogonInputBlock ">
             <NewInput
               validatetext="Не верный e-mail"
-              validated={validateEmail().toString()}
+              validated={(validateEmail() || validated === "true").toString()}
               name="email"
               type="text"
               value={email}
@@ -85,7 +76,7 @@ export function LogonForm(props) {
           <div className="LogonInputBlock">
             <NewInput
               validatetext="Пароль не может быть пустым"
-              validated={validatePass().toString()}
+              validated={(validatePass() || validated === "true").toString()}
               id="Password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
