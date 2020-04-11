@@ -27,8 +27,11 @@ function ProfilePage(props) {
             <div className="CardNumBlock">
               <Input
                 value={CardId}
-                placeholder="номер карты"
                 className="CardNumInput"
+                pattern="[0-9\s]{13,19}"
+                autocomplete="cc-number"
+                maxlength="19"
+                placeholder="xxxx xxxx xxxx xxxx"
                 onChange={(e) => {
                   setCardId(e.target.value);
                 }}

@@ -7,12 +7,48 @@ import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
 
+function testHOC(Component) {
+  return class ValidatedInput extends React.Component {
+    render() {
+      //if (!this.props.validate) return <Component {...this.props} />;
+
+      return (
+        <>
+          {this.props.validated === "true" ? (
+            <label className="validateLabel"> </label>
+          ) : (
+            <label className="validateLabel">{this.props.validatetext}</label>
+          )}
+          <Component {...this.props} />
+        </>
+      );
+    }
+  };
+}
+
+const NewInput = testHOC(Input);
 //class LogonForm extends React.Component {
 function LogonForm(props) {
   const [email, setEmail] = useState("");
+  const [validated, setValidated] = useState("true");
   const [password, setPassword] = useState("");
 
   const cont = useContext(AuthContext);
+
+  const validate = () => {
+    let allValid = true;
+
+    if (email.includes("@") === false) {
+      allValid = false;
+    }
+
+    if (password.length < 1) {
+      allValid = false;
+    }
+    setValidated(allValid.toString());
+
+    return allValid;
+  };
 
   const goToRegister = (e) => {
     props.parentState(NavigationActions["RegisterForm"]);
@@ -25,8 +61,8 @@ function LogonForm(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-
-          cont.login(email, password);
+          validate();
+          if (validate()) console.log(email, password);
         }}
       >
         <div className="LogonForm">
@@ -40,7 +76,9 @@ function LogonForm(props) {
             </label>
           </div>
           <div className="LogonInputBlock ">
-            <Input
+            <NewInput
+              validatetext="Не верный e-mail"
+              validated={validated}
               name="email"
               type="text"
               value={email}
@@ -50,7 +88,9 @@ function LogonForm(props) {
             />
           </div>
           <div className="LogonInputBlock">
-            <Input
+            <NewInput
+              validatetext="Пароль не может быть пустым"
+              validated={validated}
               id="Password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
