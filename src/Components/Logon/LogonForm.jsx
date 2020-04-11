@@ -6,29 +6,13 @@ import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
+import { InputHOC } from "./InputHOC";
 
 let debug = true;
 
-function testHOC(Component) {
-  return class ValidatedInput extends React.Component {
-    render() {
-      return (
-        <>
-          {this.props.validated === "true" ? (
-            <label className="validateLabel"></label>
-          ) : (
-            <label className="validateLabel">{this.props.validatetext}</label>
-          )}
-          <Component {...this.props} />
-        </>
-      );
-    }
-  };
-}
+export const NewInput = InputHOC(Input);
 
-const NewInput = testHOC(Input);
-
-function LogonForm(props) {
+export function LogonForm(props) {
   const [email, setEmail] = useState("");
   const [validated, setValidated] = useState("true");
   const [password, setPassword] = useState("");
@@ -50,6 +34,12 @@ function LogonForm(props) {
 
     return allValid;
   };
+
+  const validateEmail = () =>
+    (email.indexOf("@") > 0 && email.indexOf("@") < email.length - 1) ||
+    validated === "true";
+
+  const validatePass = () => password.length > 0 || validated === "true";
 
   const goToRegister = (e) => {
     props.parentState(NavigationActions["RegisterForm"]);
@@ -83,7 +73,7 @@ function LogonForm(props) {
           <div className="LogonInputBlock ">
             <NewInput
               validatetext="Не верный e-mail"
-              validated={validated}
+              validated={validateEmail().toString()}
               name="email"
               type="text"
               value={email}
@@ -95,7 +85,7 @@ function LogonForm(props) {
           <div className="LogonInputBlock">
             <NewInput
               validatetext="Пароль не может быть пустым"
-              validated={validated}
+              validated={validatePass().toString()}
               id="Password"
               name="password"
               onChange={(e) => setPassword(e.target.value)}
