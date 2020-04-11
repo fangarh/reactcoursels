@@ -9,16 +9,15 @@
 
 .validateLabel {
   font-size: 8pt;
-  overflow: auto;
+  overflow: inherit;
+  display: flex;
   padding-left: 30px;
-  margin-top: -20px;
-
-  top: -20px;
+  margin-top: -5px;
   color: red;
 }
 
 .labelBlockStyle {
-  margin-bottom: "10px";
+  padding-bottom: 5px;
 }
 
 .LogonForm {
@@ -28,6 +27,7 @@
   margin-top: 55%;
   padding-top: 15px;
   width: 500px;
+  height: 335px;
 }
 
 .RegisterForm {
