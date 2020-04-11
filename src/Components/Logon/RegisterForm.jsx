@@ -4,7 +4,7 @@ import "./../../css/Logon.css";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { Logo } from "loft-taxi-mui-theme";
-import { ValidableInput } from "./InputHOC";
+import { ValidableInput } from "../HOCWrappers/ValidableInput";
 
 const divInline = {
   display: "inline-block",

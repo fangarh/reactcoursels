@@ -6,7 +6,7 @@ import { AuthContext } from "../Services/AuthProvider";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
-import { ValidableInput } from "./InputHOC";
+import { ValidableInput } from "../HOCWrappers/ValidableInput";
 
 let debug = !true;
 

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Input from "@material-ui/core/Input";
 
-export function InputHOC(Component) {
+export function ValidationHOC(Component) {
   return class ValidatedInput extends React.Component {
     static propTypes = {
       validated: PropTypes.string.isRequired,
@@ -24,4 +24,4 @@ export function InputHOC(Component) {
   };
 }
 
-export const ValidableInput = InputHOC(Input);
+export const ValidableInput = ValidationHOC(Input);

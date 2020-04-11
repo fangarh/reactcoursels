@@ -52,9 +52,11 @@ describe("Page have forms", () => {
       login: logonFoo,
     };
 
-    /*    const context1 = useContext(AuthContext);
+    /*    
+    const context1 = useContext(AuthContext);
     context1.login = logonFoo;
-*/
+    */
+
     wrapper = mount(<LogonForm parentState={() => {}} />, context);
     wrapper.mount();
     //debug();
