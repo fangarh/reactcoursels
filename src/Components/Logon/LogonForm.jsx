@@ -34,6 +34,9 @@ function LogonForm(props) {
   const [password, setPassword] = useState("");
 
   const cont = useContext(AuthContext);
+  var formStyle = {
+    height: "330px",
+  };
 
   const validate = () => {
     let allValid = true;
@@ -45,6 +48,7 @@ function LogonForm(props) {
     if (password.length < 1) {
       allValid = false;
     }
+
     setValidated(allValid.toString());
 
     return allValid;
@@ -61,11 +65,13 @@ function LogonForm(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          validate();
-          if (validate()) console.log(email, password);
+          let result = validate();
+
+          if (result) cont.login(email, password);
+          else formStyle = { height: "360px" };
         }}
       >
-        <div className="LogonForm">
+        <div className="LogonForm" style={formStyle}>
           <div className="LogonInputBlock">
             <h1>Вход</h1>
           </div>

@@ -9,9 +9,10 @@
 
 .validateLabel {
   font-size: 8pt;
-  top: -200px;
+  overflow: auto;
   padding-left: 30px;
   margin-top: -20px;
+  top: -20px;
   color: red;
 }
 
@@ -26,7 +27,6 @@
   margin-top: 55%;
   padding-top: 15px;
   width: 500px;
-  height: 360px;
 }
 
 .RegisterForm {
