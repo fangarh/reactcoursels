@@ -16,7 +16,7 @@ describe("Page loaded", () => {
     let wrapper = mount(<LogonForm parentState={() => {}} />);
     //wrapper.mount();
 
-    expect(wrapper.find(NewInput).length).to.greaterThan(0);
+    expect(wrapper.find(ValidableInput).length).to.greaterThan(0);
     expect(wrapper.find(Button).length).to.greaterThan(0);
   });
 });

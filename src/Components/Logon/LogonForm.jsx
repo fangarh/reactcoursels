@@ -10,7 +10,7 @@ import { InputHOC } from "./InputHOC";
 
 let debug = !true;
 
-export const NewInput = InputHOC(Input);
+export const ValidableInput = InputHOC(Input);
 
 export function LogonForm(props) {
   const [email, setEmail] = useState("");
@@ -62,7 +62,7 @@ export function LogonForm(props) {
             </label>
           </div>
           <div className="LogonInputBlock ">
-            <NewInput
+            <ValidableInput
               validatetext="Не верный e-mail"
               validated={(validateEmail() || validated === "true").toString()}
               name="email"
@@ -74,7 +74,7 @@ export function LogonForm(props) {
             />
           </div>
           <div className="LogonInputBlock">
-            <NewInput
+            <ValidableInput
               validatetext="Пароль не может быть пустым"
               validated={(validatePass() || validated === "true").toString()}
               id="Password"
