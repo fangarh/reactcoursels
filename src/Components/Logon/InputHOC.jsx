@@ -1,7 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export function InputHOC(Component) {
   return class ValidatedInput extends React.Component {
+    static propTypes = {
+      validated: PropTypes.string.isRequired,
+      validatetext: PropTypes.string.isRequired,
+    };
+
     render() {
       return (
         <>
