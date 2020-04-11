@@ -12,12 +12,10 @@ let debug = true;
 function testHOC(Component) {
   return class ValidatedInput extends React.Component {
     render() {
-      //if (!this.props.validate) return <Component {...this.props} />;
-
       return (
         <>
           {this.props.validated === "true" ? (
-            <label className="validateLabel"> </label>
+            <label className="validateLabel"></label>
           ) : (
             <label className="validateLabel">{this.props.validatetext}</label>
           )}
@@ -29,7 +27,7 @@ function testHOC(Component) {
 }
 
 const NewInput = testHOC(Input);
-//class LogonForm extends React.Component {
+
 function LogonForm(props) {
   const [email, setEmail] = useState("");
   const [validated, setValidated] = useState("true");
