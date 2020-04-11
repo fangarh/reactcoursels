@@ -2,15 +2,13 @@ import React, { useContext, useState } from "react";
 import NavigationActions from "../NavigationActions";
 import "./../../css/Logon.css";
 import { AuthContext } from "../Services/AuthProvider";
-import Input from "@material-ui/core/Input";
+
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
-import { InputHOC } from "./InputHOC";
+import { ValidableInput } from "./InputHOC";
 
 let debug = !true;
-
-export const ValidableInput = InputHOC(Input);
 
 export function LogonForm(props) {
   const [email, setEmail] = useState("");

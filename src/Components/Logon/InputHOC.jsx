@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Input from "@material-ui/core/Input";
 
 export function InputHOC(Component) {
   return class ValidatedInput extends React.Component {
@@ -22,3 +23,5 @@ export function InputHOC(Component) {
     }
   };
 }
+
+export const ValidableInput = InputHOC(Input);

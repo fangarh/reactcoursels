@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { expect } from "chai";
 import { mount } from "enzyme";
 import { LogonForm, ValidableInput } from "./../LogonForm";
-import Input from "@material-ui/core/Input";
+
 import Button from "@material-ui/core/Button";
 
 describe("Page loaded", () => {

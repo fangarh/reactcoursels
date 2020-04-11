@@ -2,9 +2,9 @@ import React from "react";
 import NavigationActions from "../NavigationActions";
 import "./../../css/Logon.css";
 import PropTypes from "prop-types";
-import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import { Logo } from "loft-taxi-mui-theme";
+import { ValidableInput } from "./InputHOC";
 
 const divInline = {
   display: "inline-block",
@@ -15,10 +15,38 @@ class RegisterForm extends React.Component {
     parentState: PropTypes.func.isRequired,
   };
 
-  state = { user: "", password: "", firstname: "", lastname: "" };
+  validateEmail = () =>
+    this.state.user.indexOf("@") > 0 &&
+    this.state.user.indexOf("@") < this.state.user.length - 1;
+
+  validateStr = (str) => str.length > 0;
+
+  state = {
+    user: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    validated: "true",
+  };
+
+  validate = () => {
+    const { password, firstname, lastname } = this.state;
+
+    let allValid =
+      this.validateStr(password) &&
+      this.validateStr(firstname) &&
+      this.validateStr(lastname) &&
+      this.validateEmail();
+
+    this.setState({ validated: allValid.toString() });
+
+    return allValid;
+  };
 
   submitEventHendler = (event) => {
     event.preventDefault();
+
+    if (!this.validate()) return;
 
     console.log(this.state.user);
     console.log(this.state.password);
@@ -40,7 +68,7 @@ class RegisterForm extends React.Component {
   };
 
   render() {
-    const { user, password, firstname, lastname } = this.state;
+    const { user, password, firstname, lastname, validated } = this.state;
 
     return (
       <>
@@ -57,8 +85,12 @@ class RegisterForm extends React.Component {
               </label>
             </div>
             <div className="LogonInputBlock ">
-              <Input
+              <ValidableInput
                 id="name"
+                validatetext="Не верный e-mail"
+                validated={(
+                  this.validateEmail() || validated === "true"
+                ).toString()}
                 name="user"
                 value={user}
                 type="text"
@@ -69,8 +101,12 @@ class RegisterForm extends React.Component {
             </div>
             <div style={divInline}>
               <div className="LogonInputBlock " style={divInline}>
-                <Input
+                <ValidableInput
                   id="firstname"
+                  validatetext="Имя не может быть пустым"
+                  validated={(
+                    this.validateStr(firstname) || validated === "true"
+                  ).toString()}
                   name="firstname"
                   value={firstname}
                   type="text"
@@ -80,10 +116,14 @@ class RegisterForm extends React.Component {
                 />
               </div>
               <div className="LogonInputBlock " style={divInline}>
-                <Input
+                <ValidableInput
                   id="lastname"
+                  validatetext="Фамилия не может быть пустой"
                   name="lastname"
                   value={lastname}
+                  validated={(
+                    this.validateStr(lastname) || validated === "true"
+                  ).toString()}
                   type="text"
                   onChange={this.inputChangedEventHendler}
                   className="simpleLogonInput  "
@@ -92,8 +132,12 @@ class RegisterForm extends React.Component {
               </div>
             </div>
             <div className="LogonInputBlock  ">
-              <Input
+              <ValidableInput
                 id="Password"
+                validatetext="Пароль не может быть пустым"
+                validated={(
+                  this.validateStr(password) || validated === "true"
+                ).toString()}
                 name="password"
                 value={password}
                 onChange={this.inputChangedEventHendler}
