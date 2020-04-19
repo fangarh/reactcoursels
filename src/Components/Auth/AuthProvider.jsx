@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileData from "../BuisnessObjects/ProfileData";
+import ProfileData from "../../BuisnessObjects/ProfileData";
 
 export const AuthContext = React.createContext({});
 

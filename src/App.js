@@ -1,18 +1,19 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import MainPage from "./Components/Main/MainPage";
-import { AuthContext } from "./Components/Services/AuthProvider";
 import LogonPage from "./Components/Logon/LogonPage";
 
 class App extends React.Component {
   render() {
-    return (
-      <AuthContext.Consumer>
-        {(values) => {
-          return <>{values.authorized ? <MainPage /> : <LogonPage />}</>;
-        }}
-      </AuthContext.Consumer>
-    );
+    return <>{this.props.authStatus ? <MainPage /> : <LogonPage />}</>;
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  authStatus: state.auth.loggedOn,
+  loggedOnError: state.auth.loggedOnError,
+  authToken: state.auth.authToken,
+});
+
+export default connect(mapStateToProps, null)(App);

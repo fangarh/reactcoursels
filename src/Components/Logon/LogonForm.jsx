@@ -1,21 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import NavigationActions from "../NavigationActions";
 import "./../../css/Logon.css";
-import { AuthContext } from "../Services/AuthProvider";
+import { doLogonAction } from "./../../Services/Authorization/actions";
 
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 
-let debug = !true;
-
-export function LogonForm(props) {
+function LogonForm(props) {
   const [email, setEmail] = useState("");
   const [validated, setValidated] = useState("true");
   const [password, setPassword] = useState("");
 
-  const cont = useContext(AuthContext);
+  //  const cont = useContext(AuthContext);
 
   const validate = () => {
     let allValid = validatePass() && validateEmail();
@@ -34,21 +33,24 @@ export function LogonForm(props) {
     props.parentState(NavigationActions["RegisterForm"]);
   };
 
+  const submit = (e) => {
+    e.preventDefault();
+    //let componentTest = false;
+    //console.log(this.props.doLogon);
+    if (validate()) {
+      props.doLogonAction({ email, password });
+
+      //      if (componentTest) console.log("validated");
+      //      else cont.login(email, password);
+    }
+  };
+  console.log("as = ", props.authStatus);
+
   return (
     <>
       (
       <Logo animated />
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          let result = validate();
-
-          if (result) {
-            if (debug) console.log("validated");
-            else cont.login(email, password);
-          }
-        }}
-      >
+      <form onSubmit={submit}>
         <div className="LogonForm">
           <div className="LogonInputBlock">
             <h1>Вход</h1>
@@ -104,4 +106,12 @@ LogonForm.propTypes = {
   parentState: PropTypes.func.isRequired,
 };
 
-export default LogonForm;
+const mapStateToProps = (state) => ({
+  authStatus: state.auth.loggedOn,
+  loggedOnError: state.auth.loggedOnError,
+  authToken: state.auth.authToken,
+});
+
+const mapDispatchToProps = { doLogonAction };
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogonForm);

@@ -1,6 +1,6 @@
 import React from "react";
-import { AuthContext } from "../Services/AuthProvider";
-import ProfileData from "../BuisnessObjects/ProfileData";
+import { AuthContext } from "../Auth/AuthProvider";
+import ProfileData from "../../BuisnessObjects/ProfileData";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import "./../../css/Profile.css";

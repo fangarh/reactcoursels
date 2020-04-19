@@ -4,7 +4,7 @@ import NavigationActions from "../NavigationActions";
 import ProfilePage from "../Profile/ProfilePage";
 import MapForm from "../Map/MapForm";
 import "./../../css/Profile.css";
-import { AuthContext } from "../Services/AuthProvider";
+import { AuthContext } from "../Auth/AuthProvider";
 
 function MainPage(props) {
   const [activePage, setActivePage] = React.useState(
