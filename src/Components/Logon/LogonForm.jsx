@@ -44,7 +44,10 @@ function LogonForm(props) {
       //      else cont.login(email, password);
     }
   };
-  console.log("as = ", props.authStatus);
+
+  let styleCorrection = {
+    paddingTop: "5px",
+  };
 
   return (
     <>
@@ -85,6 +88,15 @@ function LogonForm(props) {
               placeholder="Пароль"
             />
           </div>
+          <div style={styleCorrection}>
+            {props.loggedOnError ? (
+              <label className="validateLabel">
+                Ошибка при входе: {props.error}
+              </label>
+            ) : (
+              <label className="validateLabel"></label>
+            )}
+          </div>
           <div className="SubmitDiv">
             <Button
               name="tryLogonBtn"
@@ -108,8 +120,9 @@ LogonForm.propTypes = {
 
 const mapStateToProps = (state) => ({
   authStatus: state.auth.loggedOn,
-  loggedOnError: state.auth.loggedOnError,
+  loggedOnError: state.auth.loggedOnErrors,
   authToken: state.auth.authToken,
+  error: state.auth.error,
 });
 
 const mapDispatchToProps = { doLogonAction };
