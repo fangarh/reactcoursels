@@ -12,8 +12,9 @@ async function logon(login, password) {
 
   var result = await response.json();
 
-  console.log(result.token);
   console.log(result);
+
+  console.log(result.token);
 
   return result;
 }
