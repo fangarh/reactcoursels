@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { doLogonAction } from "./../../Services/Authorization/actions";
-
+import { Route, Redirect } from "react-router-dom";
 import NavigationActions from "../NavigationActions";
 import "./../../css/Logon.css";
 import Button from "@material-ui/core/Button";
@@ -49,6 +49,8 @@ function LogonForm(props) {
   let styleCorrection = {
     paddingTop: "5px",
   };
+  console.log(props.authStatus);
+  if (props.authStatus) return <Redirect to="/" />;
 
   return (
     <>

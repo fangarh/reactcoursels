@@ -11,6 +11,7 @@ import { rootReducer } from "./Services/rootReducer";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import { sagaListner } from "./Services/Sagas/sagas";
+import { BrowserRouter } from "react-router-dom";
 
 const saga = createSagaMiddleware();
 
@@ -30,7 +31,9 @@ const render = (
     <MuiThemeProvider theme={theme}>
       <AuthProvider>
         <Provider store={appStore}>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </Provider>
       </AuthProvider>
     </MuiThemeProvider>

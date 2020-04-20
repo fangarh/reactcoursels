@@ -3,10 +3,25 @@ import { connect } from "react-redux";
 
 import MainPage from "./Components/Main/MainPage";
 import LogonPage from "./Components/Logon/LogonPage";
+import { Switch, Route } from "react-router-dom";
+import PrivateRoute from "./Components/Auth/PrivateRout";
 
 class App extends React.Component {
   render() {
-    return <>{this.props.authStatus ? <MainPage /> : <LogonPage />}</>;
+    //return <>{this.props.authStatus ? <MainPage /> : <LogonPage />}</>;
+    return (
+      <>
+        <Switch>
+          <PrivateRoute
+            path="/"
+            loginPath="/logon"
+            component={MainPage}
+            exact
+          />
+          <Route path="/logon" component={LogonPage} />
+        </Switch>
+      </>
+    );
   }
 }
 
