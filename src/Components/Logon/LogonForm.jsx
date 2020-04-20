@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import NavigationActions from "../NavigationActions";
-import "./../../css/Logon.css";
 import { doLogonAction } from "./../../Services/Authorization/actions";
 
+import NavigationActions from "../NavigationActions";
+import "./../../css/Logon.css";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
+import composedAnimated from "./../HOCWrappers/AnimateWait";
 
 function LogonForm(props) {
   const [email, setEmail] = useState("");
   const [validated, setValidated] = useState("true");
   const [password, setPassword] = useState("");
-
+  const AnimButton = composedAnimated(Button);
   //  const cont = useContext(AuthContext);
 
   const validate = () => {
@@ -98,14 +99,14 @@ function LogonForm(props) {
             )}
           </div>
           <div className="SubmitDiv">
-            <Button
+            <AnimButton
               name="tryLogonBtn"
               type="submit"
               variant="contained"
               color="primary"
             >
               Войти
-            </Button>
+            </AnimButton>
           </div>
         </div>
       </form>

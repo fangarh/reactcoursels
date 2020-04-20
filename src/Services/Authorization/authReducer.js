@@ -1,4 +1,11 @@
-import { doLogonAction, doLogonSuccess, doLogonFail } from "./actions";
+import {
+  doLogonAction,
+  doLogonSuccess,
+  doLogonFail,
+  doRegister,
+  doRegisterSuccess,
+  doRegisterFail,
+} from "./actions";
 
 const initialState = {
   loggedOn: false,
@@ -10,6 +17,7 @@ const initialState = {
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case doLogonAction.toString():
+    case doRegister.toString():
       return {
         ...state,
         loggedOn: false,
@@ -18,6 +26,7 @@ export const authReducer = (state = initialState, action) => {
         error: "",
       };
     case doLogonSuccess.toString():
+    case doRegisterSuccess.toString():
       return {
         ...state,
         loggedOn: true,
@@ -26,6 +35,7 @@ export const authReducer = (state = initialState, action) => {
         error: "",
       };
     case doLogonFail.toString():
+    case doRegisterFail.toString():
       return {
         ...state,
         loggedOn: false,

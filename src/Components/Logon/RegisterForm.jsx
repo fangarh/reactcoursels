@@ -5,10 +5,15 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { Logo } from "loft-taxi-mui-theme";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
+import composedAnimated from "./../HOCWrappers/AnimateWait";
+import { connect } from "react-redux";
+import { doRegister } from "./../../Services/Authorization/actions";
 
 const divInline = {
   display: "inline-block",
 };
+
+const AnimButton = composedAnimated(Button);
 
 class RegisterForm extends React.Component {
   static propTypes = {
@@ -16,13 +21,13 @@ class RegisterForm extends React.Component {
   };
 
   validateEmail = () =>
-    this.state.user.indexOf("@") > 0 &&
-    this.state.user.indexOf("@") < this.state.user.length - 1;
+    this.state.email.indexOf("@") > 0 &&
+    this.state.email.indexOf("@") < this.state.email.length - 1;
 
   validateStr = (str) => str.length > 0;
 
   state = {
-    user: "",
+    email: "",
     password: "",
     firstname: "",
     lastname: "",
@@ -48,15 +53,20 @@ class RegisterForm extends React.Component {
 
     if (!this.validate()) return;
 
-    console.log(this.state.user);
+    console.log(this.state.email);
     console.log(this.state.password);
 
     console.log(this.state.firstname);
     console.log(this.state.lastname);
 
-    // TODO: check if data correct
+    let userData = {
+      email: this.state.email,
+      password: this.state.password,
+      name: this.state.firstname,
+      surname: this.state.lastname,
+    };
 
-    this.props.parentState(NavigationActions["LogonForm"]);
+    this.props.doRegister(userData);
   };
 
   inputChangedEventHendler = (event) => {
@@ -68,7 +78,10 @@ class RegisterForm extends React.Component {
   };
 
   render() {
-    const { user, password, firstname, lastname, validated } = this.state;
+    const { email, password, firstname, lastname, validated } = this.state;
+    let styleCorrection = {
+      paddingTop: "5px",
+    };
 
     return (
       <>
@@ -91,8 +104,8 @@ class RegisterForm extends React.Component {
                 validated={(
                   this.validateEmail() || validated === "true"
                 ).toString()}
-                name="user"
-                value={user}
+                name="email"
+                value={email}
                 type="text"
                 onChange={this.inputChangedEventHendler}
                 className="simpleLogonInput  "
@@ -146,10 +159,19 @@ class RegisterForm extends React.Component {
                 placeholder="Пароль"
               />
             </div>
+            <div style={styleCorrection}>
+              {this.props.loggedOnError ? (
+                <label className="validateLabel">
+                  Ошибка при Регистрации: {this.props.error}
+                </label>
+              ) : (
+                <label className="validateLabel"></label>
+              )}
+            </div>
             <div className="SubmitDiv">
-              <Button type="submit" variant="contained" color="primary">
+              <AnimButton type="submit" variant="contained" color="primary">
                 Регистрация
-              </Button>
+              </AnimButton>
             </div>
           </div>
         </form>
@@ -158,4 +180,13 @@ class RegisterForm extends React.Component {
   }
 }
 
-export default RegisterForm;
+const mapStateToProps = (state) => ({
+  authStatus: state.auth.loggedOn,
+  loggedOnError: state.auth.loggedOnErrors,
+  authToken: state.auth.authToken,
+  error: state.auth.error,
+});
+
+const mapDispatchToProps = { doRegister };
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);
