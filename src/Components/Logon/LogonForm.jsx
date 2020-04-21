@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { doLogonAction } from "./../../Services/Authorization/actions";
-import { Route, Redirect } from "react-router-dom";
-import NavigationActions from "../NavigationActions";
+
+import { Redirect } from "react-router-dom";
+
 import "./../../css/Logon.css";
 import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import { Logo } from "loft-taxi-mui-theme";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
+import { Link } from "react-router-dom";
 
 function LogonForm(props) {
   const [email, setEmail] = useState("");
@@ -29,10 +31,6 @@ function LogonForm(props) {
     email.indexOf("@") > 0 && email.indexOf("@") < email.length - 1;
 
   const validatePass = () => password.length > 0;
-
-  const goToRegister = (e) => {
-    props.parentState(NavigationActions["RegisterForm"]);
-  };
 
   const submit = (e) => {
     e.preventDefault();
@@ -63,8 +61,9 @@ function LogonForm(props) {
           </div>
           <div className="LogonInputBlock labelBlockStyle">
             <label>Новый пользователь?</label>
-            <label className="RegButton" onClick={goToRegister}>
-              Зарегистрируйтесь!
+
+            <label className="RegButton">
+              <Link to="/register">Зарегистрируйтесь!</Link>
             </label>
           </div>
           <div className="LogonInputBlock ">

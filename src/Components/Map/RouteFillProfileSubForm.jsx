@@ -2,12 +2,9 @@ import React from "react";
 import "./../../css/Main.css";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 function RouteFillProfileSubForm(props) {
-  const goToFillForm = (e) => {
-    props.fillProfile();
-  };
-
   const buttonDiv = {
     alignItems: "center",
     marginTop: "30px",
@@ -19,14 +16,11 @@ function RouteFillProfileSubForm(props) {
         <div className="RoutFormForRedirect">
           <p>Необходимо заполнить все данные профиля</p>
           <div style={buttonDiv}>
-            <Button
-              type="button"
-              variant="contained"
-              color="secondary"
-              onClick={goToFillForm}
-            >
-              Редактировать профиль
-            </Button>
+            <Link to="/profile">
+              <Button type="button" variant="contained" color="secondary">
+                Редактировать профиль
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

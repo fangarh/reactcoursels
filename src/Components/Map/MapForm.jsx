@@ -22,7 +22,7 @@ class MapForm extends React.Component {
   }
 
   componentWillUnmount() {
-    // this.map.remove();
+    this.map.remove();
   }
 
   render() {

@@ -1,8 +1,20 @@
-import { takeEvery } from "redux-saga/effects";
+import { takeEvery, all } from "redux-saga/effects";
 import { doLogonAction, doRegister } from "./../Authorization/actions";
-import { logonWorker, registerWorker } from "./workers";
+import { doLoadProfile, doSaveProfile } from "./../Profile/actions";
+import {
+  logonWorker,
+  registerWorker,
+  loadProfileWorker,
+  saveProfileWorker,
+} from "./workers";
+
+const sagas = [
+  takeEvery(doLogonAction, logonWorker),
+  takeEvery(doRegister, registerWorker),
+  takeEvery(doLoadProfile, loadProfileWorker),
+  takeEvery(doSaveProfile, saveProfileWorker),
+];
 
 export function* sagaListner() {
-  yield takeEvery(doLogonAction, logonWorker);
-  yield takeEvery(doRegister, registerWorker);
+  yield all(sagas);
 }

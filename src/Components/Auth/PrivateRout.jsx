@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { compose } from "redux";
 
 const PrivateRoute = ({
   component: RouteComponent,
@@ -9,7 +8,8 @@ const PrivateRoute = ({
   loggedOn,
   ...rest
 }) => {
-  console.log(loggedOn);
+  if (!loginPath) loginPath = "/logon";
+
   return (
     <Route
       {...rest}
@@ -23,13 +23,9 @@ const PrivateRoute = ({
     />
   );
 };
-/*  (
-    
-  );*/
+
 const mapStateToProps = (state) => ({
   loggedOn: state.auth.loggedOn,
 });
-
-//const PrivateRoute = compose(, PrivRout);
 
 export default connect(mapStateToProps, null)(PrivateRoute);

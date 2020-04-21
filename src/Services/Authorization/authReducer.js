@@ -5,6 +5,7 @@ import {
   doRegister,
   doRegisterSuccess,
   doRegisterFail,
+  doLogoff,
 } from "./actions";
 
 const initialState = {
@@ -16,6 +17,14 @@ const initialState = {
 
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case doLogoff.toString():
+      return {
+        ...state,
+        loggedOn: false,
+        loggedOnErrors: false,
+        authToken: "",
+        error: "",
+      };
     case doLogonAction.toString():
     case doRegister.toString():
       return {

@@ -1,13 +1,14 @@
 import React from "react";
-import NavigationActions from "../NavigationActions";
+
 import "./../../css/Logon.css";
-import PropTypes from "prop-types";
+
 import Button from "@material-ui/core/Button";
 import { Logo } from "loft-taxi-mui-theme";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 import { connect } from "react-redux";
 import { doRegister } from "./../../Services/Authorization/actions";
+import { Link } from "react-router-dom";
 
 const divInline = {
   display: "inline-block",
@@ -16,10 +17,6 @@ const divInline = {
 const AnimButton = composedAnimated(Button);
 
 class RegisterForm extends React.Component {
-  static propTypes = {
-    parentState: PropTypes.func.isRequired,
-  };
-
   validateEmail = () =>
     this.state.email.indexOf("@") > 0 &&
     this.state.email.indexOf("@") < this.state.email.length - 1;
@@ -73,10 +70,6 @@ class RegisterForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  goToLogon = (e) => {
-    this.props.parentState(NavigationActions["LogonForm"]);
-  };
-
   render() {
     const { email, password, firstname, lastname, validated } = this.state;
     let styleCorrection = {
@@ -84,7 +77,7 @@ class RegisterForm extends React.Component {
     };
 
     return (
-      <>
+      <div className="LogonPage">
         <Logo animated />
         <form onSubmit={this.submitEventHendler}>
           <div className="RegisterForm">
@@ -93,8 +86,8 @@ class RegisterForm extends React.Component {
             </div>
             <div className="LogonInputBlock labelBlockStyle">
               <label>Уже зарегистрированы?</label>
-              <label className="RegButton" onClick={this.goToLogon}>
-                Вход!
+              <label className="RegButton">
+                <Link to="/logon">Вход!</Link>
               </label>
             </div>
             <div className="LogonInputBlock ">
@@ -175,7 +168,7 @@ class RegisterForm extends React.Component {
             </div>
           </div>
         </form>
-      </>
+      </div>
     );
   }
 }

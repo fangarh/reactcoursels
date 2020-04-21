@@ -8,3 +8,4 @@ export const doRegisterSuccess = createAction(
 export const doLogonAction = createAction("lt/servise/auth/logon");
 export const doLogonFail = createAction("lt/servise/auth/logonfail");
 export const doLogonSuccess = createAction("lt/servise/auth/logonsuccess");
+export const doLogoff = createAction("lt/servise/auth/logoff");

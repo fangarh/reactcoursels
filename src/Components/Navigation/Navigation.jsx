@@ -1,27 +1,12 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./../../css/Navigation.css";
-import NavigationActions from "../NavigationActions";
-import PropTypes from "prop-types";
+import { doLogoff } from "./../../Services/Authorization/actions";
+import { NavLink, Link } from "react-router-dom";
 
 class NavigationMenu extends React.Component {
-  static propTypes = {
-    controllActions: PropTypes.func,
-  };
-
   menuItemClick = (e) => {
-    switch (e.target.id) {
-      case "map":
-        this.props.controllActions(NavigationActions["TaxiForm"]);
-        break;
-      case "profile":
-        this.props.controllActions(NavigationActions["ProfileForm"]);
-        break;
-      case "exit":
-        this.props.controllActions(NavigationActions["LogonForm"]);
-        break;
-      default:
-        return;
-    }
+    this.props.doLogoff();
   };
 
   render() {
@@ -29,19 +14,18 @@ class NavigationMenu extends React.Component {
       <nav className="menuNav">
         <ul className="topmenu">
           <li>
-            <label id="map" onClick={this.menuItemClick}>
-              Карта
+            {" "}
+            <label>
+              <Link to="/">Карта</Link>
             </label>
           </li>
           <li>
-            <label id="profile" onClick={this.menuItemClick}>
-              Профиль
+            <label>
+              <NavLink to="/profile">Профиль</NavLink>
             </label>
           </li>
           <li>
-            <label id="exit" onClick={this.menuItemClick}>
-              Выйти
-            </label>
+            <label onClick={this.menuItemClick}>Выход</label>
           </li>
         </ul>
       </nav>
@@ -49,4 +33,6 @@ class NavigationMenu extends React.Component {
   }
 }
 
-export default NavigationMenu;
+const mapDispatchToProps = { doLogoff };
+
+export default connect(null, mapDispatchToProps)(NavigationMenu);

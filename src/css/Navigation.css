@@ -39,9 +39,19 @@ nav label {
   background: none;
   box-shadow: none;
 }
+
+.exitBtn {
+  color: "#007BFF";
+}
+
+.exitBtn :hover {
+  color: "#007BFF";
+  border-bottom: 3px solid;
+}
+
 .topmenu > li > label {
   padding: 12px 26px;
-  color: #767676;
+  color: #007bff;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
@@ -53,7 +63,8 @@ nav label {
   display: block;
 }
 .topmenu li label:hover {
-  color: #c0a97a;
+  color: #0056b3;
+  text-decoration: underline;
 }
 .submenu {
   position: absolute;

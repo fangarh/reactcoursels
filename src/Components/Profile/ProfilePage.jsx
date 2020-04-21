@@ -1,28 +1,30 @@
 import React from "react";
-import { AuthContext } from "../Auth/AuthProvider";
+
 import ProfileData from "../../BuisnessObjects/ProfileData";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
+import NavigationMenu from "./../Navigation/Navigation";
 import "./../../css/Profile.css";
-function ProfilePage(props) {
-  const cont = React.useContext(AuthContext);
+import composedAnimated from "./../HOCWrappers/AnimateWait";
 
+const AnimButton = composedAnimated(Button);
+
+function ProfilePage(props) {
   const [CardId, setCardId] = React.useState("");
   const [HolderName, setHolderName] = React.useState("");
   const [Year, setYear] = React.useState("");
   const [Month, setMonth] = React.useState("");
 
+  const submitProfile = (e) => {
+    e.preventDefault();
+    let profile = new ProfileData(CardId, Month, Year, HolderName);
+  };
+
   return (
     <>
+      <NavigationMenu />
       <div className="ProfileWnd">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            let profile = new ProfileData(CardId, Month, Year, HolderName);
-
-            cont.updateProfile(profile);
-          }}
-        >
+        <form onSubmit={submitProfile}>
           <div className="ProfileForm">
             <div className="CardNumBlock">
               <Input
@@ -40,7 +42,7 @@ function ProfilePage(props) {
             <div className="AdditionalDataBlock">
               <Input
                 value={Month}
-                placeholder="месяц"
+                placeholder="месяц/год"
                 className="MonthBlock"
                 onChange={(e) => {
                   setMonth(e.target.value);
@@ -49,7 +51,7 @@ function ProfilePage(props) {
               <Input
                 value={Year}
                 className="YearBlock"
-                placeholder="год"
+                placeholder="CVV/CV2"
                 onChange={(e) => {
                   setYear(e.target.value);
                 }}
@@ -66,9 +68,9 @@ function ProfilePage(props) {
               />
             </div>
             <div className="SubmitBlock">
-              <Button type="submit" variant="contained" color="secondary">
+              <AnimButton type="submit" variant="contained" color="secondary">
                 Применть
-              </Button>
+              </AnimButton>
             </div>
           </div>
         </form>

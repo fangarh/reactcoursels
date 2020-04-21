@@ -1,5 +1,6 @@
-import { call, put } from "redux-saga/effects";
+import { call, put, select } from "redux-saga/effects";
 import { doLogonSuccess, doLogonFail } from "./../Authorization/actions";
+import { doLoadProfile, doSaveProfile } from "./../Profile/actions";
 import { loadStarted, loadFinished } from "./../Animation/actions";
 
 export function* logonWorker(params) {
@@ -11,9 +12,10 @@ export function* logonWorker(params) {
     )
   );
 
-  if (authRes.success)
+  if (authRes.success) {
     yield put({ type: doLogonSuccess.toString(), payload: authRes.token });
-  else yield put({ type: doLogonFail.toString(), payload: authRes.error });
+    yield put({ type: doLoadProfile.toString() });
+  } else yield put({ type: doLogonFail.toString(), payload: authRes.error });
 
   yield put({ type: loadFinished.toString() });
 }
@@ -28,6 +30,38 @@ export function* registerWorker(params) {
   else yield put({ type: doLogonFail.toString(), payload: authRes.error });
 
   yield put({ type: loadFinished.toString() });
+}
+export const getToken = (state) => state.auth.authToken;
+
+export function* loadProfileWorker(params) {
+  var token = yield select(getToken);
+
+  const profile = yield call(() => fetchJsonGet("card", "token=" + token));
+  yield console.log(profile);
+}
+export function* saveProfileWorker(params) {
+  yield console.log(params);
+}
+
+async function fetchJsonGet(method, params) {
+  try {
+    const response = await fetch(
+      "https://loft-taxi.glitch.me/" + method + "?" + params,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    var result = await response.json();
+  } catch (e) {
+    console.log(e);
+  }
+
+  return result;
 }
 
 async function fetchJson(json, method) {
