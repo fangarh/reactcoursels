@@ -1,15 +1,9 @@
 import React from "react";
 import RouteForm from "./RouteForm";
 import mapboxgl from "mapbox-gl";
-import NavigationActions from "../NavigationActions";
 import "./../../css/Main.css";
-import PropTypes from "prop-types";
 
 class MapForm extends React.Component {
-  static propTypes = {
-    controllActions: PropTypes.func,
-  };
-
   componentDidMount() {
     mapboxgl.accessToken =
       "pk.eyJ1IjoiZmFuZ2FyaDY2NiIsImEiOiJjazhwc21mM3YwMWc1M2xwajYwZjFhejlnIn0.-t2babwIvcVtwALeMcKvtw";
@@ -36,11 +30,7 @@ class MapForm extends React.Component {
 
     return (
       <>
-        <RouteForm
-          fillProfile={() => {
-            this.props.controllActions(NavigationActions["ProfileForm"]);
-          }}
-        />
+        <RouteForm />
         <div style={style} ref={(el) => (this.mapContainer = el)} />
       </>
     );

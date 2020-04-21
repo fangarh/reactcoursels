@@ -47,7 +47,7 @@ function LogonForm(props) {
   let styleCorrection = {
     paddingTop: "5px",
   };
-  console.log(props.authStatus);
+
   if (props.authStatus) return <Redirect to="/" />;
 
   return (

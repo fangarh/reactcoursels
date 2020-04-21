@@ -12,6 +12,13 @@ import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import { sagaListner } from "./Services/Sagas/sagas";
 import { BrowserRouter } from "react-router-dom";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+
+// pick a date util library
+import ruLocale from "date-fns/locale/ru";
+import format from "date-fns/format";
+import DateFnsUtils from "@date-io/date-fns";
+import "react-datepicker/dist/react-datepicker.css";
 
 const saga = createSagaMiddleware();
 
@@ -26,12 +33,24 @@ const appStore = createStore(
 
 saga.run(sagaListner);
 
+class RuLocalizedUtils extends DateFnsUtils {
+  getCalendarHeaderText(date) {
+    return format(date, "LLLL", { locale: ruLocale });
+  }
+
+  getDatePickerHeaderText(date) {
+    return format(date, "dd MMMM", { locale: ruLocale });
+  }
+}
+
 const render = (
   <React.StrictMode>
     <MuiThemeProvider theme={theme}>
       <Provider store={appStore}>
         <BrowserRouter>
-          <App />
+          <MuiPickersUtilsProvider utils={RuLocalizedUtils} locale={ruLocale}>
+            <App />
+          </MuiPickersUtilsProvider>
         </BrowserRouter>
       </Provider>
     </MuiThemeProvider>

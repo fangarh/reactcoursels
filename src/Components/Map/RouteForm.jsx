@@ -1,20 +1,19 @@
 import React from "react";
 import RouteFillProfileSubForm from "./RouteFillProfileSubForm";
 import RouteSelectedRoutSubForm from "./RouteSelectRoutSubForm";
+import { connect } from "react-redux";
 import "./../../css/Main.css";
 
 function RouteForm(props) {
-  const verified = !true;
-
-  const profileChanged = () => {
-    props.fillProfile();
-  };
-
-  return verified ? (
+  return props.verified ? (
     <RouteSelectedRoutSubForm />
   ) : (
-    <RouteFillProfileSubForm fillProfile={profileChanged} />
+    <RouteFillProfileSubForm />
   );
 }
 
-export default RouteForm;
+const mapStateToProps = (state) => ({
+  verified: state.profile.profile.verified,
+});
+
+export default connect(mapStateToProps, null)(RouteForm);
