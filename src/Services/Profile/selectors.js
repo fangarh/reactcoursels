@@ -7,3 +7,7 @@ export const expDateFormated = (state) => {
   let dateString = parts[0] + "/01/" + parts[1];
   return new Date(dateString);
 };
+
+export const expProfileError = (state) => {
+  return state.profile.error ? state.profile.error : "";
+};

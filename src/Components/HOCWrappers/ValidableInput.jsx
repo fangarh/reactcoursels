@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Input from "@material-ui/core/Input";
+import { DatePicker } from "@material-ui/pickers";
 
 export function ValidationHOC(Component) {
   return class ValidatedInput extends React.Component {
@@ -25,3 +26,4 @@ export function ValidationHOC(Component) {
 }
 
 export const ValidableInput = ValidationHOC(Input);
+export const ValidableDatePiker = ValidationHOC(DatePicker);
