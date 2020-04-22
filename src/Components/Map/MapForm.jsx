@@ -68,7 +68,7 @@ class MapForm extends React.Component {
       height: "85vh",
     };
 
-    if (this.props.routExists) {
+    if (this.props.routExists && this.map) {
       this.drawRoute(this.map, this.props.currentRout);
     }
 
