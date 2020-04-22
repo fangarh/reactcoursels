@@ -12,7 +12,7 @@ import {
 const auth = localStorage.getItem("loggedOn");
 const authToken = localStorage.getItem("authToken");
 
-const initialState = {
+export const initialState = {
   loggedOn: auth,
   autoLogOn: auth,
   loggedOnErrors: false,

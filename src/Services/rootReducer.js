@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import { authReducer } from "./Authorization/authReducer";
-import { profileReducer } from "./Profile/profileReducer";
-import { animateReducer } from "./Animation/animReducer";
-import { routeReducer } from "./Navigation";
+import { authReducer } from "./Reducer/Authorization/authReducer";
+import { profileReducer } from "./Reducer/Profile/profileReducer";
+import { animateReducer } from "./Reducer/Animation/animReducer";
+import { routeReducer } from "./Reducer/Navigation";
 
 export const rootReducer = combineReducers({
   auth: authReducer,

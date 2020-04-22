@@ -1,12 +1,15 @@
 import { call, put } from "redux-saga/effects";
 
-import { doLogonSuccess, doLogonFail } from "./../../Authorization/actions";
-import { doLoadProfile } from "./../../Profile/actions";
-import { loadStarted, loadFinished } from "./../../Animation/actions";
+import {
+  doLogonSuccess,
+  doLogonFail,
+} from "../../Reducer/Authorization/actions";
+import { doLoadProfile } from "../../Reducer/Profile/actions";
+import { loadStarted, loadFinished } from "../../Reducer/Animation/actions";
 
 import { fetchJson } from "../workersApi";
 
-import { doLoadRoutesList } from "../../Navigation";
+import { doLoadRoutesList } from "../../Reducer/Navigation";
 
 export function* logonWorker(params) {
   yield put({ type: loadStarted.toString() });

@@ -5,8 +5,8 @@ import { put, call } from "redux-saga/effects";
 
 import { logonWorker, registerWorker } from "../workers/logonWorker";
 
-import * as actions from "../../Authorization/actions";
-import * as animActions from "../../Animation/actions";
+import * as actions from "../../Reducer/Authorization/actions";
+import * as animActions from "../../Reducer/Animation/actions";
 
 describe("check auth sagas", () => {
   let gen = logonWorker(actions.doLogonAction);

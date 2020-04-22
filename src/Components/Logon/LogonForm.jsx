@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { doLogonAction } from "./../../Services/Authorization/actions";
+import { doLogonAction } from "./../../Services/Reducer/Authorization/actions";
 import { Redirect } from "react-router-dom";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";

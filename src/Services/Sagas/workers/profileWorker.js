@@ -3,8 +3,8 @@ import { call, put, select } from "redux-saga/effects";
 import {
   doLoadProfileResult,
   doSaveProfileNotified,
-} from "../../Profile/actions";
-import { loadStarted, loadFinished } from "../../Animation/actions";
+} from "../../Reducer/Profile/actions";
+import { loadStarted, loadFinished } from "../../Reducer/Animation/actions";
 
 import { fetchJson, fetchJsonGet } from "../workersApi";
 

@@ -4,7 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
-import { doRegister } from "./../../Services/Authorization/actions";
+import { doRegister } from "./../../Services/Reducer/Authorization/actions";
 
 import { Logo } from "loft-taxi-mui-theme";
 import Button from "@material-ui/core/Button";
@@ -88,7 +88,6 @@ class RegisterForm extends React.Component {
             </div>
             <div className="LogonInputBlock ">
               <ValidableInput
-                id="name"
                 validatetext="Не верный e-mail"
                 validated={(
                   this.validateEmail() || validated === "true"
@@ -104,7 +103,6 @@ class RegisterForm extends React.Component {
             <div style={divInline}>
               <div className="LogonInputBlock " style={divInline}>
                 <ValidableInput
-                  id="firstname"
                   validatetext="Имя не может быть пустым"
                   validated={(
                     this.validateStr(firstname) || validated === "true"
@@ -113,13 +111,12 @@ class RegisterForm extends React.Component {
                   value={firstname}
                   type="text"
                   onChange={this.inputChangedEventHendler}
-                  className="simpleLogonInput  "
+                  className="simpleLogonInput"
                   placeholder="Имя"
                 />
               </div>
               <div className="LogonInputBlock " style={divInline}>
                 <ValidableInput
-                  id="lastname"
                   validatetext="Фамилия не может быть пустой"
                   name="lastname"
                   value={lastname}
@@ -128,14 +125,13 @@ class RegisterForm extends React.Component {
                   ).toString()}
                   type="text"
                   onChange={this.inputChangedEventHendler}
-                  className="simpleLogonInput  "
+                  className="simpleLogonInput"
                   placeholder="Фамилия"
                 />
               </div>
             </div>
             <div className="LogonInputBlock  ">
               <ValidableInput
-                id="Password"
                 validatetext="Пароль не может быть пустым"
                 validated={(
                   this.validateStr(password) || validated === "true"

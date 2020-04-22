@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { doLoadRoute } from "./../../Services/Navigation";
+import { doLoadRoute } from "./../../Services/Reducer/Navigation";
 import { allertDanger } from "../allertDanger";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 

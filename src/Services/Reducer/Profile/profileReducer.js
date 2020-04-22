@@ -1,4 +1,4 @@
-import ProfileData from "./../../BuisnessObjects/ProfileData";
+import ProfileData from "./../../../BuisnessObjects/ProfileData";
 import * as actions from "./actions";
 
 const initialState = {

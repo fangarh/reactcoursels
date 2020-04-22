@@ -4,9 +4,9 @@ import {
   doLoadRouteSuccess,
   doLoadRouteFail,
   doLoadRoutesListSuccess,
-} from "../../Navigation";
+} from "../../Reducer/Navigation";
 
-import { loadStarted, loadFinished } from "../../Animation/actions";
+import { loadStarted, loadFinished } from "../../Reducer/Animation/actions";
 
 import { fetchJsonGet } from "../workersApi";
 
