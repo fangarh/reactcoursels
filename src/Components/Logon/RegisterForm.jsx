@@ -8,7 +8,7 @@ import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 import { connect } from "react-redux";
 import { doRegister } from "./../../Services/Authorization/actions";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const divInline = {
   display: "inline-block",
@@ -50,12 +50,6 @@ class RegisterForm extends React.Component {
 
     if (!this.validate()) return;
 
-    console.log(this.state.email);
-    console.log(this.state.password);
-
-    console.log(this.state.firstname);
-    console.log(this.state.lastname);
-
     let userData = {
       email: this.state.email,
       password: this.state.password,
@@ -75,6 +69,7 @@ class RegisterForm extends React.Component {
     let styleCorrection = {
       paddingTop: "5px",
     };
+    if (this.props.authStatus) return <Redirect to="/" />;
 
     return (
       <div className="LogonPage">

@@ -1,4 +1,4 @@
-export async function fetchJsonGet(method, params) {
+export async function fetchJsonGet(method, params, thr = false) {
   try {
     const response = await fetch(
       "https://loft-taxi.glitch.me/" + method + "?" + params,
@@ -14,6 +14,7 @@ export async function fetchJsonGet(method, params) {
     var result = await response.json();
   } catch (e) {
     console.log(e);
+    if (thr) throw e;
   }
 
   return result;

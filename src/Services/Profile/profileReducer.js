@@ -24,14 +24,14 @@ export const profileReducer = (state = initialState, action) => {
         isSaveResult: false,
       };
     case actions.doLoadProfileResult.toString():
-      const { success } = action.payload;
+      const { success, error } = action.payload;
       const { cardName, cardNumber, cvc, expiryDate } = action.payload;
 
       if (success)
         return {
           ...state,
           profile: new ProfileData(),
-          error: "",
+          error: error,
           isSaveResult: false,
         };
       else

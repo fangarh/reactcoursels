@@ -4,7 +4,7 @@ import ProfileData from "../../BuisnessObjects/ProfileData";
 import { Link } from "react-router-dom";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
-
+import { allertDanger } from "../allertDanger";
 import NavigationMenu from "./../Navigation/Navigation";
 import "./../../css/Profile.css";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
@@ -75,18 +75,6 @@ function ProfilePage(props) {
 
     let profile = new ProfileData(CardId, expVal, Cvv, HolderName);
     props.doSaveProfile(profile);
-  };
-
-  const allertDanger = (err) => {
-    return err ? (
-      <>
-        <div className="alert alert-danger" role="alert">
-          {err}
-        </div>
-      </>
-    ) : (
-      <></>
-    );
   };
 
   const setCardNumber = (e) => {

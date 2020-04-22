@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import MainPage from "./Components/Main/MainPage";
 import ProfilePage from "./Components/Profile/ProfilePage";
-import LogonPage from "./Components/Logon/LogonPage";
+import LogonForm from "./Components/Logon/LogonForm";
 import RegisterForm from "./Components/Logon/RegisterForm";
 import { Switch, Route } from "react-router-dom";
 import PrivateRoute from "./Components/Auth/PrivateRout";
@@ -20,7 +20,7 @@ class App extends React.Component {
             component={MainPage}
             exact
           />
-          <Route path="/logon" component={LogonPage} />
+          <Route path="/logon" component={LogonForm} />
           <Route path="/register" component={RegisterForm} />
           <PrivateRoute path="/profile" component={ProfilePage} />
         </Switch>

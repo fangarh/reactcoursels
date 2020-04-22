@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 
 import "./../../css/Logon.css";
 import Button from "@material-ui/core/Button";
-import PropTypes from "prop-types";
+
 import { Logo } from "loft-taxi-mui-theme";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
@@ -53,72 +53,70 @@ function LogonForm(props) {
   return (
     <>
       (
-      <Logo animated />
-      <form onSubmit={submit}>
-        <div className="LogonForm">
-          <div className="LogonInputBlock">
-            <h1>Вход</h1>
-          </div>
-          <div className="LogonInputBlock labelBlockStyle">
-            <label>Новый пользователь?</label>
+      <div className="LogonPage">
+        <Logo animated />
+        <form onSubmit={submit}>
+          <div className="LogonForm">
+            <div className="LogonInputBlock">
+              <h1>Вход</h1>
+            </div>
+            <div className="LogonInputBlock labelBlockStyle">
+              <label>Новый пользователь?</label>
 
-            <label className="RegButton">
-              <Link to="/register">Зарегистрируйтесь!</Link>
-            </label>
-          </div>
-          <div className="LogonInputBlock ">
-            <ValidableInput
-              validatetext="Не верный e-mail"
-              validated={(validateEmail() || validated === "true").toString()}
-              name="email"
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="simpleLogonInput"
-              placeholder="e-mail"
-            />
-          </div>
-          <div className="LogonInputBlock">
-            <ValidableInput
-              validatetext="Пароль не может быть пустым"
-              validated={(validatePass() || validated === "true").toString()}
-              id="Password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              className="simpleLogonInput"
-              placeholder="Пароль"
-            />
-          </div>
-          <div style={styleCorrection}>
-            {props.loggedOnError ? (
-              <label className="validateLabel">
-                Ошибка при входе: {props.error}
+              <label className="RegButton">
+                <Link to="/register">Зарегистрируйтесь!</Link>
               </label>
-            ) : (
-              <label className="validateLabel"></label>
-            )}
+            </div>
+            <div className="LogonInputBlock ">
+              <ValidableInput
+                validatetext="Не верный e-mail"
+                validated={(validateEmail() || validated === "true").toString()}
+                name="email"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="simpleLogonInput"
+                placeholder="e-mail"
+              />
+            </div>
+            <div className="LogonInputBlock">
+              <ValidableInput
+                validatetext="Пароль не может быть пустым"
+                validated={(validatePass() || validated === "true").toString()}
+                id="Password"
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                className="simpleLogonInput"
+                placeholder="Пароль"
+              />
+            </div>
+            <div style={styleCorrection}>
+              {props.loggedOnError ? (
+                <label className="validateLabel">
+                  Ошибка при входе: {props.error}
+                </label>
+              ) : (
+                <label className="validateLabel"></label>
+              )}
+            </div>
+            <div className="SubmitDiv">
+              <AnimButton
+                name="tryLogonBtn"
+                type="submit"
+                variant="contained"
+                color="primary"
+              >
+                Войти
+              </AnimButton>
+            </div>
           </div>
-          <div className="SubmitDiv">
-            <AnimButton
-              name="tryLogonBtn"
-              type="submit"
-              variant="contained"
-              color="primary"
-            >
-              Войти
-            </AnimButton>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
       )
     </>
   );
 }
-
-LogonForm.propTypes = {
-  parentState: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => ({
   authStatus: state.auth.loggedOn,

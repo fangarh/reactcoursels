@@ -24,3 +24,13 @@
 
   margin-top: 80px;
 }
+
+.RoutInputDiv {
+  padding-left: 20px;
+  width: 410px;
+}
+
+.RoutButtonDiv {
+  padding-top: 30px;
+  text-align: center;
+}

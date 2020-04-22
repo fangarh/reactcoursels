@@ -1,6 +1,7 @@
 import React from "react";
 import RouteForm from "./RouteForm";
 import mapboxgl from "mapbox-gl";
+import { connect } from "react-redux";
 import "./../../css/Main.css";
 
 class MapForm extends React.Component {
@@ -12,6 +13,43 @@ class MapForm extends React.Component {
       center: [30.233319, 59.942138],
       zoom: 13,
       style: "mapbox://styles/mapbox/streets-v9",
+    });
+  }
+
+  drawRoute(map, coordinates) {
+    var sourceObject = map.getSource("route");
+
+    if (sourceObject) {
+      map.removeLayer("route");
+      map.removeSource("route");
+    }
+    map.flyTo({
+      center: coordinates[0],
+      zoom: 15,
+    });
+
+    map.addLayer({
+      id: "route",
+      type: "line",
+      source: {
+        type: "geojson",
+        data: {
+          type: "Feature",
+          properties: {},
+          geometry: {
+            type: "LineString",
+            coordinates,
+          },
+        },
+      },
+      layout: {
+        "line-join": "round",
+        "line-cap": "round",
+      },
+      paint: {
+        "line-color": "#ffc617",
+        "line-width": 8,
+      },
     });
   }
 
@@ -28,6 +66,10 @@ class MapForm extends React.Component {
       height: "85vh",
     };
 
+    if (this.props.routExists) {
+      this.drawRoute(this.map, this.props.currentRout);
+    }
+
     return (
       <>
         <RouteForm />
@@ -37,4 +79,9 @@ class MapForm extends React.Component {
   }
 }
 
-export default MapForm;
+const mapStateToProps = (state) => ({
+  routExists: state.rout.routExists,
+  currentRout: state.rout.currentRout,
+});
+
+export default connect(mapStateToProps, null)(MapForm);

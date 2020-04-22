@@ -3,6 +3,7 @@ import { doLogonSuccess, doLogonFail } from "./../../Authorization/actions";
 import { doLoadProfile } from "./../../Profile/actions";
 import { loadStarted, loadFinished } from "./../../Animation/actions";
 import { fetchJson } from "../workersApi";
+import { doLoadRoutesList } from "../../Navigation";
 
 export function* logonWorker(params) {
   yield put({ type: loadStarted.toString() });
@@ -17,6 +18,7 @@ export function* logonWorker(params) {
     if (authRes.success) {
       yield put({ type: doLogonSuccess.toString(), payload: authRes.token });
       yield put({ type: doLoadProfile.toString() });
+      yield put({ type: doLoadRoutesList.toString() });
     } else yield put({ type: doLogonFail.toString(), payload: authRes.error });
   } catch (e) {
     yield put({ type: doLogonFail.toString(), payload: e.toString() });
