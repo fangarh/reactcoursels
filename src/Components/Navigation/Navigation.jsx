@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./../../css/Navigation.css";
-import { doLogoff } from "./../../Services/Authorization/actions";
 import { NavLink, Link } from "react-router-dom";
+
+import { doLogoff } from "./../../Services/Authorization/actions";
+
+import "./../../css/Navigation.css";
 
 class NavigationMenu extends React.Component {
   menuItemClick = (e) => {

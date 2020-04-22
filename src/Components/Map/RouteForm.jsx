@@ -1,7 +1,9 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import RouteFillProfileSubForm from "./RouteFillProfileSubForm";
 import RouteSelectedRoutSubForm from "./RouteSelectRoutSubForm";
-import { connect } from "react-redux";
+
 import "./../../css/Main.css";
 
 function RouteForm(props) {

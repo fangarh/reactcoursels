@@ -1,14 +1,12 @@
 import React from "react";
+import { withRouter, Redirect, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import ProfileData from "../../BuisnessObjects/ProfileData";
-import { Link } from "react-router-dom";
-import Input from "@material-ui/core/Input";
-import Button from "@material-ui/core/Button";
 import { allertDanger } from "../allertDanger";
 import NavigationMenu from "./../Navigation/Navigation";
-import "./../../css/Profile.css";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
-import { connect } from "react-redux";
+
 import {
   doSaveProfile,
   doFlushNotifie,
@@ -17,10 +15,12 @@ import {
   expDateFormated,
   expProfileError,
 } from "./../../Services/Profile/selectors";
-import { withRouter, Redirect } from "react-router-dom";
-//import { DatePicker } from "material-ui-pickers";
-//import DatePicker from "react-datepicker";
+
+import Input from "@material-ui/core/Input";
+import Button from "@material-ui/core/Button";
 import { DatePicker } from "@material-ui/pickers";
+
+import "./../../css/Profile.css";
 
 const AnimButton = composedAnimated(Button);
 

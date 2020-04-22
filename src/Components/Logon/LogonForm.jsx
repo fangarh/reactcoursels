@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { doLogonAction } from "./../../Services/Authorization/actions";
-
 import { Redirect } from "react-router-dom";
-
-import "./../../css/Logon.css";
-import Button from "@material-ui/core/Button";
-
-import { Logo } from "loft-taxi-mui-theme";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 import { Link } from "react-router-dom";
+
+import Button from "@material-ui/core/Button";
+import { Logo } from "loft-taxi-mui-theme";
+
+import "./../../css/Logon.css";
 
 function LogonForm(props) {
   const [email, setEmail] = useState("");
   const [validated, setValidated] = useState("true");
   const [password, setPassword] = useState("");
   const AnimButton = composedAnimated(Button);
-  //  const cont = useContext(AuthContext);
 
   const validate = () => {
     let allValid = validatePass() && validateEmail();
@@ -34,13 +32,9 @@ function LogonForm(props) {
 
   const submit = (e) => {
     e.preventDefault();
-    //let componentTest = false;
-    //console.log(this.props.doLogon);
+
     if (validate()) {
       props.doLogonAction({ email, password });
-
-      //      if (componentTest) console.log("validated");
-      //      else cont.login(email, password);
     }
   };
 

@@ -1,14 +1,15 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
-import "./../../css/Logon.css";
-
-import Button from "@material-ui/core/Button";
-import { Logo } from "loft-taxi-mui-theme";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
-import { connect } from "react-redux";
 import { doRegister } from "./../../Services/Authorization/actions";
-import { Link, Redirect } from "react-router-dom";
+
+import { Logo } from "loft-taxi-mui-theme";
+import Button from "@material-ui/core/Button";
+
+import "./../../css/Logon.css";
 
 const divInline = {
   display: "inline-block",

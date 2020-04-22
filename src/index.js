@@ -1,23 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./css/index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-
-import { theme } from "loft-taxi-mui-theme"; // Импортируем саму тему
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import { createStore, compose, applyMiddleware } from "redux";
-import { rootReducer } from "./Services/rootReducer";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
-import { sagaListner } from "./Services/Sagas/sagas";
 import { BrowserRouter } from "react-router-dom";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-
-// pick a date util library
-import ruLocale from "date-fns/locale/ru";
-import format from "date-fns/format";
+import { createStore, compose, applyMiddleware } from "redux";
 import DateFnsUtils from "@date-io/date-fns";
+import format from "date-fns/format";
+
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import { rootReducer } from "./Services/rootReducer";
+import { sagaListner } from "./Services/Sagas/sagas";
+
+import ruLocale from "date-fns/locale/ru";
+
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { theme } from "loft-taxi-mui-theme";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+
+import "./css/index.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 const saga = createSagaMiddleware();

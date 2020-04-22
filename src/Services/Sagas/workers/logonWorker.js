@@ -1,8 +1,11 @@
 import { call, put } from "redux-saga/effects";
+
 import { doLogonSuccess, doLogonFail } from "./../../Authorization/actions";
 import { doLoadProfile } from "./../../Profile/actions";
 import { loadStarted, loadFinished } from "./../../Animation/actions";
+
 import { fetchJson } from "../workersApi";
+
 import { doLoadRoutesList } from "../../Navigation";
 
 export function* logonWorker(params) {

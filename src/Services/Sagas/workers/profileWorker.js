@@ -5,6 +5,7 @@ import {
   doSaveProfileNotified,
 } from "../../Profile/actions";
 import { loadStarted, loadFinished } from "../../Animation/actions";
+
 import { fetchJson, fetchJsonGet } from "../workersApi";
 
 const getToken = (state) => state.auth.authToken;

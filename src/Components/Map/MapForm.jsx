@@ -1,7 +1,9 @@
 import React from "react";
-import RouteForm from "./RouteForm";
 import mapboxgl from "mapbox-gl";
 import { connect } from "react-redux";
+
+import RouteForm from "./RouteForm";
+
 import "./../../css/Main.css";
 
 class MapForm extends React.Component {

@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+
 import { authReducer } from "./Authorization/authReducer";
 import { profileReducer } from "./Profile/profileReducer";
 import { animateReducer } from "./Animation/animReducer";

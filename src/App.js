@@ -1,16 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 
 import MainPage from "./Components/Main/MainPage";
 import ProfilePage from "./Components/Profile/ProfilePage";
 import LogonForm from "./Components/Logon/LogonForm";
 import RegisterForm from "./Components/Logon/RegisterForm";
-import { Switch, Route } from "react-router-dom";
 import PrivateRoute from "./Components/Auth/PrivateRout";
 
 class App extends React.Component {
   render() {
-    //return <>{this.props.authStatus ? <MainPage /> : <LogonPage />}</>;
     return (
       <>
         <Switch>
