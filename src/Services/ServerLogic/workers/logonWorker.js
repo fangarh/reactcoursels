@@ -3,13 +3,13 @@ import { call, put } from "redux-saga/effects";
 import {
   doLogonSuccess,
   doLogonFail,
-} from "../../Reducer/Authorization/actions";
-import { doLoadProfile } from "../../Reducer/Profile/actions";
-import { loadStarted, loadFinished } from "../../Reducer/Animation/actions";
+} from "../../StoreLogic/Authorization/actions";
+import { doLoadProfile } from "../../StoreLogic/Profile/actions";
+import { loadStarted, loadFinished } from "../../StoreLogic/Animation/actions";
 
 import { fetchJson } from "../workersApi";
 
-import { doLoadRoutesList } from "../../Reducer/Navigation";
+import { doLoadRoutesList } from "../../StoreLogic/Navigation";
 
 export function* logonWorker(params) {
   yield put({ type: loadStarted.toString() });

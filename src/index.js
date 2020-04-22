@@ -10,7 +10,7 @@ import format from "date-fns/format";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { rootReducer } from "./Services/rootReducer";
-import { sagaListner } from "./Services/Sagas/sagas";
+import { sagaListner } from "./Services/ServerLogic/sagas";
 
 import ruLocale from "date-fns/locale/ru";
 

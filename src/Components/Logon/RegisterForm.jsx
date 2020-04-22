@@ -4,7 +4,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
-import { doRegister } from "./../../Services/Reducer/Authorization/actions";
+import { doRegister } from "./../../Services/StoreLogic/Authorization/actions";
 
 import { Logo } from "loft-taxi-mui-theme";
 import Button from "@material-ui/core/Button";

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 
-import { doLogoff } from "../../Services/Reducer/Authorization/actions";
+import { doLogoff } from "../../Services/StoreLogic/Authorization/actions";
 
 import "./../../css/Navigation.css";
 

@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import NavigationMenu from "../Navigation/Navigation";
 import MapForm from "../Map/MapForm";
 
-import { doLoadProfile } from "./../../Services/Reducer/Profile/actions";
-import { doFlushAutoLogon } from "./../../Services/Reducer/Authorization/actions";
-import { doLoadRoutesList } from "./../../Services/Reducer/Navigation";
+import { doLoadProfile } from "./../../Services/StoreLogic/Profile/actions";
+import { doFlushAutoLogon } from "./../../Services/StoreLogic/Authorization/actions";
+import { doLoadRoutesList } from "./../../Services/StoreLogic/Navigation";
 
 import "./../../css/Profile.css";
 

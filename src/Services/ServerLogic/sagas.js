@@ -1,8 +1,11 @@
 import { takeEvery, all } from "redux-saga/effects";
 
-import { doLogonAction, doRegister } from "./../Reducer/Authorization/actions";
-import { doLoadProfile, doSaveProfile } from "./../Reducer/Profile/actions";
-import { doLoadRoute, doLoadRoutesList } from "./../Reducer/Navigation";
+import {
+  doLogonAction,
+  doRegister,
+} from "./../StoreLogic/Authorization/actions";
+import { doLoadProfile, doSaveProfile } from "./../StoreLogic/Profile/actions";
+import { doLoadRoute, doLoadRoutesList } from "./../StoreLogic/Navigation";
 
 import { logonWorker, registerWorker } from "./workers/logonWorker";
 import { loadRouteWorker, loadRoutesListWorker } from "./workers/routeWorker";

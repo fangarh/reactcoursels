@@ -10,11 +10,11 @@ import composedAnimated from "./../HOCWrappers/AnimateWait";
 import {
   doSaveProfile,
   doFlushNotifie,
-} from "../../Services/Reducer/Profile/actions";
+} from "../../Services/StoreLogic/Profile/actions";
 import {
   expDateFormated,
   expProfileError,
-} from "../../Services/Reducer/Profile/selectors";
+} from "../../Services/StoreLogic/Profile/selectors";
 
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
