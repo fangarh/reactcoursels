@@ -101,6 +101,7 @@ function ProfilePage(props) {
               <Input
                 value={CardId}
                 name="CardNumber"
+                label="Номер на карте"
                 className="CardNumInput"
                 pattern="[0-9]{13,19}"
                 maxLength="19"
@@ -142,6 +143,7 @@ function ProfilePage(props) {
                 value={HolderName}
                 placeholder="имя на карты"
                 className="CardNumInput"
+                label="Имя на карте"
                 onChange={(e) => {
                   setHolderName(e.target.value);
                 }}

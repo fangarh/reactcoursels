@@ -15,27 +15,3 @@ describe("Page have forms", () => {
     expect(1).to.eq(1);
   });
 });
-
-/*
-import { rootReducer } from "./../../../Services/rootReducer";
-
-describe("Page loaded", () => {
-  const appStore = createStore(rootReducer);
-  it("test LogonForm can be mount", () => {
-    let wrapper = mount(
-      <Provider store={appStore}>
-        <LogonForm parentState={() => {}} />
-      </Provider>
-    );
-    //wrapper.mount();
-  });
-
-  it("test components mounted", () => {
-    let wrapper = mount(<LogonForm parentState={() => {}} />);
-    //wrapper.mount();
-
-    expect(wrapper.find(ValidableInput).length).to.greaterThan(0);
-    expect(wrapper.find(Button).length).to.greaterThan(0);
-  });
-});
-*/
