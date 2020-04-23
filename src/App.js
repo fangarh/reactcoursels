@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 import MainPage from "./Components/Main/MainPage";
@@ -28,10 +27,4 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  authStatus: state.auth.loggedOn,
-  loggedOnError: state.auth.loggedOnError,
-  authToken: state.auth.authToken,
-});
-
-export default connect(mapStateToProps, null)(App);
+export default App;

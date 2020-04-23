@@ -11,13 +11,11 @@ export async function fetchJsonGet(method, params, thr = false) {
       }
     );
 
-    var result = await response.json();
+    return await response.json();
   } catch (e) {
     console.log(e);
     if (thr) throw e;
   }
-
-  return result;
 }
 
 export async function fetchJson(json, method, thr = false) {
@@ -31,11 +29,9 @@ export async function fetchJson(json, method, thr = false) {
       body: JSON.stringify(json),
     });
 
-    var result = await response.json();
+    return await response.json();
   } catch (e) {
     console.log(e);
     if (thr) throw e;
   }
-
-  return result;
 }

@@ -10,7 +10,7 @@ import { loadStarted, loadFinished } from "../../StoreLogic/Animation/actions";
 
 import { fetchJsonGet } from "../workersApi";
 
-export function* loadRoutesListWorker(params) {
+export function* loadRoutesListWorker() {
   try {
     const routesList = yield call(() => fetchJsonGet("addressList"));
 

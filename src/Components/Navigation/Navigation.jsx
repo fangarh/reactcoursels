@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { doLogoff } from "../../Services/StoreLogic/Authorization/actions";
 
@@ -34,6 +35,10 @@ class NavigationMenu extends React.Component {
     );
   }
 }
+
+NavigationMenu.propTypes = {
+  doLogoff: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = { doLogoff };
 

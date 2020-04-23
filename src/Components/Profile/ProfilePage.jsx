@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import ProfileData from "../../BuisnessObjects/ProfileData";
 import { allertDanger } from "../allertDanger";
@@ -191,6 +192,18 @@ function ProfilePage(props) {
 
   return mainPage();
 }
+
+ProfilePage.propTypes = {
+  cardNum: PropTypes.string.isRequired,
+  holderName: PropTypes.string.isRequired,
+  expDate: PropTypes.shape.isRequired,
+  cvv: PropTypes.string.isRequired,
+  verified: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  isSaveResult: PropTypes.bool,
+  doSaveProfile: PropTypes.func.isRequired,
+  doFlushNotifie: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   cardNum: state.profile.profile.CardId,

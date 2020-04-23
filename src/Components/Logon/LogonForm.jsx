@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import Button from "@material-ui/core/Button";
 import { Logo } from "loft-taxi-mui-theme";
@@ -111,6 +112,14 @@ function LogonForm(props) {
     </>
   );
 }
+
+LogonForm.propTypes = {
+  authStatus: PropTypes.bool.isRequired,
+  authToken: PropTypes.string,
+  loggedOnError: PropTypes.bool,
+  error: PropTypes.string,
+  doLogonAction: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   authStatus: state.auth.loggedOn,

@@ -5,14 +5,13 @@ import {
   doSaveProfileNotified,
 } from "../../StoreLogic/Profile/actions";
 import { loadStarted, loadFinished } from "../../StoreLogic/Animation/actions";
+import { getProfile } from "../../StoreLogic/Profile/selectors";
+import { getToken } from "../../StoreLogic/Authorization/selectors";
 
 import { fetchJson, fetchJsonGet } from "../workersApi";
 
-const getToken = (state) => state.auth.authToken;
-const getProfile = (state) => state.profile.profile;
-
-export function* loadProfileWorker(params) {
-  var token = yield select(getToken);
+export function* loadProfileWorker() {
+  const token = yield select(getToken);
 
   const profile = yield call(() => fetchJsonGet("card", "token=" + token));
 
@@ -21,8 +20,8 @@ export function* loadProfileWorker(params) {
 export function* saveProfileWorker() {
   yield put({ type: loadStarted.toString() });
   try {
-    var token = yield select(getToken);
-    var profile = yield select(getProfile);
+    const token = yield select(getToken);
+    const profile = yield select(getProfile);
 
     const saveRes = yield call(() =>
       fetchJson(profile.buildJson(token), "card", true)

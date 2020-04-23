@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { doLoadRoute } from "./../../Services/StoreLogic/Navigation";
 import { allertDanger } from "../allertDanger";
@@ -97,6 +98,12 @@ function RouteSelectedRoutSubForm(props) {
     </>
   );
 }
+
+RouteSelectedRoutSubForm.propTypes = {
+  avaliablePoints: PropTypes.array.isRequired,
+  error: PropTypes.string,
+  doLoadRoute: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   avaliablePoints: state.rout.avaliablePoints,

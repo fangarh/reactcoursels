@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
@@ -18,6 +19,14 @@ const divInline = {
 const AnimButton = composedAnimated(Button);
 
 class RegisterForm extends React.Component {
+  static propTypes = {
+    authStatus: PropTypes.bool.isRequired,
+    authToken: PropTypes.string,
+    loggedOnError: PropTypes.bool,
+    error: PropTypes.string,
+    doRegister: PropTypes.func.isRequired,
+  };
+
   validateEmail = () =>
     this.state.email.indexOf("@") > 0 &&
     this.state.email.indexOf("@") < this.state.email.length - 1;

@@ -9,7 +9,7 @@ import {
   doLogoff,
 } from "./actions";
 
-const auth = localStorage.getItem("loggedOn");
+const auth = JSON.parse(localStorage.getItem("loggedOn"));
 const authToken = localStorage.getItem("authToken");
 
 export const initialState = {

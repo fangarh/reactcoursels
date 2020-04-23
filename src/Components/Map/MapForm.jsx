@@ -1,7 +1,7 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
 import { connect } from "react-redux";
-
+import PropTypes from "prop-types";
 import RouteForm from "./RouteForm";
 
 import "./../../css/Main.css";
@@ -80,6 +80,11 @@ class MapForm extends React.Component {
     );
   }
 }
+
+MapForm.propTypes = {
+  routExists: PropTypes.bool.isRequired,
+  currentRout: PropTypes.array,
+};
 
 const mapStateToProps = (state) => ({
   routExists: state.rout.routExists,

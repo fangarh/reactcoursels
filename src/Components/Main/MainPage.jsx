@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import NavigationMenu from "../Navigation/Navigation";
 import MapForm from "../Map/MapForm";
@@ -32,6 +33,13 @@ function MainPage(props) {
 
   return <>{buildFormDOM()}</>;
 }
+
+MainPage.propTypes = {
+  autoLogOn: PropTypes.bool,
+  doLoadProfile: PropTypes.func.isRequired,
+  doFlushAutoLogon: PropTypes.func.isRequired,
+  doLoadRoutesList: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   autoLogOn: state.auth.autoLogOn,

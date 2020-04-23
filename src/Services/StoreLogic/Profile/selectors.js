@@ -11,3 +11,5 @@ export const expDateFormated = (state) => {
 export const expProfileError = (state) => {
   return state.profile.error ? state.profile.error : "";
 };
+
+export const getProfile = (state) => state.profile.profile;

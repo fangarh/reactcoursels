@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
+import PropTypes from "prop-types";
 
 const AnimateHOC = (Component) => (props) => {
   const loaderSpinner = (
@@ -12,6 +13,10 @@ const AnimateHOC = (Component) => (props) => {
 
   if (props.loading === "false") return <Component {...prop} />;
   else return loaderSpinner;
+};
+
+AnimateHOC.propTypes = {
+  loading: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
