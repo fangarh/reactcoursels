@@ -31,7 +31,10 @@ function RouteFillProfileSubForm(props) {
             </Link>
           </div>
         </div>
-        <div style={style}>{allertDanger(props.error)}</div>
+        <div style={style}>
+          {allertDanger(props.error)}
+          {allertDanger(props.pError)}
+        </div>
       </div>
     </>
   );
@@ -39,10 +42,12 @@ function RouteFillProfileSubForm(props) {
 
 RouteFillProfileSubForm.propTypes = {
   error: PropTypes.string,
+  pError: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
   error: state.rout.error,
+  pError: state.profile.error,
 });
 
 export default connect(mapStateToProps, null)(RouteFillProfileSubForm);

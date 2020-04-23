@@ -13,8 +13,8 @@ export async function fetchJsonGet(method, params, thr = false) {
 
     return await response.json();
   } catch (e) {
-    console.log(e);
     if (thr) throw e;
+    else console.log(e);
   }
 }
 

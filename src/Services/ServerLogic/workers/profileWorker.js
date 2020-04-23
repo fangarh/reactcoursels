@@ -11,11 +11,20 @@ import { getToken } from "../../StoreLogic/Authorization/selectors";
 import { fetchJson, fetchJsonGet } from "../workersApi";
 
 export function* loadProfileWorker() {
-  const token = yield select(getToken);
+  try {
+    const token = yield select(getToken);
 
-  const profile = yield call(() => fetchJsonGet("card", "token=" + token));
+    const profile = yield call(() =>
+      fetchJsonGet("card", "token=" + token, true)
+    );
 
-  yield put({ type: doLoadProfileResult.toString(), payload: profile });
+    yield put({ type: doLoadProfileResult.toString(), payload: profile });
+  } catch (e) {
+    yield put({
+      type: doSaveProfileNotified.toString(),
+      payload: { success: false, error: e.toString() },
+    });
+  }
 }
 export function* saveProfileWorker() {
   yield put({ type: loadStarted.toString() });
