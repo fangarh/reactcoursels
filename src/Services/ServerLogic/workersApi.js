@@ -31,7 +31,7 @@ export async function fetchJson(json, method, thr = false) {
 
     return await response.json();
   } catch (e) {
-    console.log(e);
     if (thr) throw e;
+    else console.log(e);
   }
 }
