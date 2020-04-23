@@ -19,7 +19,7 @@ class MapForm extends React.Component {
   }
 
   drawRoute(map, coordinates) {
-    var sourceObject = map.getSource("route");
+    const sourceObject = map.getSource("route");
 
     if (sourceObject) {
       map.removeLayer("route");

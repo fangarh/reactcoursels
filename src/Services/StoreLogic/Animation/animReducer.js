@@ -2,6 +2,7 @@ import { loadStarted, loadFinished } from "./actions";
 
 const initialState = {
   loading: false,
+  error: "",
 };
 
 export const animateReducer = (state = initialState, action) => {
@@ -9,11 +10,13 @@ export const animateReducer = (state = initialState, action) => {
     case loadStarted.toString():
       return {
         ...state,
+        error: "",
         loading: true,
       };
     case loadFinished.toString():
       return {
         ...state,
+        error: action.payload ? action.payload : "",
         loading: false,
       };
 

@@ -12,11 +12,11 @@ import { fetchJsonGet } from "../workersApi";
 
 export function* loadRoutesListWorker() {
   try {
-    const routesList = yield call(() => fetchJsonGet("addressList"));
+    const routesList = yield call(() => fetchJsonGet("addressList33"));
 
     yield put(doLoadRoutesListSuccess(routesList.addresses));
   } catch (e) {
-    console.log(e);
+    yield put(doLoadRouteFail(e.toString()));
   }
 }
 

@@ -9,7 +9,7 @@ const AnimateHOC = (Component) => (props) => {
       <span className="sr-only">Loading...</span>
     </div>
   );
-  var prop = { ...props, dispatch: "" };
+  const prop = { ...props, dispatch: "" };
 
   if (props.loading === "false") return <Component {...prop} />;
   else return loaderSpinner;
