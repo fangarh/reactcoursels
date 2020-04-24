@@ -10,7 +10,7 @@ import { doRegister } from "./../../Services/StoreLogic/Authorization/actions";
 import { Logo } from "loft-taxi-mui-theme";
 import Button from "@material-ui/core/Button";
 
-import "./../../css/Logon.css";
+import css from "./../../css/Logon.module.css";
 
 const divInline = {
   display: "inline-block",
@@ -82,20 +82,20 @@ class RegisterForm extends React.Component {
     if (this.props.authStatus) return <Redirect to="/" />;
 
     return (
-      <div className="LogonPage">
+      <div className={css.LogonPage}>
         <Logo animated />
         <form onSubmit={this.submitEventHendler}>
-          <div className="RegisterForm">
-            <div className="LogonInputBlock">
+          <div className={css.RegisterForm}>
+            <div className={css.LogonInputBlock}>
               <h1>Регистрация</h1>
             </div>
-            <div className="LogonInputBlock labelBlockStyle">
+            <div className={`${css.LogonInputBlock} ${css.labelBlockStyle}`}>
               <label>Уже зарегистрированы?</label>
-              <label className="RegButton">
+              <label className={css.RegButton}>
                 <Link to="/logon">Вход!</Link>
               </label>
             </div>
-            <div className="LogonInputBlock ">
+            <div className={css.LogonInputBlock}>
               <ValidableInput
                 validatetext="Не верный e-mail"
                 validated={(
@@ -105,12 +105,12 @@ class RegisterForm extends React.Component {
                 value={email}
                 type="text"
                 onChange={this.inputChangedEventHendler}
-                className="simpleLogonInput  "
+                className={css.simpleLogonInput}
                 placeholder="email"
               />
             </div>
             <div style={divInline}>
-              <div className="LogonInputBlock " style={divInline}>
+              <div className={css.LogonInputBlock} style={divInline}>
                 <ValidableInput
                   validatetext="Имя не может быть пустым"
                   validated={(
@@ -120,11 +120,11 @@ class RegisterForm extends React.Component {
                   value={firstname}
                   type="text"
                   onChange={this.inputChangedEventHendler}
-                  className="simpleLogonInput"
+                  className={css.simpleLogonInput}
                   placeholder="Имя"
                 />
               </div>
-              <div className="LogonInputBlock " style={divInline}>
+              <div className={css.LogonInputBlock} style={divInline}>
                 <ValidableInput
                   validatetext="Фамилия не может быть пустой"
                   name="lastname"
@@ -134,12 +134,12 @@ class RegisterForm extends React.Component {
                   ).toString()}
                   type="text"
                   onChange={this.inputChangedEventHendler}
-                  className="simpleLogonInput"
+                  className={css.simpleLogonInput}
                   placeholder="Фамилия"
                 />
               </div>
             </div>
-            <div className="LogonInputBlock  ">
+            <div className={css.LogonInputBlock}>
               <ValidableInput
                 validatetext="Пароль не может быть пустым"
                 validated={(
@@ -149,20 +149,20 @@ class RegisterForm extends React.Component {
                 value={password}
                 onChange={this.inputChangedEventHendler}
                 type="password"
-                className="simpleLogonInput  "
+                className={css.simpleLogonInput}
                 placeholder="Пароль"
               />
             </div>
             <div style={styleCorrection}>
               {this.props.loggedOnError ? (
-                <label className="validateLabel">
+                <label className={css.validateLabel}>
                   Ошибка при Регистрации: {this.props.error}
                 </label>
               ) : (
-                <label className="validateLabel"></label>
+                <label className={css.validateLabel}></label>
               )}
             </div>
-            <div className="SubmitDiv">
+            <div className={css.SubmitDiv}>
               <AnimButton type="submit" variant="contained" color="primary">
                 Регистрация
               </AnimButton>

@@ -1,45 +1,38 @@
 import React from "react";
-import { connect } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { doLogoff } from "../../Services/StoreLogic/Authorization/actions";
+import css from "./../../css/Navigation.module.css";
 
-import "./../../css/Navigation.css";
-
-class NavigationMenu extends React.Component {
-  menuItemClick = (e) => {
-    this.props.doLogoff();
+function NavigationMenu(props) {
+  const menuItemClick = (e) => {
+    props.doLogOff();
   };
 
-  render() {
-    return (
-      <nav className="menuNav">
-        <ul className="topmenu">
-          <li>
-            {" "}
-            <label>
-              <Link to="/">Карта</Link>
-            </label>
-          </li>
-          <li>
-            <label>
-              <NavLink to="/profile">Профиль</NavLink>
-            </label>
-          </li>
-          <li>
-            <label onClick={this.menuItemClick}>Выход</label>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
+  return (
+    <nav className={css.menuNav}>
+      <ul className={css.topmenu}>
+        <li>
+          {" "}
+          <label>
+            <Link to="/">Карта</Link>
+          </label>
+        </li>
+        <li>
+          <label>
+            <NavLink to="/profile">Профиль</NavLink>
+          </label>
+        </li>
+        <li>
+          <label onClick={menuItemClick}>Выход</label>
+        </li>
+      </ul>
+    </nav>
+  );
 }
 
 NavigationMenu.propTypes = {
-  doLogoff: PropTypes.func.isRequired,
+  doLogOff: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = { doLogoff };
-
-export default connect(null, mapDispatchToProps)(NavigationMenu);
+export default NavigationMenu;

@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import RouteForm from "./RouteForm";
 
-import "./../../css/Main.css";
+import { doLoadRoute } from "./../../Services/StoreLogic/Navigation";
+
+import "./../../css/Main.module.css";
 
 class MapForm extends React.Component {
   componentDidMount() {
@@ -74,7 +76,13 @@ class MapForm extends React.Component {
 
     return (
       <>
-        <RouteForm />
+        <RouteForm
+          verified={this.props.verified}
+          error={this.props.error}
+          pError={this.props.pError}
+          doLoadRoute={this.props.doLoadRoute}
+          avaliablePoints={this.props.avaliablePoints}
+        />
         <div style={style} ref={(el) => (this.mapContainer = el)} />
       </>
     );
@@ -89,6 +97,12 @@ MapForm.propTypes = {
 const mapStateToProps = (state) => ({
   routExists: state.rout.routExists,
   currentRout: state.rout.currentRout,
+  error: state.rout.error,
+  pError: state.profile.error,
+  verified: state.profile.profile.verified,
+  avaliablePoints: state.rout.avaliablePoints,
 });
 
-export default connect(mapStateToProps, null)(MapForm);
+const mapDispatchToProps = { doLoadRoute };
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapForm);

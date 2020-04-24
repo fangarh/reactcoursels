@@ -1,26 +1,27 @@
 import React from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import RouteFillProfileSubForm from "./RouteFillProfileSubForm";
 import RouteSelectedRoutSubForm from "./RouteSelectRoutSubForm";
 
-import "./../../css/Main.css";
-
 function RouteForm(props) {
   return props.verified ? (
-    <RouteSelectedRoutSubForm />
+    <RouteSelectedRoutSubForm
+      avaliablePoints={props.avaliablePoints}
+      error={props.error}
+      doLoadRoute={props.doLoadRoute}
+    />
   ) : (
-    <RouteFillProfileSubForm />
+    <RouteFillProfileSubForm error={props.error} pError={props.pError} />
   );
 }
 
 RouteForm.propTypes = {
   verified: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  pError: PropTypes.string,
+  avaliablePoints: PropTypes.array,
+  doLoadRoute: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  verified: state.profile.profile.verified,
-});
-
-export default connect(mapStateToProps, null)(RouteForm);
+export default RouteForm;

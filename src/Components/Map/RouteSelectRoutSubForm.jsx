@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { doLoadRoute } from "./../../Services/StoreLogic/Navigation";
 import { allertDanger } from "../allertDanger";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 
@@ -10,7 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import "./../../css/Main.css";
+import css from "./../../css/Main.module.css";
 
 const AnimButton = composedAnimated(Button);
 
@@ -40,9 +38,9 @@ function RouteSelectedRoutSubForm(props) {
 
   return (
     <>
-      <div className="RouteForm">
+      <div className={css.RouteForm}>
         <form onSubmit={doSubmit}>
-          <div className="RoutInputDiv">
+          <div className={css.RoutInputDiv}>
             <TextField
               id="address-1"
               name="address1"
@@ -64,7 +62,7 @@ function RouteSelectedRoutSubForm(props) {
               ))}
             </TextField>
           </div>
-          <div className="RoutInputDiv">
+          <div className={css.RoutInputDiv}>
             <TextField
               id="address-2"
               name="address2"
@@ -86,7 +84,7 @@ function RouteSelectedRoutSubForm(props) {
               ))}
             </TextField>
           </div>
-          <div className="RoutButtonDiv">
+          <div className={css.RoutButtonDiv}>
             <AnimButton type="submit" variant="contained" color="secondary">
               Вызвать такси
             </AnimButton>
@@ -105,14 +103,4 @@ RouteSelectedRoutSubForm.propTypes = {
   doLoadRoute: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  avaliablePoints: state.rout.avaliablePoints,
-  error: state.rout.error,
-});
-
-const mapDispatchToProps = { doLoadRoute };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RouteSelectedRoutSubForm);
+export default RouteSelectedRoutSubForm;

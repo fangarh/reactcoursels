@@ -6,24 +6,15 @@ import { connect } from "react-redux";
 
 import { allertDanger } from "../allertDanger";
 
-import "./../../css/Main.css";
+import css from "./../../css/Main.module.css";
 
 function RouteFillProfileSubForm(props) {
-  const buttonDiv = {
-    alignItems: "center",
-    marginTop: "30px",
-  };
-
-  const style = {
-    paddingTop: "30px",
-  };
-
   return (
     <>
-      <div className="RouteForm">
-        <div className="RoutFormForRedirect">
+      <div className={css.RouteForm}>
+        <div className={css.RoutFormForRedirect}>
           <p>Необходимо заполнить все данные профиля</p>
-          <div style={buttonDiv}>
+          <div className={css.RoutButtonDiv}>
             <Link to="/profile">
               <Button type="button" variant="contained" color="secondary">
                 Редактировать профиль
@@ -31,7 +22,7 @@ function RouteFillProfileSubForm(props) {
             </Link>
           </div>
         </div>
-        <div style={style}>
+        <div className={css.topPaddingMemo}>
           {allertDanger(props.error)}
           {allertDanger(props.pError)}
         </div>

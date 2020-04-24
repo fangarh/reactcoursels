@@ -1,12 +1,14 @@
 import { createAction } from "redux-actions";
 
-export const doRegister = createAction("lt/servise/auth/register");
-export const doRegisterFail = createAction("lt/servise/auth/registerfail");
+export const doRegister = createAction("lt/servise/auth/Register");
+export const doRegisterFail = createAction("lt/servise/auth/Register_Fail");
 export const doRegisterSuccess = createAction(
-  "lt/servise/auth/registersuccess"
+  "lt/servise/auth/RegisterSuccess"
 );
-export const doLogonAction = createAction("lt/servise/auth/logon");
-export const doLogonFail = createAction("lt/servise/auth/logonfail");
-export const doLogonSuccess = createAction("lt/servise/auth/logonsuccess");
-export const doLogoff = createAction("lt/servise/auth/logoff");
-export const doFlushAutoLogon = createAction("lt/servise/auth/flushAutoLogOn");
+export const doLogonAction = createAction("lt/servise/auth/Logon");
+export const doLogonFail = createAction("lt/servise/auth/Logon_Fail");
+export const doLogonSuccess = createAction("lt/servise/auth/Logon_Success");
+export const doLogoff = createAction("lt/servise/auth/Log_Off");
+export const doFlushAutoLogon = createAction(
+  "lt/servise/auth/Flush_Auto_Log_On"
+);

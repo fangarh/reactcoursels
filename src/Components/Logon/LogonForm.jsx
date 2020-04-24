@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { Logo } from "loft-taxi-mui-theme";
 
-import "./../../css/Logon.css";
+import css from "./../../css/Logon.module.css";
 
 function LogonForm(props) {
   const [email, setEmail] = useState("");
@@ -47,22 +47,21 @@ function LogonForm(props) {
 
   return (
     <>
-      (
-      <div className="LogonPage">
+      <div className={css.LogonPage}>
         <Logo animated />
         <form onSubmit={submit}>
-          <div className="LogonForm">
-            <div className="LogonInputBlock">
+          <div className={css.LogonForm}>
+            <div className={css.LogonInputBlock}>
               <h1>Вход</h1>
             </div>
-            <div className="LogonInputBlock labelBlockStyle">
+            <div className={`${css.LogonInputBlock} ${css.labelBlockStyle}`}>
               <label>Новый пользователь?</label>
 
-              <label className="RegButton">
+              <label className={css.RegButton}>
                 <Link to="/register">Зарегистрируйтесь!</Link>
               </label>
             </div>
-            <div className="LogonInputBlock ">
+            <div className={css.LogonInputBlock}>
               <ValidableInput
                 validatetext="Не верный e-mail"
                 validated={(validateEmail() || validated === "true").toString()}
@@ -70,11 +69,11 @@ function LogonForm(props) {
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="simpleLogonInput"
+                className={css.simpleLogonInput}
                 placeholder="e-mail"
               />
             </div>
-            <div className="LogonInputBlock">
+            <div className={css.LogonInputBlock}>
               <ValidableInput
                 validatetext="Пароль не может быть пустым"
                 validated={(validatePass() || validated === "true").toString()}
@@ -82,20 +81,20 @@ function LogonForm(props) {
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                className="simpleLogonInput"
+                className={css.simpleLogonInput}
                 placeholder="Пароль"
               />
             </div>
             <div style={styleCorrection}>
               {props.loggedOnError ? (
-                <label className="validateLabel">
+                <label className={css.validateLabel}>
                   Ошибка при входе: {props.error}
                 </label>
               ) : (
-                <label className="validateLabel"></label>
+                <label className={css.validateLabel}></label>
               )}
             </div>
-            <div className="SubmitDiv">
+            <div className={css.SubmitDiv}>
               <AnimButton
                 name="tryLogonBtn"
                 type="submit"
@@ -108,7 +107,6 @@ function LogonForm(props) {
           </div>
         </form>
       </div>
-      )
     </>
   );
 }

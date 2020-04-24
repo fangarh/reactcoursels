@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import ProfileData from "../../BuisnessObjects/ProfileData";
 import { allertDanger } from "../allertDanger";
-import NavigationMenu from "./../Navigation/Navigation";
+
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 
 import {
@@ -21,7 +21,7 @@ import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import { DatePicker } from "@material-ui/pickers";
 
-import "./../../css/Profile.css";
+import css from "./../../css/Profile.module.css";
 
 const AnimButton = composedAnimated(Button);
 
@@ -92,30 +92,29 @@ function ProfilePage(props) {
 
   const mainPage = () => (
     <>
-      <NavigationMenu />
-      <div className="ProfileWnd">
+      <div className={css.ProfileWnd}>
         {allertDanger(validErr)}
         {allertDanger(props.error)}
         <form onSubmit={submitProfile}>
-          <div className="ProfileForm">
-            <div className="CardNumBlock">
+          <div className={css.ProfileForm}>
+            <div className={css.CardNumBlock}>
               <Input
                 value={CardId}
                 name="CardNumber"
                 label="Номер на карте"
-                className="CardNumInput"
+                className={css.CardNumInput}
                 pattern="[0-9]{13,19}"
                 maxLength="19"
                 placeholder="xxxx xxxx xxxx xxxx"
                 onChange={setCardNumber}
               ></Input>
             </div>
-            <div className="AdditionalDataBlock">
-              <div className="row datePicker">
+            <div className={css.AdditionalDataBlock}>
+              <div className={`row ${css.datePicker}`}>
                 <DatePicker
                   autoOk
                   variant="inline"
-                  className="DateBlock"
+                  className={css.DateBlock}
                   openTo="month"
                   views={["year", "month"]}
                   minDate={new Date()}
@@ -131,7 +130,7 @@ function ProfilePage(props) {
 
                 <Input
                   value={Cvv}
-                  className="CvvBlock"
+                  className={css.CvvBlock}
                   maxLength="3"
                   label="CVV"
                   placeholder="CVV/CV2"
@@ -143,14 +142,14 @@ function ProfilePage(props) {
               <Input
                 value={HolderName}
                 placeholder="имя на карты"
-                className="CardNumInput"
+                className={css.CardNumInput}
                 label="Имя на карте"
                 onChange={(e) => {
                   setHolderName(e.target.value);
                 }}
               />
             </div>
-            <div className="SubmitBlock">
+            <div className={css.SubmitBlock}>
               <AnimButton type="submit" variant="contained" color="secondary">
                 Применть
               </AnimButton>
@@ -163,16 +162,15 @@ function ProfilePage(props) {
 
   const notifiPage = () => (
     <>
-      <NavigationMenu />
-      <div className="ProfileWnd">
+      <div className={css.ProfileWnd}>
         <form
           onSubmit={() => {
             props.history.push("/");
           }}
         >
-          <div className="ProfileForm">
-            <div className="notifier">Данные карты успешно добавлены</div>
-            <div className="notifierButton">
+          <div className={css.ProfileForm}>
+            <div className={css.notifier}>Данные карты успешно добавлены</div>
+            <div className={css.notifierButton}>
               <Link to="/">
                 <Button type="submit" variant="contained" color="secondary">
                   Перейти к такси

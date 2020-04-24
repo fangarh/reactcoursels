@@ -1,16 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { Switch } from "react-router-dom";
 
 import NavigationMenu from "../Navigation/Navigation";
 import MapForm from "../Map/MapForm";
-import { allertDanger } from "../allertDanger";
+import PrivateRoute from "../Auth/PrivateRout";
 
 import { doLoadProfile } from "./../../Services/StoreLogic/Profile/actions";
 import { doFlushAutoLogon } from "./../../Services/StoreLogic/Authorization/actions";
 import { doLoadRoutesList } from "./../../Services/StoreLogic/Navigation";
+import { doLogoff } from "../../Services/StoreLogic/Authorization/actions";
 
-import "./../../css/Profile.css";
+import ProfilePage from "../Profile/ProfilePage";
 
 function MainPage(props) {
   if (props.autoLogOn) {
@@ -20,20 +22,14 @@ function MainPage(props) {
   }
 
   const buildFormDOM = () => {
-    let style = {
-      overflov: "inherit",
-      zIndex: "999",
-    };
     return (
-      <>
-        <div>
-          <NavigationMenu />
-          <div style={style}>{allertDanger(props.error)}</div>
-          <div>
-            <MapForm />
-          </div>
-        </div>
-      </>
+      <div>
+        <NavigationMenu doLogOff={props.doLogoff} />
+        <Switch>
+          <PrivateRoute path="/" component={MapForm} exact />
+          <PrivateRoute path="/profile" component={ProfilePage} />
+        </Switch>
+      </div>
     );
   };
 
@@ -45,6 +41,7 @@ MainPage.propTypes = {
   doLoadProfile: PropTypes.func.isRequired,
   doFlushAutoLogon: PropTypes.func.isRequired,
   doLoadRoutesList: PropTypes.func.isRequired,
+  doLogoff: PropTypes.func.isRequired,
   error: PropTypes.string,
 };
 
@@ -57,6 +54,7 @@ const mapDispatchToProps = {
   doLoadProfile,
   doFlushAutoLogon,
   doLoadRoutesList,
+  doLogoff,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
