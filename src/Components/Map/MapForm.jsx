@@ -6,7 +6,7 @@ import RouteForm from "./RouteForm";
 
 import { doLoadRoute } from "./../../Services/StoreLogic/Navigation";
 
-import "./../../css/Main.module.css";
+import css from "./../../css/Main.module.css";
 
 class MapForm extends React.Component {
   state = {
@@ -65,19 +65,9 @@ class MapForm extends React.Component {
     this.map.remove();
   }
 
-  recall = (called) => {
-    this.setState({ taxiCalled: called });
-  };
+  recall = (called) => this.setState({ taxiCalled: called });
 
   render() {
-    const style = {
-      position: "auto",
-      top: 0,
-      bottom: 0,
-      width: "100%",
-      height: "85vh",
-    };
-
     if (this.props.routExists && this.map) {
       this.drawRoute(this.map, this.props.currentRout);
     }
@@ -89,10 +79,10 @@ class MapForm extends React.Component {
           pError={this.props.pError}
           doLoadRoute={this.props.doLoadRoute}
           avaliablePoints={this.props.avaliablePoints}
-          recallTaxi={this.recall}
+          recallTaxi={(called) => this.setState({ taxiCalled: called })}
           taxiCalled={this.state.taxiCalled}
         />
-        <div style={style} ref={(el) => (this.mapContainer = el)} />
+        <div className={css.mapStyle} ref={(el) => (this.mapContainer = el)} />
       </>
     );
   }
