@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Input from "@material-ui/core/Input";
+import css from "../../css/Logon.module.css";
 
 export function ValidationHOC(Component) {
   return class ValidatedInput extends React.Component {
@@ -13,9 +14,11 @@ export function ValidationHOC(Component) {
       return (
         <>
           {this.props.validated === "true" ? (
-            <label className="validateLabel"></label>
+            <label className={css.validateLabel}></label>
           ) : (
-            <label className="validateLabel">{this.props.validatetext}</label>
+            <label className={css.validateLabel}>
+              {this.props.validatetext}
+            </label>
           )}
           <Component {...this.props} />
         </>
