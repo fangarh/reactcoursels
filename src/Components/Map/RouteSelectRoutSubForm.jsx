@@ -32,7 +32,7 @@ function RouteSelectedRoutSubForm(props) {
     }
 
     let rout = { address1: addr1, address2: addr2 };
-
+    props.recallTaxi(true);
     props.doLoadRoute(rout);
   };
 
@@ -101,6 +101,7 @@ RouteSelectedRoutSubForm.propTypes = {
   avaliablePoints: PropTypes.array.isRequired,
   error: PropTypes.string,
   doLoadRoute: PropTypes.func.isRequired,
+  recallTaxi: PropTypes.func.isRequired,
 };
 
 export default RouteSelectedRoutSubForm;
