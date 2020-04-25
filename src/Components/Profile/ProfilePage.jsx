@@ -194,7 +194,7 @@ function ProfilePage(props) {
 ProfilePage.propTypes = {
   cardNum: PropTypes.string.isRequired,
   holderName: PropTypes.string.isRequired,
-  expDate: PropTypes.shape.isRequired,
+  //expDate: PropTypes.shape.isRequired,
   cvv: PropTypes.string.isRequired,
   verified: PropTypes.bool.isRequired,
   error: PropTypes.string,

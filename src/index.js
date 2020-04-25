@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import createSagaMiddleware from "redux-saga";
 import { BrowserRouter } from "react-router-dom";
-import { createStore, compose, applyMiddleware } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import DateFnsUtils from "@date-io/date-fns";
 import format from "date-fns/format";
 
@@ -11,6 +11,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { rootReducer } from "./Services/StoreLogic/rootReducer";
 import { sagaListner } from "./Services/ServerLogic/sagas";
+import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 
 import ruLocale from "date-fns/locale/ru";
 
@@ -25,10 +26,7 @@ const saga = createSagaMiddleware();
 
 const appStore = createStore(
   rootReducer,
-  compose(
-    applyMiddleware(saga),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  composeWithDevTools(applyMiddleware(saga))
 );
 
 saga.run(sagaListner);
