@@ -3,7 +3,10 @@
 }
 
 nav {
-  background: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
 }
 nav ul {
   list-style: none;

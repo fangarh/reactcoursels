@@ -6,15 +6,18 @@ import PropTypes from "prop-types";
 import ProfileData from "../../BuisnessObjects/ProfileData";
 import { allertDanger } from "../allertDanger";
 
+import { appStore } from "../../Services/StoreLogic/rootReducer";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 
 import {
+  doLoadProfile,
   doSaveProfile,
   doFlushNotifie,
 } from "../../Services/StoreLogic/Profile/actions";
 import {
   expDateFormated,
   expProfileError,
+  getProfile,
 } from "../../Services/StoreLogic/Profile/selectors";
 
 import Input from "@material-ui/core/Input";
@@ -26,16 +29,25 @@ import css from "./../../css/Profile.module.css";
 const AnimButton = composedAnimated(Button);
 
 function ProfilePage(props) {
-  const [CardId, setCardId] = React.useState(
-    props.cardNum ? props.cardNum : ""
-  );
+  const state = appStore.getState();
+  let profile = getProfile(state);
+
+  const [CardId, setCardId] = React.useState(profile.Cvv ? profile.Cvv : "");
   const [HolderName, setHolderName] = React.useState(
-    props.holderName ? props.holderName : ""
+    profile.HolderName ? profile.HolderName : ""
   );
-  const [Cvv, setCvv] = React.useState(props.cvv ? props.cvv : "");
-  const [Exp, setExp] = React.useState(props.expDate);
+
+  const [Cvv, setCvv] = React.useState(profile.Cvv ? profile.Cvv : "");
+  const [Exp, setExp] = React.useState(expDateFormated(state));
   const [validErr, setValidErr] = React.useState("");
   const [needNotifie, setNeedNotifie] = React.useState("unknown");
+
+  React.useEffect(() => {
+    setCvv(profile.Cvv ? profile.Cvv : "");
+    setExp(expDateFormated(state));
+    setHolderName(profile.HolderName ? profile.HolderName : "");
+    setCardId(profile.CardId ? profile.CardId : "");
+  }, [profile]);
 
   const validateForm = () => {
     let valid = true;
@@ -97,6 +109,9 @@ function ProfilePage(props) {
         {allertDanger(props.error)}
         <form onSubmit={submitProfile}>
           <div className={css.ProfileForm}>
+            <div className={css.HeaderCaption}>
+              <h5>Параметры карты</h5>
+            </div>
             <div className={css.CardNumBlock}>
               <Input
                 value={CardId}
@@ -192,10 +207,6 @@ function ProfilePage(props) {
 }
 
 ProfilePage.propTypes = {
-  cardNum: PropTypes.string.isRequired,
-  holderName: PropTypes.string.isRequired,
-  //expDate: PropTypes.shape.isRequired,
-  cvv: PropTypes.string.isRequired,
   verified: PropTypes.bool.isRequired,
   error: PropTypes.string,
   isSaveResult: PropTypes.bool,
@@ -204,16 +215,12 @@ ProfilePage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  cardNum: state.profile.profile.CardId,
-  holderName: state.profile.profile.HolderName,
-  expDate: expDateFormated(state),
-  cvv: state.profile.profile.Cvv,
   verified: state.profile.profile.verified,
   error: expProfileError(state),
   isSaveResult: state.profile.isSaveResult,
 });
 
-const mapDispatchToProps = { doSaveProfile, doFlushNotifie };
+const mapDispatchToProps = { doSaveProfile, doFlushNotifie, doLoadProfile };
 
 export default connect(
   mapStateToProps,

@@ -13,6 +13,7 @@ import { doLoadRoutesList } from "./../../Services/StoreLogic/Navigation";
 import { doLogoff } from "../../Services/StoreLogic/Authorization/actions";
 
 import ProfilePage from "../Profile/ProfilePage";
+import css from "./../../css/Main.module.css";
 
 function MainPage(props) {
   if (props.autoLogOn) {
@@ -23,7 +24,7 @@ function MainPage(props) {
 
   const buildFormDOM = () => {
     return (
-      <div>
+      <div className={css.mainLayout}>
         <NavigationMenu doLogOff={props.doLogoff} />
         <Switch>
           <PrivateRoute path="/" component={MapForm} exact />
