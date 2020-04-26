@@ -19,7 +19,7 @@ class MapForm extends React.Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       center: [30.233319, 59.942138],
-      zoom: 13,
+      zoom: 11,
       style: "mapbox://styles/mapbox/streets-v9",
     });
   }
