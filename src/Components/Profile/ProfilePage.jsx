@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 import ProfileData from "../../BuisnessObjects/ProfileData";
 import { allertDanger } from "../allertDanger";
 
-import { appStore } from "../../Services/StoreLogic/rootReducer";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 
 import {
@@ -29,25 +28,22 @@ import css from "./../../css/Profile.module.css";
 const AnimButton = composedAnimated(Button);
 
 function ProfilePage(props) {
-  const state = appStore.getState();
-  let profile = getProfile(state);
-
-  const [CardId, setCardId] = React.useState(profile.Cvv ? profile.Cvv : "");
+  const [CardId, setCardId] = React.useState(props.cvv ? props.cvv : "");
   const [HolderName, setHolderName] = React.useState(
-    profile.HolderName ? profile.HolderName : ""
+    props.HolderName ? props.HolderName : ""
   );
 
-  const [Cvv, setCvv] = React.useState(profile.Cvv ? profile.Cvv : "");
-  const [Exp, setExp] = React.useState(expDateFormated(state));
+  const [Cvv, setCvv] = React.useState(props.cvv ? props.cvv : "");
+  const [Exp, setExp] = React.useState(props.expDate);
   const [validErr, setValidErr] = React.useState("");
   const [needNotifie, setNeedNotifie] = React.useState("unknown");
 
   React.useEffect(() => {
-    setCvv(profile.Cvv ? profile.Cvv : "");
-    setExp(expDateFormated(state));
-    setHolderName(profile.HolderName ? profile.HolderName : "");
-    setCardId(profile.CardId ? profile.CardId : "");
-  }, [profile]);
+    setCvv(props.cvv ? props.cvv : "");
+    setExp(props.expDate);
+    setHolderName(props.HolderName ? props.HolderName : "");
+    setCardId(props.CardId ? props.CardId : "");
+  }, [props.cvv, props.expDate, props.HolderName, props.CardId]);
 
   const validateForm = () => {
     let valid = true;
@@ -215,7 +211,11 @@ ProfilePage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  verified: state.profile.profile.verified,
+  verified: getProfile(state).verified,
+  cvv: getProfile(state).Cvv,
+  expDate: expDateFormated(state),
+  CardId: getProfile(state).CardId,
+  HolderName: getProfile(state).HolderName,
   error: expProfileError(state),
   isSaveResult: state.profile.isSaveResult,
 });
