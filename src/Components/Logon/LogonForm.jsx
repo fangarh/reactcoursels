@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { doLogonAction } from "./../../Services/StoreLogic/Authorization/actions";
+import { nextLocal } from "./../../Services/StoreLogic/Local/actions";
 import { Redirect } from "react-router-dom";
 import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
@@ -45,10 +46,17 @@ function LogonForm(props) {
     paddingTop: "5px",
   };
 
+  const localeChange = (e) => {
+    props.nextLocal();
+  };
+
   if (props.authStatus) return <Redirect to="/" />;
 
   return (
     <>
+      <label className={css.LangButton} onClick={localeChange}>
+        {props.nextLocale}
+      </label>
       <div className={css.LogonPage}>
         <Logo animated />
         <form onSubmit={submit}>
@@ -153,8 +161,9 @@ const mapStateToProps = (state) => ({
   loggedOnError: state.auth.loggedOnErrors,
   authToken: state.auth.authToken,
   error: state.auth.error,
+  nextLocale: state.locale.nextLocaleName,
 });
 
-const mapDispatchToProps = { doLogonAction };
+const mapDispatchToProps = { doLogonAction, nextLocal };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogonForm);

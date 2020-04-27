@@ -8,6 +8,8 @@
   "logon.logonform.passwordValidator": "Пароль не может быть пустым",
   "logon.logonform.logonError": "Ошибка при входе: ",
 
+  "logon.registerform.title": "",
+
   "nav.map": "Карта",
   "nav.profile": "Профиль",
   "nav.exit": "Выход",

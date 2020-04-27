@@ -8,6 +8,14 @@
   "logon.logonform.passwordValidator": "Password can't be empty",
   "logon.logonform.logonError": "Logon error: ",
 
+  "logon.registerform.title": "Registration",
+  "logon.registerform.havePass": "Already registred? ",
+  "logon.registerform.logonBtn": "logon! ",
+  "logon.registerform.warnEmail": "Wrong email",
+  "logon.registerform.warnName": "Name can't be empty",
+  "logon.registerform.warnSurname": "Surname can't be empty",
+  "logon.registerform.warnPass": "Password can't be empty",
+
   "nav.map": "Map",
   "nav.profile": "Profile",
   "nav.exit": "Exit",

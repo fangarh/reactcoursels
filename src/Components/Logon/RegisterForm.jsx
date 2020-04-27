@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -8,6 +8,7 @@ import composedAnimated from "./../HOCWrappers/AnimateWait";
 import { doRegister } from "./../../Services/StoreLogic/Authorization/actions";
 
 import { Logo } from "loft-taxi-mui-theme";
+import { useIntl } from "react-intl";
 import Button from "@material-ui/core/Button";
 
 import css from "./../../css/Logon.module.css";
@@ -18,161 +19,154 @@ const divInline = {
 
 const AnimButton = composedAnimated(Button);
 
-class RegisterForm extends React.Component {
-  static propTypes = {
-    authStatus: PropTypes.bool.isRequired,
-    authToken: PropTypes.string,
-    loggedOnError: PropTypes.bool,
-    error: PropTypes.string,
-    doRegister: PropTypes.func.isRequired,
+const RegisterForm = (props) => {
+  const intl = useIntl();
+
+  const intlMsg = (props) => {
+    return intl.formatMessage({ id: props });
   };
 
-  validateEmail = () =>
-    this.state.email.indexOf("@") > 0 &&
-    this.state.email.indexOf("@") < this.state.email.length - 1;
+  const validateEmail = () =>
+    email.indexOf("@") > 0 && email.indexOf("@") < email.length - 1;
 
-  validateStr = (str) => str.length > 0;
+  const validateStr = (str) => str.length > 0;
 
-  state = {
-    email: "",
-    password: "",
-    firstname: "",
-    lastname: "",
-    validated: "true",
-  };
+  const [email, setEmail] = useState("");
+  const [validated, setValidated] = useState("true");
+  const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
 
-  validate = () => {
-    const { password, firstname, lastname } = this.state;
-
+  const validate = () => {
     let allValid =
-      this.validateStr(password) &&
-      this.validateStr(firstname) &&
-      this.validateStr(lastname) &&
-      this.validateEmail();
+      validateStr(password) &&
+      validateStr(firstname) &&
+      validateStr(lastname) &&
+      validateEmail();
 
-    this.setState({ validated: allValid.toString() });
+    setValidated(allValid.toString());
 
     return allValid;
   };
 
-  submitEventHendler = (event) => {
+  const submitEventHendler = (event) => {
     event.preventDefault();
 
-    if (!this.validate()) return;
+    if (!validate()) return;
 
     let userData = {
-      email: this.state.email,
-      password: this.state.password,
-      name: this.state.firstname,
-      surname: this.state.lastname,
+      email: email,
+      password: password,
+      name: firstname,
+      surname: lastname,
     };
 
-    this.props.doRegister(userData);
+    props.doRegister(userData);
   };
 
-  inputChangedEventHendler = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+  let styleCorrection = {
+    paddingTop: "5px",
   };
+  if (props.authStatus) return <Redirect to="/" />;
 
-  render() {
-    const { email, password, firstname, lastname, validated } = this.state;
-    let styleCorrection = {
-      paddingTop: "5px",
-    };
-    if (this.props.authStatus) return <Redirect to="/" />;
-
-    return (
-      <div className={css.LogonPage}>
-        <Logo animated />
-        <form onSubmit={this.submitEventHendler}>
-          <div className={css.RegisterForm}>
-            <div className={css.LogonInputBlock}>
-              <h1>Регистрация</h1>
-            </div>
-            <div className={`${css.LogonInputBlock} ${css.labelBlockStyle}`}>
-              <label>Уже зарегистрированы?</label>
-              <label className={css.RegButton}>
-                <Link to="/logon">Вход!</Link>
-              </label>
-            </div>
-            <div className={css.LogonInputBlock}>
+  return (
+    <div className={css.LogonPage}>
+      <label className={css.LangButton}>RU</label>
+      <Logo animated />
+      <form onSubmit={submitEventHendler}>
+        <div className={css.RegisterForm}>
+          <div className={css.LogonInputBlock}>
+            <h1>Регистрация</h1>
+          </div>
+          <div className={`${css.LogonInputBlock} ${css.labelBlockStyle}`}>
+            <label>Уже зарегистрированы?</label>
+            <label className={css.RegButton}>
+              <Link to="/logon">{intlMsg("logon.logonform.title")}</Link>
+            </label>
+          </div>
+          <div className={css.LogonInputBlock}>
+            <ValidableInput
+              validatetext="Не верный e-mail"
+              validated={(validateEmail() || validated === "true").toString()}
+              name="email"
+              value={email}
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
+              className={css.simpleLogonInput}
+              placeholder="email"
+            />
+          </div>
+          <div style={divInline}>
+            <div className={css.LogonInputBlock} style={divInline}>
               <ValidableInput
-                validatetext="Не верный e-mail"
+                validatetext="Имя не может быть пустым"
                 validated={(
-                  this.validateEmail() || validated === "true"
+                  validateStr(firstname) || validated === "true"
                 ).toString()}
-                name="email"
-                value={email}
+                name="firstname"
+                value={firstname}
                 type="text"
-                onChange={this.inputChangedEventHendler}
+                onChange={(e) => setFirstname(e.target.value)}
                 className={css.simpleLogonInput}
-                placeholder="email"
+                placeholder="Имя"
               />
             </div>
-            <div style={divInline}>
-              <div className={css.LogonInputBlock} style={divInline}>
-                <ValidableInput
-                  validatetext="Имя не может быть пустым"
-                  validated={(
-                    this.validateStr(firstname) || validated === "true"
-                  ).toString()}
-                  name="firstname"
-                  value={firstname}
-                  type="text"
-                  onChange={this.inputChangedEventHendler}
-                  className={css.simpleLogonInput}
-                  placeholder="Имя"
-                />
-              </div>
-              <div className={css.LogonInputBlock} style={divInline}>
-                <ValidableInput
-                  validatetext="Фамилия не может быть пустой"
-                  name="lastname"
-                  value={lastname}
-                  validated={(
-                    this.validateStr(lastname) || validated === "true"
-                  ).toString()}
-                  type="text"
-                  onChange={this.inputChangedEventHendler}
-                  className={css.simpleLogonInput}
-                  placeholder="Фамилия"
-                />
-              </div>
-            </div>
-            <div className={css.LogonInputBlock}>
+            <div className={css.LogonInputBlock} style={divInline}>
               <ValidableInput
-                validatetext="Пароль не может быть пустым"
+                validatetext="Фамилия не может быть пустой"
+                name="lastname"
+                value={lastname}
                 validated={(
-                  this.validateStr(password) || validated === "true"
+                  validateStr(lastname) || validated === "true"
                 ).toString()}
-                name="password"
-                value={password}
-                onChange={this.inputChangedEventHendler}
-                type="password"
+                type="text"
+                onChange={(e) => setLastname(e.target.value)}
                 className={css.simpleLogonInput}
-                placeholder="Пароль"
+                placeholder="Фамилия"
               />
-            </div>
-            <div style={styleCorrection}>
-              {this.props.loggedOnError ? (
-                <label className={css.validateLabel}>
-                  Ошибка при Регистрации: {this.props.error}
-                </label>
-              ) : (
-                <label className={css.validateLabel}></label>
-              )}
-            </div>
-            <div className={css.SubmitDiv}>
-              <AnimButton type="submit" variant="contained" color="primary">
-                Регистрация
-              </AnimButton>
             </div>
           </div>
-        </form>
-      </div>
-    );
-  }
-}
+          <div className={css.LogonInputBlock}>
+            <ValidableInput
+              validatetext="Пароль не может быть пустым"
+              validated={(
+                validateStr(password) || validated === "true"
+              ).toString()}
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              className={css.simpleLogonInput}
+              placeholder="Пароль"
+            />
+          </div>
+          <div style={styleCorrection}>
+            {props.loggedOnError ? (
+              <label className={css.validateLabel}>
+                Ошибка при Регистрации: {this.props.error}
+              </label>
+            ) : (
+              <label className={css.validateLabel}></label>
+            )}
+          </div>
+          <div className={css.SubmitDiv}>
+            <AnimButton type="submit" variant="contained" color="primary">
+              Регистрация
+            </AnimButton>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+RegisterForm.propTypes = {
+  authStatus: PropTypes.bool.isRequired,
+  authToken: PropTypes.string,
+  loggedOnError: PropTypes.bool,
+  error: PropTypes.string,
+  doRegister: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   authStatus: state.auth.loggedOn,

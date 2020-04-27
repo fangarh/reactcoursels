@@ -37,7 +37,7 @@
   margin-top: 55%;
   padding-top: 15px;
   width: 500px;
-  height: 400px;
+  height: 405px;
 }
 
 .SubmitDiv {
@@ -60,6 +60,13 @@
 .simpleLogonInput {
   margin-left: 20px;
   width: 80%;
+}
+
+.LangButton {
+  position: absolute;
+  color: green;
+  right: 10px;
+  top: 10px;
 }
 
 .RegButton {
