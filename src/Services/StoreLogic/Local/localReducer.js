@@ -64,7 +64,6 @@ export const localReducer = (state = initialState, action) => {
         fnsLocale: getFnsLocale(action.payload),
       };
     case nextLocal.toString():
-      console.log(state);
       let oldLocal = state.curLocal;
       let newLocal = "";
 
