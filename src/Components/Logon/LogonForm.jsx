@@ -6,6 +6,7 @@ import { ValidableInput } from "../HOCWrappers/ValidableInput";
 import composedAnimated from "./../HOCWrappers/AnimateWait";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import Button from "@material-ui/core/Button";
 import { Logo } from "loft-taxi-mui-theme";
@@ -17,6 +18,7 @@ function LogonForm(props) {
   const [validated, setValidated] = useState("true");
   const [password, setPassword] = useState("");
   const AnimButton = composedAnimated(Button);
+  const intl = useIntl();
 
   const validate = () => {
     let allValid = validatePass() && validateEmail();
@@ -52,18 +54,35 @@ function LogonForm(props) {
         <form onSubmit={submit}>
           <div className={css.LogonForm}>
             <div className={css.LogonInputBlock}>
-              <h1>Вход</h1>
+              <h1>
+                <FormattedMessage
+                  id="logon.logonform.title"
+                  defaultMessage="Вход"
+                />
+              </h1>
             </div>
             <div className={`${css.LogonInputBlock} ${css.labelBlockStyle}`}>
-              <label>Новый пользователь?</label>
+              <label>
+                <FormattedMessage
+                  id="logon.logonform.newUser"
+                  defaultMessage="Новый пользователь?"
+                />
+              </label>
 
               <label className={css.RegButton}>
-                <Link to="/register">Зарегистрируйтесь!</Link>
+                <Link to="/register">
+                  <FormattedMessage
+                    id="logon.logonform.newUserReg"
+                    defaultMessage="Зарегистрируйтесь!"
+                  />
+                </Link>
               </label>
             </div>
             <div className={css.LogonInputBlock}>
               <ValidableInput
-                validatetext="Не верный e-mail"
+                validatetext={intl.formatMessage({
+                  id: "logon.logonform.emailValidator",
+                })}
                 validated={(validateEmail() || validated === "true").toString()}
                 name="email"
                 type="text"
@@ -75,20 +94,27 @@ function LogonForm(props) {
             </div>
             <div className={css.LogonInputBlock}>
               <ValidableInput
-                validatetext="Пароль не может быть пустым"
+                validatetext={intl.formatMessage({
+                  id: "logon.logonform.passwordValidator",
+                })}
                 validated={(validatePass() || validated === "true").toString()}
                 id="Password"
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 className={css.simpleLogonInput}
-                placeholder="Пароль"
+                placeholder={intl.formatMessage({
+                  id: "logon.logonform.passwordPlsHold",
+                })}
               />
             </div>
             <div style={styleCorrection}>
               {props.loggedOnError ? (
                 <label className={css.validateLabel}>
-                  Ошибка при входе: {props.error}
+                  {intl.formatMessage({
+                    id: "logon.logonform.logonError",
+                  })}
+                  {props.error}
                 </label>
               ) : (
                 <label className={css.validateLabel}></label>
@@ -101,7 +127,10 @@ function LogonForm(props) {
                 variant="contained"
                 color="primary"
               >
-                Войти
+                <FormattedMessage
+                  id="logon.logonform.logonButton"
+                  defaultMessage="Войти"
+                />
               </AnimButton>
             </div>
           </div>

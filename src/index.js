@@ -4,40 +4,25 @@ import { Provider } from "react-redux";
 
 import { BrowserRouter } from "react-router-dom";
 
-import DateFnsUtils from "@date-io/date-fns";
-import format from "date-fns/format";
-
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { appStore } from "./Services/StoreLogic/rootReducer";
 
-import ruLocale from "date-fns/locale/ru";
-
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { theme } from "loft-taxi-mui-theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
+import LocalesProvider1 from "./Services/Localization/LocalesProvider";
 
 import "./css/index.css";
 import "react-datepicker/dist/react-datepicker.css";
-
-class RuLocalizedUtils extends DateFnsUtils {
-  getCalendarHeaderText(date) {
-    return format(date, "LLLL", { locale: ruLocale });
-  }
-
-  getDatePickerHeaderText(date) {
-    return format(date, "dd MMMM", { locale: ruLocale });
-  }
-}
 
 const render = (
   <React.StrictMode>
     <MuiThemeProvider theme={theme}>
       <Provider store={appStore}>
         <BrowserRouter>
-          <MuiPickersUtilsProvider utils={RuLocalizedUtils} locale={ruLocale}>
+          <LocalesProvider1>
             <App />
-          </MuiPickersUtilsProvider>
+          </LocalesProvider1>
         </BrowserRouter>
       </Provider>
     </MuiThemeProvider>

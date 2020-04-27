@@ -8,12 +8,14 @@ import { routeReducer } from "./Navigation";
 
 import { sagaListner } from "../ServerLogic/sagas";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
+import { localReducer } from "./Local";
 
 export const rootReducer = combineReducers({
   auth: authReducer,
   profile: profileReducer,
   anim: animateReducer,
   rout: routeReducer,
+  locale: localReducer,
 });
 
 const saga = createSagaMiddleware();

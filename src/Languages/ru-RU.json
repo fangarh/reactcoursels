@@ -1,0 +1,15 @@
+{
+  "logon.logonform.title": "Вход",
+  "logon.logonform.logonButton": "Войти",
+  "logon.logonform.newUser": "Новый пользователь?",
+  "logon.logonform.newUserReg": "зарегистрироваться",
+  "logon.logonform.emailValidator": "Не верный e-mai",
+  "logon.logonform.passwordPlsHold": "Пароль",
+  "logon.logonform.passwordValidator": "Пароль не может быть пустым",
+  "logon.logonform.logonError": "Ошибка при входе: ",
+
+  "nav.map": "Карта",
+  "nav.profile": "Профиль",
+  "nav.exit": "Выход",
+  "nav.options": "Опции"
+}

@@ -1,0 +1,15 @@
+{
+  "logon.logonform.title": "Logon!",
+  "logon.logonform.logonButton": "Logon",
+  "logon.logonform.newUser": "New user?",
+  "logon.logonform.newUserReg": "register",
+  "logon.logonform.emailValidator": "Unkorrect e-mai",
+  "logon.logonform.passwordPlsHold": "Password",
+  "logon.logonform.passwordValidator": "Password can't be empty",
+  "logon.logonform.logonError": "Logon error: ",
+
+  "nav.map": "Map",
+  "nav.profile": "Profile",
+  "nav.exit": "Exit",
+  "nav.options": "Options"
+}
