@@ -14,7 +14,6 @@ import {
   doFlushNotifie,
 } from "../../Services/StoreLogic/Profile/actions";
 import {
-  expDateFormated,
   expProfileError,
   getProfile,
 } from "../../Services/StoreLogic/Profile/selectors";
@@ -28,22 +27,24 @@ import css from "./../../css/Profile.module.css";
 const AnimButton = composedAnimated(Button);
 
 function ProfilePage(props) {
-  const [CardId, setCardId] = React.useState(props.cvv ? props.cvv : "");
+  const [CardId, setCardId] = React.useState(
+    props.prof.CardId ? props.prof.CardId : ""
+  );
   const [HolderName, setHolderName] = React.useState(
-    props.HolderName ? props.HolderName : ""
+    props.prof.HolderName ? props.prof.HolderName : ""
   );
 
-  const [Cvv, setCvv] = React.useState(props.cvv ? props.cvv : "");
-  const [Exp, setExp] = React.useState(props.expDate);
+  const [Cvv, setCvv] = React.useState(props.prof.Cvv ? props.prof.Cvv : "");
+  const [Exp, setExp] = React.useState(props.prof.expDateFormated());
   const [validErr, setValidErr] = React.useState("");
   const [needNotifie, setNeedNotifie] = React.useState("unknown");
 
   React.useEffect(() => {
-    setCvv(props.cvv ? props.cvv : "");
-    setExp(props.expDate);
-    setHolderName(props.HolderName ? props.HolderName : "");
-    setCardId(props.CardId ? props.CardId : "");
-  }, [props.cvv, props.expDate, props.HolderName, props.CardId]);
+    setCvv(props.prof.Cvv ? props.prof.Cvv : "");
+    setExp(props.prof.expDateFormated());
+    setHolderName(props.prof.HolderName ? props.prof.HolderName : "");
+    setCardId(props.prof.CardId ? props.prof.CardId : "");
+  }, [props.prof]);
 
   const validateForm = () => {
     let valid = true;
@@ -204,6 +205,7 @@ function ProfilePage(props) {
 
 ProfilePage.propTypes = {
   verified: PropTypes.bool.isRequired,
+  prof: PropTypes.shape,
   error: PropTypes.string,
   isSaveResult: PropTypes.bool,
   doSaveProfile: PropTypes.func.isRequired,
@@ -212,10 +214,7 @@ ProfilePage.propTypes = {
 
 const mapStateToProps = (state) => ({
   verified: getProfile(state).verified,
-  cvv: getProfile(state).Cvv,
-  expDate: expDateFormated(state),
-  CardId: getProfile(state).CardId,
-  HolderName: getProfile(state).HolderName,
+  prof: getProfile(state),
   error: expProfileError(state),
   isSaveResult: state.profile.isSaveResult,
 });

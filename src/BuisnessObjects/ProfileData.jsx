@@ -17,6 +17,16 @@ class ProfileData {
       token: token,
     };
   }
+
+  expDateFormated() {
+    let datePart = this.Exp;
+
+    if (!datePart) return null;
+
+    let parts = datePart.split("/");
+    let dateString = parts[0] + "/01/" + parts[1];
+    return new Date(dateString);
+  }
 }
 
 export default ProfileData;
