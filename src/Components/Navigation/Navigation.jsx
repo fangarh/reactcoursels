@@ -29,7 +29,7 @@ function NavigationMenu(props) {
           </label>
         </li>
         <li>
-          <label>{intlMsg("nav.options")}</label>
+          <label onClick={props.localeChange}>{props.nextLocale}</label>
         </li>
         <li>
           <label onClick={menuItemClick}>{intlMsg("nav.exit")}</label>

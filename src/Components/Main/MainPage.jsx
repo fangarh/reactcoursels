@@ -11,7 +11,7 @@ import { doLoadProfile } from "./../../Services/StoreLogic/Profile/actions";
 import { doFlushAutoLogon } from "./../../Services/StoreLogic/Authorization/actions";
 import { doLoadRoutesList } from "./../../Services/StoreLogic/Navigation";
 import { doLogoff } from "../../Services/StoreLogic/Authorization/actions";
-import { setCurLocal } from "../../Services/StoreLogic/Local";
+import { setCurLocal, nextLocal } from "../../Services/StoreLogic/Local";
 
 import ProfilePage from "../Profile/ProfilePage";
 import css from "./../../css/Main.module.css";
@@ -23,6 +23,10 @@ function MainPage(props) {
     props.doLoadRoutesList();
   }
 
+  const localeChange = (e) => {
+    props.nextLocal();
+  };
+
   const buildFormDOM = () => {
     return (
       <div className={css.mainLayout}>
@@ -30,6 +34,8 @@ function MainPage(props) {
           doLogOff={props.doLogoff}
           setLocal={props.setCurLocal}
           local={props.local}
+          nextLocale={props.nextLocale}
+          localeChange={localeChange}
         />
         <Switch>
           <PrivateRoute path="/" component={MapForm} exact />
@@ -56,6 +62,7 @@ const mapStateToProps = (state) => ({
   autoLogOn: state.auth.autoLogOn,
   error: state.anim.error,
   local: state.locale.curLocal,
+  nextLocale: state.locale.nextLocaleName,
 });
 
 const mapDispatchToProps = {
@@ -64,6 +71,7 @@ const mapDispatchToProps = {
   doFlushAutoLogon,
   doLoadRoutesList,
   doLogoff,
+  nextLocal,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

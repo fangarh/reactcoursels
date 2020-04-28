@@ -7,24 +7,21 @@ import RouteForm from "./RouteForm";
 import { doLoadRoute } from "./../../Services/StoreLogic/Navigation";
 
 import css from "./../../css/Main.module.css";
+import { useState, useRef } from "react";
+import { useIntl } from "react-intl";
 
-class MapForm extends React.Component {
-  state = {
-    taxiCalled: false,
+const MapForm = (props) => {
+  const [taxiCalled, setTaxiCalled] = useState(false);
+  const [map, setMap] = useState(null);
+  const mapContainer = useRef(null);
+
+  const intl = useIntl();
+
+  const intlMsg = (props) => {
+    return intl.formatMessage({ id: props });
   };
 
-  componentDidMount() {
-    mapboxgl.accessToken =
-      "pk.eyJ1IjoiZmFuZ2FyaDY2NiIsImEiOiJjazhwc21mM3YwMWc1M2xwajYwZjFhejlnIn0.-t2babwIvcVtwALeMcKvtw";
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      center: [30.233319, 59.942138],
-      zoom: 11,
-      style: "mapbox://styles/mapbox/streets-v9",
-    });
-  }
-
-  drawRoute(map, coordinates) {
+  const drawRoute = (map, coordinates) => {
     const sourceObject = map.getSource("route");
 
     if (sourceObject) {
@@ -59,34 +56,48 @@ class MapForm extends React.Component {
         "line-width": 8,
       },
     });
-  }
+  };
 
-  componentWillUnmount() {
-    this.map.remove();
-  }
+  React.useEffect(() => {
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoiZmFuZ2FyaDY2NiIsImEiOiJjazhwc21mM3YwMWc1M2xwajYwZjFhejlnIn0.-t2babwIvcVtwALeMcKvtw";
+    const initializeMap = ({ setMap, mapContainer }) => {
+      const map = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+        center: [30.233319, 59.942138],
+        zoom: 13,
+      });
 
-  recall = (called) => this.setState({ taxiCalled: called });
+      map.on("load", () => {
+        setMap(map);
+        map.resize();
+      });
+    };
 
-  render() {
-    if (this.props.routExists && this.map) {
-      this.drawRoute(this.map, this.props.currentRout);
-    }
-    return (
-      <>
-        <RouteForm
-          verified={this.props.verified}
-          error={this.props.error}
-          pError={this.props.pError}
-          doLoadRoute={this.props.doLoadRoute}
-          avaliablePoints={this.props.avaliablePoints}
-          recallTaxi={(called) => this.setState({ taxiCalled: called })}
-          taxiCalled={this.state.taxiCalled}
-        />
-        <div className={css.mapStyle} ref={(el) => (this.mapContainer = el)} />
-      </>
-    );
+    if (!map) initializeMap({ setMap, mapContainer });
+  }, [map]);
+
+  const recall = (called) => setTaxiCalled(called);
+
+  if (props.routExists && map) {
+    drawRoute(map, props.currentRout);
   }
-}
+  return (
+    <>
+      <RouteForm
+        verified={props.verified}
+        error={props.error}
+        pError={props.pError}
+        doLoadRoute={props.doLoadRoute}
+        avaliablePoints={props.avaliablePoints}
+        recallTaxi={(called) => setTaxiCalled(called)}
+        taxiCalled={taxiCalled}
+      />
+      <div ref={(el) => (mapContainer.current = el)} className={css.mapStyle} />
+    </>
+  );
+};
 
 MapForm.propTypes = {
   routExists: PropTypes.bool.isRequired,

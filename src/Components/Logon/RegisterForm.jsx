@@ -69,9 +69,11 @@ const RegisterForm = (props) => {
     paddingTop: "5px",
   };
   if (props.authStatus) return <Redirect to="/" />;
+
   const localeChange = (e) => {
     props.nextLocal();
   };
+
   return (
     <>
       <label className={css.LangButton} onClick={localeChange}>

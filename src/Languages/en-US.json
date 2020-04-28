@@ -21,6 +21,9 @@
   "logon.registerform.warnRegErr": "Problem with registration, please try later",
   "logon.registerform.doReg": "Register",
 
+  "main.route.asklogon.title": "Car called, please wait",
+  "main.route.asklogon.askBtn": "Order enother car?",
+
   "nav.map": "Map",
   "nav.profile": "Profile",
   "nav.exit": "Exit",
