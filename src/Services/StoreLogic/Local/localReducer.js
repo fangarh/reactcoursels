@@ -69,7 +69,7 @@ export const localReducer = (state = initialState, action) => {
 
       if (oldLocal === "ru") newLocal = "en-US";
       else newLocal = "ru";
-
+      localStorage.curLocal = newLocal;
       return {
         ...state,
         curLocal: newLocal,

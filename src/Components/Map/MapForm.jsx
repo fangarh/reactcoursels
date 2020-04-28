@@ -78,8 +78,6 @@ const MapForm = (props) => {
     if (!map) initializeMap({ setMap, mapContainer });
   }, [map]);
 
-  const recall = (called) => setTaxiCalled(called);
-
   if (props.routExists && map) {
     drawRoute(map, props.currentRout);
   }
@@ -92,6 +90,7 @@ const MapForm = (props) => {
         doLoadRoute={props.doLoadRoute}
         avaliablePoints={props.avaliablePoints}
         recallTaxi={(called) => setTaxiCalled(called)}
+        intlMsg={intlMsg}
         taxiCalled={taxiCalled}
       />
       <div ref={(el) => (mapContainer.current = el)} className={css.mapStyle} />
