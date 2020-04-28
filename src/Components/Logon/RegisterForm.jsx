@@ -82,17 +82,19 @@ const RegisterForm = (props) => {
         <form onSubmit={submitEventHendler}>
           <div className={css.RegisterForm}>
             <div className={css.LogonInputBlock}>
-              <h1>Регистрация</h1>
+              <h1>{intlMsg("logon.registerform.title")}</h1>
             </div>
             <div className={`${css.LogonInputBlock} ${css.labelBlockStyle}`}>
-              <label>Уже зарегистрированы?</label>
+              <label>{intlMsg("logon.registerform.havePass")}</label>
               <label className={css.RegButton}>
-                <Link to="/logon">{intlMsg("logon.logonform.title")}</Link>
+                <Link to="/logon">
+                  {intlMsg("logon.registerform.logonBtn")}
+                </Link>
               </label>
             </div>
             <div className={css.LogonInputBlock}>
               <ValidableInput
-                validatetext="Не верный e-mail"
+                validatetext={intlMsg("logon.registerform.warnEmail")}
                 validated={(validateEmail() || validated === "true").toString()}
                 name="email"
                 value={email}
@@ -105,7 +107,7 @@ const RegisterForm = (props) => {
             <div style={divInline}>
               <div className={css.LogonInputBlock} style={divInline}>
                 <ValidableInput
-                  validatetext="Имя не может быть пустым"
+                  validatetext={intlMsg("logon.registerform.warnName")}
                   validated={(
                     validateStr(firstname) || validated === "true"
                   ).toString()}
@@ -114,12 +116,12 @@ const RegisterForm = (props) => {
                   type="text"
                   onChange={(e) => setFirstname(e.target.value)}
                   className={css.simpleLogonInput}
-                  placeholder="Имя"
+                  placeholder={intlMsg("logon.registerform.lblName")}
                 />
               </div>
               <div className={css.LogonInputBlock} style={divInline}>
                 <ValidableInput
-                  validatetext="Фамилия не может быть пустой"
+                  validatetext={intlMsg("logon.registerform.warnSurname")}
                   name="lastname"
                   value={lastname}
                   validated={(
@@ -128,13 +130,13 @@ const RegisterForm = (props) => {
                   type="text"
                   onChange={(e) => setLastname(e.target.value)}
                   className={css.simpleLogonInput}
-                  placeholder="Фамилия"
+                  placeholder={intlMsg("logon.registerform.lblSurname")}
                 />
               </div>
             </div>
             <div className={css.LogonInputBlock}>
               <ValidableInput
-                validatetext="Пароль не может быть пустым"
+                validatetext={intlMsg("logon.registerform.warnPass")}
                 validated={(
                   validateStr(password) || validated === "true"
                 ).toString()}
@@ -143,13 +145,13 @@ const RegisterForm = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 className={css.simpleLogonInput}
-                placeholder="Пароль"
+                placeholder={intlMsg("logon.registerform.lblPass")}
               />
             </div>
             <div style={styleCorrection}>
               {props.loggedOnError ? (
                 <label className={css.validateLabel}>
-                  Ошибка при Регистрации: {this.props.error}
+                  {intlMsg("logon.registerform.warnRegErr")} {this.props.error}
                 </label>
               ) : (
                 <label className={css.validateLabel}></label>
@@ -157,7 +159,7 @@ const RegisterForm = (props) => {
             </div>
             <div className={css.SubmitDiv}>
               <AnimButton type="submit" variant="contained" color="primary">
-                Регистрация
+                {intlMsg("logon.registerform.doReg")}
               </AnimButton>
             </div>
           </div>
